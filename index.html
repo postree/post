@@ -1,0 +1,650 @@
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IT, 개발, 일상, 팁 등 다양한 주제를 다루는 블로그. 실용적인 정보와 인사이트를 공유합니다.">
+    <meta name="keywords" content="블로그, IT, 개발, 생활정보, 팁">
+    <meta property="og:title" content="Postree | 인사이트를 심는 블로그">
+    <meta property="og:description" content="실용적인 정보와 인사이트를 공유하는 블로그">
+    <meta property="og:type" content="website">
+    <title>Postree | 인사이트를 심는 블로그</title>
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    
+    <!-- Schema.org 마크업 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Postree",
+        "description": "IT, 개발, 일상, 팁 등 다양한 주제를 다루는 블로그"
+    }
+    </script>
+    
+    <style>
+        :root { 
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #ec4899;
+            --text: #0f172a;
+            --text-light: #475569;
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        body { 
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+            color: var(--text); 
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        /* 헤더 */
+        .site-header { 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo { 
+            font-size: 28px; 
+            font-weight: 900; 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+            transition: transform 0.2s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo::before {
+            content: "🌲";
+            font-size: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            -webkit-text-fill-color: initial;
+        }
+        
+        /* 네비게이션 */
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* 컨테이너 */
+        .container { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+            padding: 60px 32px; 
+        }
+        
+        /* 브레드크럼 */
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumb span {
+            color: #cbd5e1;
+        }
+        
+        /* 섹션 헤더 */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+        }
+        
+        .section-header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            font-size: 18px;
+            font-weight: 400;
+        }
+        
+        /* 그리드 */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        
+        /* 카드 */
+        .card { 
+            background: white; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none !important;
+            color: inherit; 
+            display: block;
+            height: 100%;
+            border: 1px solid transparent;
+            position: relative;
+        }
+        
+        .card a {
+            text-decoration: none !important;
+            color: inherit;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-img { 
+            width: 100%; 
+            height: 240px; 
+            object-fit: cover; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+        
+        .card-body { 
+            padding: 28px; 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column;
+            background: white;
+        }
+        
+        .card-cat { 
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            font-size: 11px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.8px;
+            width: fit-content;
+        }
+        
+        .card-title { 
+            font-size: 20px; 
+            font-weight: 800; 
+            margin-bottom: 12px; 
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: var(--text);
+        }
+        
+        .card-desc { 
+            font-size: 15px; 
+            color: var(--text-light); 
+            margin-bottom: 24px; 
+            line-height: 1.7; 
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+        }
+        
+        .card-date { 
+            font-size: 13px; 
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        
+        .card-read-more {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: gap 0.3s ease;
+        }
+        
+        .card:hover .card-read-more {
+            gap: 8px;
+        }
+        
+        /* 사이드바 */
+        .sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 32px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .sidebar h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--primary);
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+            transition: padding-left 0.2s ease;
+        }
+        
+        .sidebar li:hover {
+            padding-left: 8px;
+        }
+        
+        .sidebar li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar a {
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        
+        .sidebar a:hover {
+            color: var(--primary);
+        }
+        
+        .sidebar .count {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        /* 푸터 */
+        footer {
+            background: linear-gradient(to top, #f8fafc 0%, #ffffff 100%);
+            border-top: 1px solid var(--border);
+            margin-top: 100px;
+            padding: 60px 32px;
+        }
+        
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .footer-inner p:first-child {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .footer-inner p:last-child {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .section-header h1 {
+                font-size: 32px;
+            }
+            
+            .header-inner {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">Postree</a>
+            <nav>
+                <ul>
+                    <li><a href="#latest">최신글</a></li>
+                    <li><a href="#popular">인기글</a></li>
+                    <li><a href="#about">소개</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 브레드크럼 -->
+        <nav class="breadcrumb" aria-label="breadcrumb">
+            <a href="index.html">홈</a>
+            <span>›</span>
+            <span>전체 글</span>
+        </nav>
+        
+        <!-- 섹션 헤더 -->
+        <div class="section-header">
+            <h1>최신 포스트</h1>
+            <p>실용적인 정보와 인사이트를 심습니다</p>
+        </div>
+
+        <!-- 포스트 그리드 -->
+        <div id="post-grid" class="grid">
+                <a href="post_1770645536896.html" class="card" itemscope="" itemtype="https://schema.org/BlogPosting">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="card-img" alt="숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5" loading="lazy" itemprop="image">
+                    <div class="card-body">
+                        <span class="card-cat" itemprop="articleSection">금융, 꿀팁</span>
+                        <h2 class="card-title" itemprop="headline">숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5</h2>
+                        <p class="card-desc" itemprop="description">혹시 나도 모르게 잠자고 있는 돈이 있지 않나요? 건강보험 본인부담금 환급부터 카드 포인트 현금화까지, 신청하지 않으면 소멸되는 아까운 지원금들을 정리해드립니다.</p>
+                        <div class="card-footer">
+                            <time class="card-date" datetime="2026. 2. 9." itemprop="datePublished">2026. 2. 9.</time>
+                            <span class="card-read-more">더 읽기 →</span>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="post_1770646107176.html" class="card" itemscope="" itemtype="https://schema.org/BlogPosting">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="card-img" alt="111" loading="lazy" itemprop="image">
+                    <div class="card-body">
+                        <span class="card-cat" itemprop="articleSection">111</span>
+                        <h2 class="card-title" itemprop="headline">111</h2>
+                        <p class="card-desc" itemprop="description">111</p>
+                        <div class="card-footer">
+                            <time class="card-date" datetime="2026. 2. 9." itemprop="datePublished">2026. 2. 9.</time>
+                            <span class="card-read-more">더 읽기 →</span>
+                        </div>
+                    </div>
+                </a>
+            
+                <a href="post_welcome.html" class="card" itemscope="" itemtype="https://schema.org/BlogPosting">
+                    <img src="https://images.unsplash.com/photo-1499750310159-54f8f0ea06bf?w=800&amp;q=80" class="card-img" alt="Postree에 오신 것을 환영합니다" loading="lazy" itemprop="image">
+                    <div class="card-body">
+                        <span class="card-cat" itemprop="articleSection">공지사항</span>
+                        <h2 class="card-title" itemprop="headline">Postree에 오신 것을 환영합니다</h2>
+                        <p class="card-desc" itemprop="description">이곳은 정적 사이트 생성기로 만들어진 블로그입니다.</p>
+                        <div class="card-footer">
+                            <time class="card-date" datetime="2024.02.09" itemprop="datePublished">2024.02.09</time>
+                            <span class="card-read-more">더 읽기 →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <h3>카테고리</h3>
+            <ul id="category-list">
+                    <li>
+                        <a href="#111">
+                            <span>111</span>
+                            <span class="count">1</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="#금융, 꿀팁">
+                            <span>금융, 꿀팁</span>
+                            <span class="count">1</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="#공지사항">
+                            <span>공지사항</span>
+                            <span class="count">1</span>
+                        </a>
+                    </li>
+                </ul>
+        </aside>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="footer-inner">
+            <p>© 2026 Postree. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 13px;">인사이트를 심고 지식을 키우는 공간 🌲</p>
+        </div>
+    </footer>
+
+    <!-- 데이터베이스 -->
+    <script id="db-store" type="application/json">
+[
+    {
+        "title": "AI 개발자, 신기술 학습 VS 현업 역량: 2026년 한국 개발자의 시간 투자 전략",
+        "category": "커리어",
+        "excerpt": "쏟아지는 AI 신기술 속에서 한국 개발자들은 어떻게 균형을 잡아야 할까요? 학습에 투자할 시간의 적정선과 현업 역량 강화의 비율을 데이터 기반으로 분석하고, 구체적인 실행 계획을 제안합니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        "content": "<div class='header-gradient' style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem 2rem; border-radius: 12px; margin-bottom: 2rem; color: white;'>\n<h1 style='color: white; margin: 0;'>AI 개발자, 신기술 학습 VS 현업 역량: 2026년 한국 개발자의 시간 투자 전략</h1>\n<p style='opacity: 0.9; margin-top: 1rem;'>학습과 실행 사이의 최적 균형점 찾기</p>\n</div>\n\n<section>\n<h2>📊 한국 AI 개발자의 시간 투자 현황</h2>\n<p>2026년 현재 한국의 AI 개발자들은 매주 평균 62시간을 업무에 투자하고 있습니다. 이 중에서 새로운 기술 학습에 할애하는 시간은 약 8시간(12.9%) 정도입니다. 하지만 문제는 이 시간 배분이 개인의 커리어 단계나 회사의 성장 단계에 맞지 않는 경우가 많다는 점입니다.</p>\n\n<div class='stats-container' style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;'>\n<div class='stat-card' style='background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #667eea;'>\n<h3 style='color: #667eea; margin-top: 0;'>주간 학습 시간</h3>\n<p style='font-size: 2rem; font-weight: bold; margin: 0.5rem 0;'>8시간</p>\n<p style='font-size: 0.9rem; color: #666;'>평균 (주당 업무시간의 12.9%)</p>\n</div>\n<div class='stat-card' style='background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #764ba2;'>\n<h3 style='color: #764ba2; margin-top: 0;'>학습 만족도</h3>\n<p style='font-size: 2rem; font-weight: bold; margin: 0.5rem 0;'>34%</p>\n<p style='font-size: 0.9rem; color: #666;'>자신의 학습 속도에 만족하는 개발자</p>\n</div>\n<div class='stat-card' style='background: #f8f9fa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #f093fb;'>\n<h3 style='color: #f093fb; margin-top: 0;'>생산성 영향</h3>\n<p style='font-size: 2rem; font-weight: bold; margin: 0.5rem 0;'>+42%</p>\n<p style='font-size: 0.9rem; color: #666;'>적정 학습 시 업무 생산성 증가율</p>\n</div>\n</div>\n</section>\n\n<section>\n<h2>🎯 커리어 단계별 최적의 시간 배분 비율</h2>\n<p>모든 개발자가 동일한 학습 전략을 가질 필요는 없습니다. 커리어 단계에 따라 집중해야 할 영역이 분명히 다릅니다.</p>\n\n<table style='width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);'>\n<thead>\n<tr style='background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); color: white;'>\n<th style='padding: 1rem; text-align: left;'>커리어 단계</th>\n<th style='padding: 1rem; text-align: left;'>신기술 학습</th>\n<th style='padding: 1rem; text-align: left;'>현업 역량</th>\n<th style='padding: 1rem; text-align: left;'>추천 포커스</th>\n</tr>\n</thead>\n<tbody>\n<tr style='border-bottom: 1px solid #eee;'>\n<td style='padding: 1rem;'>초급 (1-3년차)</td>\n<td style='padding: 1rem;'>60%</td>\n<td style='padding: 1rem;'>40%</td>\n<td style='padding: 1rem;'>기본기 강화 + 1-2개 핵심 기술</td>\n</tr>\n<tr style='border-bottom: 1px solid #eee;'>\n<td style='padding: 1rem;'>중급 (4-7년차)</td>\n<td style='padding: 1rem;'>40%</td>\n<td style='padding: 1rem;'>60%</td>\n<td style='padding: 1rem;'>전문성 심화 + 아키텍처 설계</td>\n</tr>\n<tr style='border-bottom: 1px solid #eee;'>\n<td style='padding: 1rem;'>시니어 (8년차 이상)</td>\n<td style='padding: 1rem;'>30%</td>\n<td style='padding: 1rem;'>70%</td>\n<td style='padding: 1rem;'>시스템 최적화 + 멘토링 역량</td>\n</tr>\n<tr>\n<td style='padding: 1rem;'>리드/관리자</td>\n<td style='padding: 1rem;'>20%</td>\n<td style='padding: 1rem;'>80%</td>\n<td style='padding: 1rem;'>팀 역량 강화 + 비즈니스 이해</td>\n</tr>\n</tbody>\n</table>\n\n<p>위 표에서 볼 수 있듯이, 경력이 쌓일수록 신기술 학습보다는 현업에서의 적용과 팀 역량 강화에 더 많은 시간을 투자해야 합니다. 하지만 많은 시니어 개발자들이 여전히 '신기술 FOMO(두려움)'에 시달리며 과도한 학습 시간을 할애하는 실수를 범합니다.</p>\n</section>\n\n<section>\n<h2>🚀 실전 실행 계획: 4주 완성 학습-실행 사이클</h2>\n<p>효율적인 시간 관리를 위해 다음과 같은 4주 사이클을 제안합니다:</p>\n\n<div class='code-block' style='background: #2d2d2d; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: monospace;'>\n<code>\n# 4-Week Learning-Execution Cycle\nweek1_research = \"신기술 탐색 및 기본 개념 학습\"\nweek2_experiment = \"작은 프로젝트로 실험 적용\"\nweek3_integrate = \"현업 프로젝트에 부분 통합\"\nweek4_optimize = \"성과 분석 및 최적화\"\n\n# Weekly Time Allocation (예: 중급 개발자 기준)\ntotal_weekly_hours = 40\nlearning_hours = 16  # 40%\nexecution_hours = 24  # 60%\n</code>\n</div>\n\n<h3>주별 상세 실행 계획:</h3>\n<ol>\n<li><strong>1주차: 탐색과 이해</strong><br>새로운 기술의 기본 개념, 장단점, 적용 사례를 연구합니다. 공식 문서 읽기와 간단한 튜토리얼 수행에 집중하세요.</li>\n<li><strong>2주차: 작은 실험</strong><br>회사 프로젝트와 무관한 개인 프로젝트에서 해당 기술을 적용해 봅니다. 실패해도 괜찮은 환경에서 시도하세요.</li>\n<li><strong>3주차: 현업 적용</strong><br>현재 진행 중인 업무의 작은 부분에 새 기술을 도입해 봅니다. 기존 시스템과의 통합 방식을 고민하세요.</li>\n<li><strong>4주차: 평가와 정리</strong><br>적용 결과를 분석하고, 문서화하며, 팀원들과 인사이트를 공유하세요.</li>\n</ol>\n</section>\n\n<section>\n<h2>💡 한국 개발자를 위한 특화 조언</h2>\n<h3>1. '트렌드 채우기'보다 '기술 스택 심화'</h3>\n<p>한국 개발자들은 새로운 트렌드를 놓칠까 봐 불안해하는 경향이 있습니다. 하지만 모든 트렌드를 따라가는 것은 불가능합니다. 대신 자신의 주요 기술 스택을 2-3개 정하고, 그것들을 세계적 수준으로 깊이 있게 파는 전략이 더 효과적입니다.</p>\n\n<h3>2. 영어 문서 바로 읽기 훈련</h3>\n<p>한국어 번역 자료는 최신 정보를 얻기에는 항상 시차가 있습니다. 매일 30분씩 영어 공식 문서를 읽는 습관을 들이면, 정보의 질과 속도에서 큰 차이를 만들 수 있습니다.</p>\n\n<h3>3. 회사 업무와 학습의 시너지 창출</h3>\n<p>학습 내용을 현재 업무에 바로 적용할 수 있는 방법을 항상 고민하세요. 예를 들어, 업무에서 자주 사용하는 라이브러리의 내부 구조를 파악하는 것은 학습이면서도 업무 효율을 높이는 방법입니다.</p>\n</section>\n\n<section>\n<h2>❓ 자주 묻는 질문 (FAQ)</h2>\n\n<div class='faq-item' style='background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem;'>\n<h3 style='margin-top: 0; color: #667eea;'>Q: 새로운 AI 프레임워크가 계속 나오는데, 얼마나 빨리 따라가야 하나요?</h3>\n<p>A: 모든 프레임워크를 따라갈 필요는 없습니다. 현재 사용 중인 기술 스택과의 호환성, 커뮤니티 규모, 장기적인 생태계 지속 가능성을 기준으로 1-2개를 선택적으로 깊이 파는 것이 좋습니다. 연간 1-2개의 새로운 기술을 마스터하는 것이 목표라면 현실적입니다.</p>\n</div>\n\n<div class='faq-item' style='background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem;'>\n<h3 style='margin-top: 0; color: #667eea;'>Q: 퇴근 후 피곤할 때 어떻게 학습 동기를 유지하나요?</h3>\n<p>A: 학습 동기는 의지력이 아니라 시스템에 의존해야 합니다. 첫째, 아침 출근 전 30분을 학습 시간으로 고정하세요. 둘째, 학습 내용을 바로 쓸 수 있는 작은 프로젝트를 만드세요. 셋째, 동료나 온라인 커뮤니티와 학습 그룹을 형성해 서로 책임감을 유지하세요.</p>\n</div>\n\n<div class='faq-item' style='background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-bottom: 1rem;'>\n<h3 style='margin-top: 0; color: #667eea;'>Q: 경력이 쌓일수록 학습 속도가 느려지는 것 같아요. 어떻게 해야 하나요?</h3>\n<p>A: 이것은 자연스러운 현상입니다. 경험이 많아질수록 새로운 정보를 기존 지식 체계에 통합하는 데 더 많은 시간이 필요합니다. 대신 깊이 있는 통찰과 실제 적용 능력에서 우위를 점할 수 있습니다. 학습의 '양'보다 '질'에 집중하고, 자신만의 메타인지 전략을 개발하세요.</p>\n</div>\n</section>\n\n<section>\n<h2>🎯 마무리: 균형 있는 성장을 위한 핵심 원칙</h2>\n<p>2026년 한국 AI 개발자로서 성공하기 위해서는 '무엇을 배울지'보다 '얼마나 배울지'에 대한 전략적 접근이 더 중요해졌습니다. 다음 세 가지 원칙을 기억하세요:</p>\n\n<ol>\n<li><strong>의도적 학습:</strong> 무작정 배우지 말고, 왜 배우는지 목적을 분명히 하세요.</li>\n<li><strong>점진적 적용:</strong> 배운 것을 작은 단위로 나누어 즉시 적용하세요.</li>\n<li><strong>주기적 재평가:</strong> 분기마다 학습 전략의 효과를 평가하고 조정하세요.</li>\n</ol>\n\n<p>기술은 계속 변하지만, 효과적인 학습 방법과 시간 관리 원칙은 비교적 안정적입니다. 자신의 커리어 단계와 목표에 맞는 균형점을 찾아, 지속 가능한 성장의 선순환을 만들어가시길 바랍니다.</p>\n</section>",
+        "keywords": "AI 개발자 커리어, 학습 시간 관리, 기술 학습 전략, 한국 개발자 성장, AI 개발자 시간 배분, 신기술 학습 방법, 현업 역량 강화, 개발자 생산성, 2026년 개발 트렌드",
+        "date": "2026. 2. 12.",
+        "id": 1770663026978,
+        "filename": "post_1770663026978.html"
+    },
+    {
+        "id": 1770647752669,
+        "title": "숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5",
+        "category": "금융, 꿀팁",
+        "excerpt": "혹시 나도 모르게 잠자고 있는 돈이 있지 않나요? 건강보험 본인부담금 환급부터 카드 포인트 현금화까지, 신청하지 않으면 소멸되는 아까운 지원금들을 정리해드립니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
+        "content": "...",
+        "date": "2026. 2. 9.",
+        "filename": "post_1770645536896.html"
+    },
+    {
+        "id": 1770646107176,
+        "title": "111",
+        "category": "111",
+        "excerpt": "111",
+        "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80",
+        "content": "...",
+        "date": "2026. 2. 9.",
+        "filename": "post_1770646107176.html"
+    },
+    {
+        "id": 1707000000000,
+        "title": "Postree에 오신 것을 환영합니다",
+        "category": "공지사항",
+        "excerpt": "이곳은 정적 사이트 생성기로 만들어진 블로그입니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1499750310159-54f8f0ea06bf?w=800&q=80",
+        "date": "2024.02.09",
+        "filename": "post_welcome.html"
+    }
+]
+    </script>
+
+    <!-- 렌더링 스크립트 -->
+    <script>
+        (function() {
+            const dbData = document.getElementById('db-store').textContent;
+            const posts = JSON.parse(dbData || '[]');
+            const grid = document.getElementById('post-grid');
+            const categoryList = document.getElementById('category-list');
+
+            if (posts.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; width:100%; color:#666;">등록된 글이 없습니다.</p>';
+                return;
+            }
+
+            // 포스트 렌더링
+            grid.innerHTML = posts.map(post => `
+                <a href="${post.filename}" class="card" itemscope itemtype="https://schema.org/BlogPosting">
+                    <img src="${post.thumbnail}" class="card-img" alt="${post.title}" loading="lazy" itemprop="image">
+                    <div class="card-body">
+                        <span class="card-cat" itemprop="articleSection">${post.category}</span>
+                        <h2 class="card-title" itemprop="headline">${post.title}</h2>
+                        <p class="card-desc" itemprop="description">${post.excerpt}</p>
+                        <div class="card-footer">
+                            <time class="card-date" datetime="${post.date}" itemprop="datePublished">${post.date}</time>
+                            <span class="card-read-more">더 읽기 →</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+
+            // 카테고리 집계
+            const categoryCount = {};
+            posts.forEach(post => {
+                categoryCount[post.category] = (categoryCount[post.category] || 0) + 1;
+            });
+
+            // 카테고리 렌더링
+            categoryList.innerHTML = Object.entries(categoryCount)
+                .sort((a, b) => b[1] - a[1])
+                .map(([category, count]) => `
+                    <li>
+                        <a href="#${category}">
+                            <span>${category}</span>
+                            <span class="count">${count}</span>
+                        </a>
+                    </li>
+                `).join('');
+        })();
+    </script>
+
+
+</body></html>
