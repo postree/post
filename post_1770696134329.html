@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="데이터 분석의 첫 번째 단계는 데이터를 제대로 이해하는 것입니다. 파이썬의 판다스(Pandas) 라이브러리를 완벽하게 마스터해서 대규모 데이터셋을 자유롭게 다루는 방법을 배워봅시다.">
+    <meta name="keywords" content="Python, Pandas, 데이터분석, DataFrame, Series, 데이터 처리">
+    <meta name="author" content="InfoHub">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드">
+    <meta property="og:description" content="데이터 분석의 첫 번째 단계는 데이터를 제대로 이해하는 것입니다. 파이썬의 판다스(Pandas) 라이브러리를 완벽하게 마스터해서 대규모 데이터셋을 자유롭게 다루는 방법을 배워봅시다.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1526374965328-7f5ae4e8e90f?auto=format&fit=crop&w=800&q=80">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드">
+    <meta name="twitter:description" content="데이터 분석의 첫 번째 단계는 데이터를 제대로 이해하는 것입니다. 파이썬의 판다스(Pandas) 라이브러리를 완벽하게 마스터해서 대규모 데이터셋을 자유롭게 다루는 방법을 배워봅시다.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1526374965328-7f5ae4e8e90f?auto=format&fit=crop&w=800&q=80">
+    <link rel="canonical" href="">
+    <title>🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드 | InfoHub</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드",
+        "description": "데이터 분석의 첫 번째 단계는 데이터를 제대로 이해하는 것입니다. 파이썬의 판다스(Pandas) 라이브러리를 완벽하게 마스터해서 대규모 데이터셋을 자유롭게 다루는 방법을 배워봅시다.",
+        "image": "https://images.unsplash.com/photo-1526374965328-7f5ae4e8e90f?auto=format&fit=crop&w=800&q=80",
+        "author": {
+            "@type": "Person",
+            "name": "InfoHub"
+        },
+        "datePublished": "2026-02-10T04:02:14.329Z",
+        "dateModified": "2026-02-10T04:02:14.329Z"
+    }
+    </script>
+    <style>
+        :root { --primary: #3b82f6; --text: #1e293b; --bg: #ffffff; --border: #e2e8f0; --gray-600: #64748b; --gray-400: #94a3b8; --bg-light: #f8fafc; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--text); background: var(--bg-light); line-height: 1.8; }
+
+        /* 헤더 */
+        .site-header { background: white; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .header-inner { max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo::before { content: "📚"; font-size: 28px; }
+
+        /* 메인 컨테이너 - Medium 스타일 */
+        .main-wrapper { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
+
+        /* 브레드크럼 */
+        .breadcrumb { background: white; border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 40px; }
+        .breadcrumb-inner { max-width: 900px; margin: 0 auto; font-size: 14px; color: var(--gray-600); }
+        .breadcrumb a { color: var(--gray-600); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span { margin: 0 8px; }
+
+        /* 포스트 헤더 */
+        .post-header { background: white; padding: 60px 40px; margin-bottom: 40px; border-bottom: 1px solid var(--border); }
+        .post-header-inner { max-width: 900px; margin: 0 auto; }
+        .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; margin-bottom: 20px; }
+        h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3; word-break: keep-all; }
+        .meta { color: var(--gray-600); font-size: 15px; display: flex; gap: 12px; }
+
+        /* 메인 이미지 */
+        .featured-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 12px; margin: 40px 0; }
+
+        /* 본문 */
+        .content { font-size: 1.125rem; color: var(--text); line-height: 1.8; }
+        .content img { max-width: 100%; height: auto; border-radius: 12px; margin: 40px 0; }
+        .content h2 { font-size: 2rem; margin-top: 50px; margin-bottom: 20px; font-weight: 700; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+        .content h3 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 16px; font-weight: 700; }
+        .content p { margin-bottom: 24px; }
+        .content ul, .content ol { margin-bottom: 24px; padding-left: 32px; }
+        .content li { margin-bottom: 12px; }
+        .content blockquote { border-left: 4px solid var(--primary); padding-left: 20px; margin: 30px 0; font-style: italic; color: var(--gray-600); }
+
+        /* 포스트 풋터 */
+        .post-footer { padding: 40px 0; border-top: 2px solid var(--border); margin-top: 60px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--gray-600); font-weight: 600; padding: 8px 16px; border-radius: 8px; transition: all 0.2s; }
+        .back-btn:hover { background: var(--bg-light); color: var(--primary); }
+
+        /* 푸터 */
+        footer { background: white; border-top: 1px solid var(--border); margin-top: 60px; padding: 40px 40px; }
+        .footer-inner { max-width: 900px; margin: 0 auto; text-align: center; color: var(--gray-600); font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .header-inner { padding: 20px; }
+            .post-header { padding: 40px 20px; }
+            .main-wrapper { padding: 40px 20px; }
+            h1 { font-size: 2rem; }
+            .content { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">InfoHub</a>
+        </div>
+    </header>
+
+    <nav class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="index.html">홈</a><span>›</span>
+            <a href="index.html#Python, 데이터분석">Python, 데이터분석</a><span>›</span>
+            <span>🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드</span>
+        </div>
+    </nav>
+
+    <main class="main-wrapper">
+        <header class="post-header">
+            <div class="post-header-inner">
+                <a href="index.html" class="back-btn">← 목록으로</a>
+                <div style="margin-top: 20px;">
+                    <span class="badge">Python, 데이터분석</span>
+                </div>
+                <h1>🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드</h1>
+                <div class="meta">
+                    <span>2026. 2. 9.</span>
+                    <span>•</span>
+                    <span>InfoHub</span>
+                </div>
+            </div>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1526374965328-7f5ae4e8e90f?auto=format&fit=crop&w=1200&q=80" alt="🐍 파이썬 판다스 마스터하기 | 데이터 분석가 필수 가이드" class="featured-image">
+
+        <article class="content">
+            <h2>판다스(Pandas)란 무엇인가?</h2>
+<p>Pandas는 파이썬의 가장 강력한 데이터 분석 라이브러리입니다. Excel에서 할 수 있는 대부분의 작업을 프로그래밍으로 자동화할 수 있으며, 대규모 데이터셋도 빠르고 효율적으로 처리합니다.</p>
+<p>금융, 마케팅, 과학 분야의 데이터 분석가들이 가장 많이 사용하는 도구이며, 한 번 배워두면 평생 써먹을 수 있는 필수 기술입니다.</p>
+
+<h2>핵심 개념 3가지</h2>
+<h3>1. Series (시리즈)</h3>
+<p>Series는 1차원 배열로, 인덱스와 값으로 이루어져 있습니다. 파이썬의 딕셔너리처럼 동작하지만 훨씬 더 강력한 기능을 제공합니다.</p>
+<pre style="background:#f0f0f0; padding:15px; border-radius:8px; overflow-x:auto;"><code>import pandas as pd
+data = pd.Series([10, 20, 30, 40], index=['A', 'B', 'C', 'D'])
+print(data['A'])  # 10</code></pre>
+
+<h3>2. DataFrame (데이터프레임)</h3>
+<p>DataFrame은 2차원 표 형태의 데이터 구조입니다. 여러 개의 Series가 합쳐진 형태이며, 행과 열로 구성되어 있습니다. Excel의 스프레드시트와 동일한 구조입니다.</p>
+<p>데이터프레임은 다양한 데이터 타입을 포함할 수 있으며, 행과 열의 라벨을 자유롭게 지정할 수 있습니다.</p>
+
+<h3>3. 인덱싱(Indexing)</h3>
+<p>판다스의 인덱싱은 파이썬의 기본 인덱싱과 다릅니다. loc[], iloc[] 등 여러 가지 방식을 제공하여 매우 유연하게 데이터에 접근할 수 있습니다.</p>
+
+<h2>데이터 불러오기 및 저장</h2>
+<p>판다스는 다양한 형식의 데이터를 읽고 쓸 수 있습니다. 가장 일반적인 포맷은 CSV, Excel, JSON 파일입니다.</p>
+<ul>
+<li><strong>CSV 읽기</strong>: pd.read_csv('file.csv')</li>
+<li><strong>Excel 읽기</strong>: pd.read_excel('file.xlsx')</li>
+<li><strong>JSON 읽기</strong>: pd.read_json('file.json')</li>
+<li><strong>SQL 데이터베이스</strong>: pd.read_sql(query, connection)</li>
+</ul>
+<p>저장할 때도 마찬가지로 to_csv(), to_excel(), to_json() 등의 메서드를 사용합니다.</p>
+
+<h2>데이터 정제 및 변환</h2>
+<h3>결측치(Missing Values) 처리</h3>
+<p>현실의 데이터에는 항상 결측치가 존재합니다. 판다스는 결측치를 감지하고 처리하는 다양한 방법을 제공합니다.</p>
+<ul>
+<li><strong>결측치 확인</strong>: df.isnull() 또는 df.isna()</li>
+<li><strong>결측치 제거</strong>: df.dropna()</li>
+<li><strong>결측치 채우기</strong>: df.fillna(value)</li>
+<li><strong>선형 보간</strong>: df.interpolate()</li>
+</ul>
+
+<h3>데이터 타입 변환</h3>
+<p>데이터 타입을 올바르게 설정하는 것은 분석의 정확성을 크게 높입니다. astype() 메서드를 사용하여 타입을 변환합니다.</p>
+
+<h3>데이터 필터링</h3>
+<p>조건에 맞는 행만 추출하는 것은 데이터 분석에서 가장 자주 사용되는 작업입니다. 불린 인덱싱(Boolean Indexing)을 활용하면 매우 효율적으로 필터링할 수 있습니다.</p>
+
+<h2>데이터 그룹화 및 집계</h2>
+<p>groupby()는 판다스의 가장 강력한 기능 중 하나입니다. 데이터를 특정 열 기준으로 그룹화하고 각 그룹에 대해 집계 함수를 적용할 수 있습니다.</p>
+<pre style="background:#f0f0f0; padding:15px; border-radius:8px; overflow-x:auto;"><code># 부서별 평균 급여 계산
+df.groupby('department')['salary'].mean()
+
+# 여러 열 기준으로 그룹화
+df.groupby(['department', 'year']).agg({
+    'sales': 'sum',
+    'profit': 'mean'
+})</code></pre>
+
+<h2>병합(Merge) 및 연결(Concat)</h2>
+<p>두 개 이상의 DataFrame을 하나로 결합하는 것은 데이터 분석에서 자주 필요한 작업입니다.</p>
+<ul>
+<li><strong>SQL의 JOIN처럼</strong>: pd.merge(df1, df2, on='key')</li>
+<li><strong>행 또는 열 연결</strong>: pd.concat([df1, df2], axis=0 또는 axis=1)</li>
+<li><strong>조인 종류</strong>: inner, outer, left, right</li>
+</ul>
+
+<h2>실전 분석 사례</h2>
+<h3>📊 사례 1: 판매 데이터 분석</h3>
+<p>온라인 쇼핑몰의 월별 판매액을 분석한다고 가정해봅시다. CSV 파일에서 데이터를 불러온 후 월별로 그룹화하여 총 판매액, 평균 주문액, 주문 건수를 계산하고 시각화합니다.</p>
+
+<h3>📊 사례 2: 고객 세분화</h3>
+<p>고객 구매 이력 데이터를 분석하여 고객을 VIP, 충성도 높은 고객, 위험 고객 등으로 분류합니다. groupby()를 활용하여 각 세그먼트의 특성을 파악하고 마케팅 전략을 수립합니다.</p>
+
+<h3>📊 사례 3: 데이터 정제 및 통합</h3>
+<p>여러 소스에서 수집한 데이터를 하나로 통합합니다. 결측치를 처리하고, 데이터 타입을 변환하고, 중복된 행을 제거합니다. 최종적으로 깨끗한 데이터셋을 만들어냅니다.</p>
+
+<h2>성능 최적화 팁</h2>
+<p>대규모 데이터셋을 다룰 때는 성능이 중요합니다. 다음 팁들을 따르면 처리 속도를 크게 향상시킬 수 있습니다.</p>
+<ul>
+<li><strong>불필요한 열 제거</strong>: 필요한 열만 선택해서 메모리 사용 줄이기</li>
+<li><strong>데이터 타입 최적화</strong>: int64 대신 int32, float64 대신 float32 사용</li>
+<li><strong>복사 최소화</strong>: inplace=True 파라미터 활용</li>
+<li><strong>벡터화 연산</strong>: for 루프 대신 판다스의 벡터화 메서드 사용</li>
+</ul>
+
+<h2>흔한 실수와 해결책</h2>
+<blockquote>판다스를 배우면서 가장 많이 하는 실수는 데이터 타입을 제대로 설정하지 않고 분석을 시작하는 것입니다. 항상 df.info()로 데이터 구조를 먼저 확인하세요.</blockquote>
+<ul>
+<li><strong>SettingWithCopyWarning</strong>: DataFrame의 복사본에서 수정할 때 발생. copy()를 명시적으로 사용하기</li>
+<li><strong>메모리 부족</strong>: 청크 단위로 데이터 읽기, dtype 최적화</li>
+<li><strong>느린 반복문</strong>: apply() 또는 벡터화 연산 사용</li>
+</ul>
+
+<h2>판다스와 다른 라이브러리의 시너지</h2>
+<p>판다스는 데이터 분석 생태계의 중심입니다. NumPy와 함께 수치 계산을, Matplotlib/Seaborn과 함께 시각화를, Scikit-learn과 함께 머신러닝을 수행합니다.</p>
+<p>이 도구들을 함께 사용하면 데이터 수집부터 분석, 모델링까지 전체 파이프라인을 구축할 수 있습니다.</p>
+
+<h2>최종 결론</h2>
+<p>판다스는 배우는 데 시간이 걸리지만, 한 번 마스터하면 정말 강력한 도구입니다. 작은 프로젝트부터 시작해서 점진적으로 복잡한 데이터 분석으로 나아가세요.</p>
+<p>공식 문서와 Stack Overflow는 당신의 최고의 친구가 될 것입니다. 오늘부터 판다스 마스터의 길에 들어서세요!</p>
+        </article>
+
+        <footer class="post-footer">
+            <a href="index.html" class="back-btn">← 목록으로</a>
+        </footer>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p>&copy; 2026 InfoHub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
