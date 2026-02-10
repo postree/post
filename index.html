@@ -1,540 +1,180 @@
 <!DOCTYPE html>
-<html lang="ko"><head>
+<html lang="ko">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="IT, 개발, 일상, 팁 등 다양한 주제를 다루는 블로그. 실용적인 정보와 인사이트를 공유합니다.">
-    <meta name="keywords" content="블로그, IT, 개발, 생활정보, 팁">
+    
+    <!-- [SEO] 기본 메타 태그 최적화 -->
+    <title>Postree | IT 기술 및 개발 실무 인사이트 블로그</title>
+    <meta name="description" content="현직 개발자가 공유하는 IT 트렌드, 개발 실무 가이드, 정부 지원금 꿀팁 등 유용한 인사이트를 확인하세요.">
+    <meta name="keywords" content="IT 블로그, 개발자 블로그, 프로그래밍, 기술 트렌드, 실무 팁, 생활정보">
+    <meta name="author" content="Postree">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourdomain.com/">
+
+    <!-- [SEO] Open Graph -->
     <meta property="og:title" content="Postree | 인사이트를 심는 블로그">
-    <meta property="og:description" content="실용적인 정보와 인사이트를 공유하는 블로그">
+    <meta property="og:description" content="실용적인 IT 정보와 개발 인사이트를 공유합니다.">
     <meta property="og:type" content="website">
-    <title>5_6_Postree | 인사이트를 심는 블로그</title>
-    
-    <!-- 1. Pretendard (Dynamic Subset) 로드 -->
-    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
-    
-    <!-- 2. S-Core Dream (제목용) 로드 -->
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:site_name" content="Postree">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- 폰트 로드 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
     <style>
-        @font-face {
-            font-family: 'S-CoreDream-4Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'S-CoreDream-5Medium';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'S-CoreDream-6Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff');
-            font-weight: bold;
-            font-style: normal;
-        }
+        @font-face { font-family: 'S-CoreDream-5Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'S-CoreDream-6Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff'); font-weight: bold; font-style: normal; }
     </style>
     
+    <!-- [SEO] 구조화 데이터 (JSON-LD) -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "Postree",
-        "description": "IT, 개발, 일상, 팁 등 다양한 주제를 다루는 블로그"
-    }
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://yourdomain.com/",
+            "name": "Postree",
+            "description": "IT 기술 및 개발 실무 인사이트를 공유하는 블로그"
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "Postree Blog",
+            "publisher": { "@type": "Organization", "name": "Postree" }
+        }
+    ]
     </script>
     
     <style>
         :root { 
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --accent: #ec4899;
-            --text: #0f172a;
-            --text-light: #475569;
-            --bg: #ffffff;
-            --bg-secondary: #f8fafc;
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --accent: #10b981;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --text-light: #94a3b8;
             --border: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --bg-body: #ffffff;
+            --bg-alt: #f8fafc;
+            --max-width: 1400px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
         
         body { 
-            /* 본문 폰트: Pretendard 적용 */
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; 
-            background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
-            color: var(--text); 
+            font-family: 'Pretendard', sans-serif; 
+            background-color: var(--bg-body);
+            color: var(--text-main); 
             line-height: 1.7;
             min-height: 100vh;
         }
-        
-        /* 제목 폰트: S-Core Dream 적용 */
-        h1, h2, h3, h4, h5, h6, .logo, .post-title, .featured-title {
-            font-family: 'S-CoreDream-6Bold', 'Pretendard', sans-serif;
-        }
 
-        /* 약간의 두께감이 필요한 UI 텍스트는 S-Core Medium 사용 가능 (선택사항) */
-        nav a, .sidebar h3, .post-cat, .footer-inner p:first-child {
-            font-family: 'S-CoreDream-5Medium', 'Pretendard', sans-serif;
-        }
-        
         /* 헤더 */
         .site-header { 
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
+            position: sticky; top: 0; z-index: 1000;
         }
         
         .header-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 24px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: var(--max-width); margin: 0 auto; padding: 0 40px;
+            display: flex; justify-content: space-between; align-items: center; height: 72px;
         }
         
-        .logo { 
-            font-size: 28px; 
-            /* S-Core Dream이 이미 Bold하지만 명시적으로 지정 */
-            font-weight: 700; 
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: -0.5px;
-            transition: transform 0.2s ease;
+        .logo { font-size: 24px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .logo-symbol {
+            width: 32px; height: 32px; background: var(--primary);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 18px; font-weight: 900;
         }
+
+        nav ul { display: flex; gap: 32px; list-style: none; }
+        nav a { color: var(--text-sub); text-decoration: none; font-size: 15px; font-weight: 600; }
+        nav a:hover { color: var(--primary); }
         
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .logo::before {
-            content: "🌲";
-            font-size: 32px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-            -webkit-text-fill-color: initial;
-        }
-        
-        /* 네비게이션 */
-        nav ul {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-        
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500; /* 폰트 변경으로 두께 조정 */
-            font-size: 16px; /* 가독성을 위해 약간 키움 */
-            transition: all 0.2s ease;
-            position: relative;
-            padding: 8px 0;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: var(--primary);
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        /* 메인 컨테이너 */
+        /* 메인 레이아웃 */
         .main-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 60px;
+            max-width: var(--max-width); margin: 0 auto; padding: 60px 40px;
+            display: grid; grid-template-columns: 1fr 320px; gap: 80px;
         }
         
-        .main-content {
-            /* 좌측: 본문 영역 */
-        }
-        
-        .sidebar {
-            /* 우측: 사이드바 */
-        }
-        
-        /* 브레드크럼 */
-        .breadcrumb {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            padding: 12px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .breadcrumb a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--primary);
-        }
-        
-        .breadcrumb span {
-            color: #cbd5e1;
-        }
-        
-        /* 섹션 헤더 */
-        .section-header {
-            margin-bottom: 60px;
-            padding-bottom: 40px;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        .section-header h1 {
-            font-size: 42px;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-            color: var(--text);
-            /* S-Core Dream 6 Bold 적용됨 */
-        }
-        
-        .section-header p {
-            color: var(--text-light);
-            font-size: 16px;
-            font-weight: 400;
-        }
-        
-        /* 포스트 리스트 */
-        .post-list {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-        
+        .breadcrumb { font-size: 14px; color: var(--text-light); margin-bottom: 24px; }
+        .breadcrumb span { margin: 0 8px; color: #cbd5e1; }
+
+        .section-header { margin-bottom: 60px; }
+        .section-header h1 { font-size: 40px; margin-bottom: 12px; color: var(--text-main); }
+        .section-header p { color: var(--text-sub); font-size: 18px; }
+
+        /* 포스트 아이템 스타일 (오류 수정됨) */
+        .post-list { display: flex; flex-direction: column; gap: 64px; }
         .post-item {
-            padding-bottom: 40px;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            gap: 32px;
-            transition: all 0.3s ease;
+            display: grid; grid-template-columns: 1fr 240px;
+            gap: 48px; align-items: flex-start;
+            padding-bottom: 40px; border-bottom: 1px solid var(--border);
+            text-decoration: none; cursor: pointer;
         }
-        
-        .post-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .post-item:last-child { border-bottom: none; }
+
+        .post-content { order: 1; }
+        .post-image { 
+            order: 2; width: 240px; height: 160px; border-radius: 12px; 
+            overflow: hidden; background: var(--bg-alt); border: 1px solid var(--border);
         }
+        .post-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .post-item:hover .post-image img { transform: scale(1.05); }
+
+        .post-cat { display: inline-block; color: var(--primary); font-size: 13px; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .post-title { font-size: 26px; margin-bottom: 16px; line-height: 1.4; color: var(--text-main); transition: var(--transition); }
+        .post-item:hover .post-title { color: var(--primary); text-decoration: underline; }
+        .post-desc { font-size: 16px; color: var(--text-sub); margin-bottom: 24px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
-        .post-item:hover {
-            transform: translateX(4px);
-        }
-        
-        .post-content {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .post-image {
-            width: 240px;
-            height: 160px;
-            flex-shrink: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .post-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        
-        .post-item:hover .post-image img {
-            transform: scale(1.05);
-        }
-        
-        .post-cat { 
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            color: white;
-            font-size: 11px; 
-            text-transform: uppercase; 
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            letter-spacing: 0.8px;
-        }
-        
-        .post-title { 
-            font-size: 24px; 
-            /* S-Core Dream 적용됨 */
-            margin-bottom: 12px;
-            line-height: 1.4;
-            color: var(--text);
-            text-decoration: none;
-            display: block;
-            transition: color 0.2s ease;
-        }
-        
-        .post-item a.post-title:hover {
-            color: var(--primary);
-        }
-        
-        .post-desc { 
-            font-size: 15px; 
-            color: var(--text-light); 
-            margin-bottom: 16px;
-            line-height: 1.7;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            /* 본문 폰트 Pretendard 적용됨 */
-        }
-        
-        .post-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: none;
-        }
-        
-        .post-date { 
-            font-size: 13px; 
-            color: #94a3b8;
-            font-weight: 500;
-        }
-        
-        .post-read-more {
-            font-size: 14px;
-            color: var(--primary);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            transition: gap 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .post-item:hover .post-read-more {
-            gap: 8px;
-        }
-        
+        /* 포스트 하단 영역 스타일 (태그 충돌 방지) */
+        .post-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+        .post-date { font-size: 14px; color: var(--text-light); }
+        .post-read-more { font-size: 14px; color: var(--primary); font-weight: 700; }
+
+        /* 페이징 */
+        .pagination { margin-top: 60px; display: flex; justify-content: center; gap: 8px; }
+        .page-btn { padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px; background: #fff; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .page-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
         /* 사이드바 */
-        .sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-        
-        .sidebar-section {
-            background: white;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .sidebar h3 {
-            font-size: 18px;
-            /* S-Core Dream Medium/Bold 적용 */
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 3px solid var(--primary);
-            color: var(--text);
-        }
-        
-        .sidebar ul {
-            list-style: none;
-        }
-        
-        .sidebar li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f1f5f9;
-            transition: padding-left 0.2s ease;
-        }
-        
-        .sidebar li:hover {
-            padding-left: 8px;
-        }
-        
-        .sidebar li:last-child {
-            border-bottom: none;
-        }
-        
-        .sidebar a {
-            color: var(--text);
-            text-decoration: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 500; /* 폰트 변경에 맞춰 조정 */
-            font-size: 15px;
-            transition: color 0.2s ease;
-        }
-        
-        .sidebar a:hover {
-            color: var(--primary);
-        }
-        
-        .sidebar .count {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        
-        /* Featured/Popular 섹션 (사이드바) */
-        .featured-item {
-            padding: 16px;
-            background: #f8fafc;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            border-left: 4px solid var(--primary);
-            transition: all 0.2s ease;
-        }
-        
-        .featured-item:hover {
-            background: #f0f9ff;
-            transform: translateX(4px);
-        }
-        
-        .featured-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .featured-title {
-            /* S-Core Dream 적용 */
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: var(--text);
-            text-decoration: none;
-            display: block;
-        }
-        
-        .featured-title:hover {
-            color: var(--primary);
-        }
-        
-        .featured-meta {
-            font-size: 12px;
-            color: #94a3b8;
-        }
-        
-        /* 푸터 */
-        footer {
-            background: linear-gradient(to top, #f8fafc 0%, #ffffff 100%);
-            border-top: 1px solid var(--border);
-            margin-top: 100px;
-            padding: 60px 40px;
-        }
-        
-        .footer-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-            color: var(--text-light);
-        }
-        
-        .footer-inner p:first-child {
-            font-size: 15px;
-            margin-bottom: 8px;
-        }
-        
-        .footer-inner p:last-child {
-            font-size: 14px;
-            color: #94a3b8;
-        }
-        
-        /* 반응형 */
+        .sidebar-section { margin-bottom: 48px; }
+        .sidebar h3 { font-size: 16px; font-weight: 800; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--text-main); }
+        .sidebar li { list-style: none; margin-bottom: 12px; }
+        .sidebar a { display: flex; justify-content: space-between; font-size: 15px; color: var(--text-sub); text-decoration: none; }
+        .sidebar a:hover { color: var(--primary); }
+        .count { font-size: 12px; color: var(--text-light); background: var(--bg-alt); padding: 2px 8px; border-radius: 12px; }
+
+        .featured-item { margin-bottom: 20px; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+        .featured-title { font-size: 14px; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 4px; text-decoration: none; }
+        .featured-title:hover { color: var(--primary); }
+        .featured-meta { font-size: 12px; color: var(--text-light); }
+
+        /* [수정] 사이트 하단 실제 푸터 (클래스로 타겟팅하여 내부 푸터와 분리) */
+        .footer { border-top: 1px solid var(--border); background: var(--bg-alt); padding: 80px 40px; margin-top: 100px; }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-nav { display: flex; gap: 24px; font-size: 14px; color: var(--text-sub); }
+
         @media (max-width: 1024px) {
-            .main-wrapper {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                padding: 40px 32px;
-            }
-            
-            .sidebar {
-                position: relative;
-                top: auto;
-            }
-            
-            .post-item {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .post-image {
-                width: 100%;
-                height: 240px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-inner {
-                padding: 20px;
-                flex-wrap: wrap;
-            }
-            
-            nav {
-                display: none;
-            }
-            
-            .section-header h1 {
-                font-size: 32px;
-            }
-            
-            .main-wrapper {
-                padding: 30px 20px;
-            }
-            
-            .logo {
-                font-size: 24px;
-            }
-            
-            .post-title {
-                font-size: 20px;
-            }
+            .main-wrapper { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .post-item { grid-template-columns: 1fr; gap: 24px; }
+            .post-image { width: 100%; height: 240px; order: -1; }
         }
     </style>
-<style></style></head>
+</head>
 <body>
-    <!-- 헤더 -->
     <header class="site-header">
         <div class="header-inner">
-            <a href="index.html" class="logo">Postree</a>
-            <nav>
+            <a href="index.html" class="logo" aria-label="Postree 홈으로 이동">
+                <div class="logo-symbol" aria-hidden="true">P</div>
+                Postree
+            </a>
+            <nav aria-label="메인 네비게이션">
                 <ul>
                     <li><a href="#latest">최신글</a></li>
                     <li><a href="#popular">인기글</a></li>
@@ -545,185 +185,149 @@
     </header>
 
     <main class="main-wrapper">
-        <!-- 좌측: 메인 콘텐츠 -->
         <div class="main-content">
-            <!-- 브레드크럼 -->
-            <nav class="breadcrumb" aria-label="breadcrumb">
-                <a href="index.html">홈</a>
-                <span>›</span>
-                <span>전체 글</span>
+            <nav class="breadcrumb" aria-label="브레드크럼">
+                <a href="index.html">홈</a><span>›</span>전체 글
             </nav>
             
-            <!-- 섹션 헤더 -->
-            <div class="section-header">
+            <section class="section-header">
                 <h1>최신 포스트</h1>
-                <p>실용적인 정보와 인사이트를 심습니다</p>
-            </div>
+                <p>IT 트렌드와 실무 가이드, 성장을 위한 기록들을 공유합니다.</p>
+            </section>
 
-            <!-- 포스트 리스트 -->
-            <div id="post-list" class="post-list">
-                <div class="post-item" itemscope="" itemtype="https://schema.org/BlogPosting">
-                    <div class="post-content">
-                        <a href="post_1770645536896.html" style="text-decoration: none;">
-                            <span class="post-cat" itemprop="articleSection">금융, 꿀팁</span>
-                            <h2 class="post-title" itemprop="headline">숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5</h2>
-                            <p class="post-desc" itemprop="description">혹시 나도 모르게 잠자고 있는 돈이 있지 않나요? 건강보험 본인부담금 환급부터 카드 포인트 현금화까지, 신청하지 않으면 소멸되는 아까운 지원금들을 정리해드립니다.</p>
-                            </a><div class="post-footer"><a href="post_1770645536896.html" style="text-decoration: none;">
-                                <time class="post-date" datetime="2026. 2. 9." itemprop="datePublished">2026. 2. 9.</time>
-                                </a><a href="post_1770645536896.html" class="post-read-more">더 읽기 →</a>
-                            </div>
-                        
-                    </div>
-                    <a href="post_1770645536896.html" class="post-image" title="숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5" loading="lazy" itemprop="image">
-                    </a>
-                </div>
-            </div>
+            <section id="post-list" class="post-list">
+                <!-- JS로 렌더링됨 -->
+            </section>
+
+            <nav class="pagination" aria-label="페이지네이션" id="pagination"></nav>
         </div>
 
-        <!-- 우측: 사이드바 -->
         <aside class="sidebar">
-            <!-- 카테고리 섹션 -->
-            <div class="sidebar-section">
-                <h3>📂 카테고리</h3>
-                <ul id="category-list">
-                    <li>
-                        <a href="#금융, 꿀팁">
-                            <span>금융, 꿀팁</span>
-                            <span class="count">1</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- 인기글 섹션 -->
-            <div class="sidebar-section">
-                <h3>🔥 인기글</h3>
-                <div id="popular-list">
-                <div class="featured-item">
-                    <a href="post_1770645536896.html" class="featured-title">1. 숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5</a>
-                    <div class="featured-meta">2026. 2. 9.</div>
-                </div>
-            </div>
-            </div>
-
-            <!-- 최신글 섹션 -->
-            <div class="sidebar-section">
-                <h3>✨ 최신글</h3>
-                <div id="recent-list">
-                <div class="featured-item">
-                    <a href="post_1770645536896.html" class="featured-title">숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5</a>
-                    <div class="featured-meta">2026. 2. 9.</div>
-                </div>
-            </div>
-            </div>
+            <nav class="sidebar-section" aria-labelledby="cat-title">
+                <h3 id="cat-title">📂 카테고리</h3>
+                <ul id="category-list"></ul>
+            </nav>
+            <section class="sidebar-section" aria-labelledby="pop-title">
+                <h3 id="pop-title">🔥 인기글</h3>
+                <div id="popular-list"></div>
+            </section>
+            <section class="sidebar-section" aria-labelledby="rec-title">
+                <h3 id="rec-title">✨ 최신글</h3>
+                <div id="recent-list"></div>
+            </section>
         </aside>
     </main>
 
-    <!-- 푸터 -->
-    <footer>
+    <!-- [수정] 실제 푸터 클래스 적용 -->
+    <footer class="footer">
         <div class="footer-inner">
-            <p>© 2026 Postree. All rights reserved.</p>
-            <p style="margin-top: 8px; font-size: 13px;">인사이트를 심고 지식을 키우는 공간 🌲</p>
+            <div class="footer-info">
+                <p style="font-weight: 800; font-size: 18px; color: var(--text-main);">Postree</p>
+                <p style="font-size: 13px; color: var(--text-light); margin-top: 4px;">&copy; 2026 Postree. All rights reserved.</p>
+            </div>
+            <nav class="footer-nav" aria-label="푸터 네비게이션">
+                <a href="#">공지사항</a>
+                <a href="#">운영정책</a>
+                <a href="#">문의하기</a>
+            </nav>
         </div>
     </footer>
 
     <!-- 데이터베이스 -->
-    <script id="db-store" type="application/json">[
+    <script id="db-store" type="application/json">
+[
     {
-        "title": "🎬 AI 애니메이션 제작 완벽 가이드 | ChatGPT + 구글 Whisk + Grok으로 30분 만에 만드는 법",
-        "category": "IT",
-        "excerpt": "얼굴도 목소리도 없이 AI만으로 조회수 수억 영상을 만드는 비법. ChatGPT, 구글 Whisk, Grok 4 세 가지 무료 도구로 30분 만에 완성하는 AI 애니메이션 제작 전 과정을 단계별로 공개합니다.",
-        "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=950&q=80",
-        "featuredImage": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=950&q=80",
-        "content": "<h1 style=\"font-family:'Pretendard', -apple-system, sans-serif; font-size:28px; font-weight:700; color:#1f2937; margin-bottom:30px;\">\n🎬 AI 애니메이션 제작 완벽 가이드 | ChatGPT + 구글 Whisk + Grok으로 30분 만에 만드는 법\n</h1>\n\n<blockquote style=\"padding:20px 0; margin: 30px 0; background:none;\">\n    <span style=\"font-family:'Pretendard', sans-serif; font-size:18px; font-weight:600; color:#374151;\">\n    \"AI가 스토리부터 대본, 촬영, 편집까지 전부 알아서 제작합니다. 단 30분이면 충분합니다.\"\n    </span><br>\n    <span style=\"font-family:'Pretendard', sans-serif; font-size:14px; color:#6b7280; margin-top:8px; display:block;\">\n    무료 AI 도구만으로 완성하는 애니메이션 제작 워크플로우\n    </span>\n</blockquote>\n\n<br><br>\n\n<div style=\"padding:0; margin:20px 0;\">\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:1.8; color:#1f2937; font-weight:500;\">\n        <span style=\"font-size:16px; display:block; margin-bottom:10px;\">안녕하세요~</span><br>\n        <span style=\"font-size:16px;\">\n        요즘 유튜브에서 조회수 1억~2억을 찍는 영상들, 보셨나요?<br>\n        놀랍게도 얼굴 한 번 안 나오고, 목소리 녹음도 없이 AI만으로 제작된 영상들이에요.<br>\n        영상 하나로 수백만 원에서 수천만 원까지 수익을 올리고 있다는 사실!<br><br>\n        오늘은 이런 고퀄리티 AI 애니메이션을 여러분도 직접 만들 수 있도록,<br>\n        실제 제작 프로세스를 처음부터 끝까지 공개해드릴게요.\n        </span>\n    </h4>\n</div>\n\n<br>\n\n<div style=\"text-align:center; margin: 40px 0;\">\n    <img src=\"https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=950&q=80\" \n         style=\"width:100%; max-width:900px; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\" \n         alt=\"AI animation creation workspace\"\n         title=\"AI 애니메이션 제작 작업 환경\">\n</div>\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🎯 AI 애니메이션의 실제 성과\n        </h2>\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            지금 소개할 방법으로 만들어진 영상들은 실제로 <strong style=\"font-weight:700;\">조회수 1억에서 2억 사이</strong>를 기록하고 있어요.<br>\n            전부 AI로 제작된 콘텐츠이며, 제작자의 얼굴이나 목소리는 단 한 번도 등장하지 않습니다.<br><br>\n            \n            더 놀라운 건 <span style=\"font-size:17px; font-weight:600;\">제작 시간이 단 30분</span>이라는 점이에요.<br>\n            기존 애니메이션 제작이 수개월씩 걸렸던 것과 비교하면 혁명적인 변화죠.<br><br>\n            \n            <strong style=\"font-weight:700;\">수익 구조</strong>도 탄탄합니다.<br>\n            조회수 기반 광고 수익 외에도, 후원 플랫폼 연동, 상품 판매 등 다양한 수익화 방법이 가능해요.<br>\n            실제로 영상 하나당 수백만 원에서 수천만 원의 수익을 창출하는 크리에이터들이 늘어나고 있습니다.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🛠️ 필요한 도구는 단 3가지 (전부 무료)\n        </h2>\n    </div>\n\n    <div style=\"text-align:center; margin: 40px 0;\">\n        <img src=\"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=950&q=80\" \n             style=\"width:100%; max-width:900px; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\" \n             alt=\"digital tools dashboard\"\n             title=\"AI 애니메이션 제작 도구\">\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            오늘 사용할 도구는 세 가지예요. 모두 무료로 사용 가능합니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">1. ChatGPT - 작가 역할</strong><br>\n            스토리 구성과 장면 분할, 프롬프트 작성을 담당해요.<br>\n            GPT-3.5 무료 버전으로도 충분히 퀄리티 있는 스토리를 만들 수 있습니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">2. 구글 Whisk - 연출 역할</strong><br>\n            캐릭터 디자인과 장면 이미지를 생성해요.<br>\n            구글 공식 사이트에서 접속하면 무료로 이용 가능하며, <span style=\"font-size:17px; font-weight:600;\">캐릭터 일관성 유지</span>가 가장 큰 장점입니다.<br>\n            기존 AI 툴들의 고질적인 문제였던 '장면마다 캐릭터가 달라지는 현상'을 완벽하게 해결했어요.<br><br>\n            \n            <strong style=\"font-weight:700;\">3. Grok 4 - 애니메이터 역할</strong><br>\n            정적인 이미지에 움직임을 더해 애니메이션을 완성해요.<br>\n            복잡한 액션 신이나 역동적인 움직임 표현에 특히 강합니다.<br><br>\n            \n            이 세 가지 도구를 <strong style=\"font-weight:700;\">순차적으로 활용</strong>하면,<br>\n            아이디어 하나만 있어도 완성도 높은 애니메이션을 만들 수 있어요.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        ✍️ STEP 1: ChatGPT로 스토리 만들기\n        </h2>\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            모든 애니메이션의 시작은 이야기예요.<br>\n            ChatGPT를 열고 아래처럼 입력해보세요.<br><br>\n            \n            <strong style=\"font-weight:700;\">프롬프트 예시:</strong><br>\n            \"조선의 산속 백호가 인간 소녀를 구하며 용기와 희생을 전하는 짧은 이야기로 써줘\"<br><br>\n            \n            이렇게 입력하면 몇 초 만에 시나리오가 완성됩니다.<br>\n            글로만 읽어도 감동적인 스토리가 나오죠.<br><br>\n            \n            <span style=\"font-size:17px; font-weight:600;\">애니메이션은 글과 달리 시각·청각적 표현이 핵심</span>이에요.<br>\n            따라서 스토리 라인에 큰 문제가 없다면, 세세한 문장 수정보다는 바로 다음 단계로 넘어가는 게 효율적입니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">다음 단계 프롬프트:</strong><br>\n            \"등장 인물을 그릴 프롬프트를 구글 Whisk에 맞게 작성해줘.<br>\n            그리고 각 스토리를 20장면으로 나눠서 장면을 분할하고,<br>\n            그 장면을 그릴 프롬프트도 함께 만들어줘.\"<br><br>\n            \n            이 한 번의 명령으로 <strong style=\"font-weight:700;\">캐릭터 프롬프트 + 20개 장면 프롬프트</strong>가 자동 생성돼요.<br>\n            이제 이 프롬프트들을 복사해서 Whisk로 가져가면 됩니다.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🎨 STEP 2: 구글 Whisk로 캐릭터 생성하기\n        </h2>\n    </div>\n\n    <div style=\"text-align:center; margin: 40px 0;\">\n        <img src=\"https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=950&q=80\" \n             style=\"width:100%; max-width:900px; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\" \n             alt=\"character design illustration\"\n             title=\"AI 캐릭터 디자인 과정\">\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            구글에 '구글 Whisk'를 검색하고, <strong style=\"font-weight:700;\">구글 공식 사이트</strong>로 접속하세요.<br>\n            비공식 사이트는 유료일 수 있으니 주의해주세요.<br><br>\n            \n            접속하면 왼쪽에 <strong style=\"font-weight:700;\">사람 아이콘</strong>이 보여요.<br>\n            이걸 클릭하면 캐릭터 생성 모드로 진입합니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">캐릭터 생성 과정:</strong><br><br>\n            \n            1️⃣ ChatGPT에서 만든 주인공 프롬프트를 복사<br>\n            2️⃣ Whisk에 붙여넣기<br>\n            3️⃣ 원하는 그림체 스타일 추가 입력<br>\n            (예: \"픽사 애니메이션 스타일\", \"3D 애니메이션 스타일\")<br><br>\n            \n            잠시 후 <span style=\"font-size:17px; font-weight:600;\">일관성 있는 주인공 캐릭터</span>가 완성돼요.<br>\n            같은 방식으로 백호(호랑이), 악당 캐릭터까지 그려주세요.<br><br>\n            \n            <strong style=\"font-weight:700;\">Whisk의 핵심 장점:</strong><br>\n            기존 AI 툴들은 장면마다 같은 캐릭터를 그려도 얼굴이나 체형이 달라지는 문제가 있었어요.<br>\n            하지만 Whisk는 한 번 설정한 캐릭터를 <strong style=\"font-weight:700;\">모든 장면에서 동일하게 유지</strong>합니다.<br>\n            이게 바로 몰입도 높은 애니메이션을 만드는 핵심이에요.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🖼️ STEP 3: 20개 장면 이미지 제작하기\n        </h2>\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            이제 ChatGPT가 작성해준 <strong style=\"font-weight:700;\">20개 장면 프롬프트</strong>를 하나씩 Whisk에 입력할 차례예요.<br><br>\n            \n            <strong style=\"font-weight:700;\">작업 순서:</strong><br><br>\n            \n            1️⃣ 장면 1번 프롬프트 복사 → Whisk에 붙여넣기<br>\n            2️⃣ 그림체 지정 (예: \"3D 픽사 애니메이션 스타일\")<br>\n            3️⃣ 생성된 이미지 확인<br>\n            4️⃣ 마음에 안 들면 왼쪽 수정 버튼으로 한글 입력해서 수정<br>\n            5️⃣ 장면 2번으로 이동... 20번까지 반복<br><br>\n            \n            <span style=\"font-size:17px; font-weight:600;\">수정 예시:</span><br>\n            \"눈보라를 더 강하게 불게 해줘\"<br>\n            \"호랑이의 표정이 더 분노에 차 보이게 해줘\"<br>\n            \"배경을 더 어두운 숲으로 바꿔줘\"<br><br>\n            \n            그림체를 따로 지정하지 않으면 기본적으로 <strong style=\"font-weight:700;\">실사에 가까운 이미지</strong>가 생성돼요.<br>\n            너무 현실적으로 나왔다면, 이미지를 클릭해서 원하는 스타일을 입력하면 즉시 재생성됩니다.<br><br>\n            \n            각 장면마다 프롬프트를 세부적으로 조정하면서 원하는 이미지를 얻을 때까지 반복하세요.<br>\n            이 과정이 시간이 좀 걸리긴 하지만, <strong style=\"font-weight:700;\">전체 제작 시간의 절반 정도</strong>를 차지해요.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🎬 STEP 4: 애니메이션 움직임 만들기\n        </h2>\n    </div>\n\n    <div style=\"text-align:center; margin: 40px 0;\">\n        <img src=\"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=950&q=80\" \n             style=\"width:100%; max-width:900px; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\" \n             alt=\"animation production process\"\n             title=\"애니메이션 제작 프로세스\">\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            20개 장면이 완성됐다면, 이제 이미지에 <strong style=\"font-weight:700;\">생명을 불어넣을 차례</strong>예요.<br>\n            여기서는 두 가지 툴을 상황에 맞게 활용합니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">🔹 Whisk 애니메이션 기능</strong><br><br>\n            \n            <strong style=\"font-weight:700;\">장점:</strong><br>\n            - 프롬프트를 정확하게 인식<br>\n            - 최대 8개 이미지 동시 처리 가능<br>\n            - Whisk에서 바로 사용 가능<br><br>\n            \n            <strong style=\"font-weight:700;\">단점:</strong><br>\n            - 베타 버전이라 움직임이 단순함<br>\n            - 표현력이 제한적<br><br>\n            \n            <strong style=\"font-weight:700;\">사용법:</strong><br>\n            1️⃣ 애니메이션할 이미지 선택<br>\n            2️⃣ 프롬프트 입력란에 한글로 원하는 모션 입력<br>\n            (예: \"호랑이가 크게 포효한다\", \"호랑이가 크게 포효하며 앞발을 들어올린다\")<br>\n            3️⃣ 자동 생성 완료<br><br>\n            \n            ⚠️ <span style=\"font-size:17px; font-weight:600;\">주의:</span> 복잡한 프롬프트는 표현 안 될 수 있으니 간단하게 적으세요.<br><br>\n            \n            <strong style=\"font-weight:700;\">🔹 Grok 4 애니메이션</strong><br><br>\n            \n            <strong style=\"font-weight:700;\">장점:</strong><br>\n            - 무료 이용 가능<br>\n            - 움직임이 활발하고 자연스러움<br>\n            - 복잡한 액션 신 표현에 강함<br><br>\n            \n            <strong style=\"font-weight:700;\">단점:</strong><br>\n            - 해상도가 낮음<br>\n            - 프롬프트 입력 자유도가 낮음<br><br>\n            \n            <strong style=\"font-weight:700;\">사용법:</strong><br>\n            1️⃣ Whisk에서 완성된 이미지 다운로드<br>\n            2️⃣ 구글에서 'Grok' 검색 후 접속<br>\n            3️⃣ 왼쪽 '상상' 메뉴 클릭<br>\n            4️⃣ 이미지를 드래그 앤 드롭으로 업로드<br>\n            5️⃣ 프롬프트 입력 (선택사항)<br><br>\n            \n            Grok은 <strong style=\"font-weight:700;\">이미지 내용을 자동 분석</strong>해서 가장 어울리는 영상을 만들어줘요.<br>\n            프롬프트를 입력하지 않아도 되지만, 더 구체적인 움직임을 원한다면 직접 요청할 수 있습니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">프롬프트 예시:</strong><br>\n            \"백호가 악령과 마법을 주고받으며 화려한 액션으로 싸우고 있다. 결국 호랑이가 승리한다.\"<br><br>\n            \n            <span style=\"font-size:17px; font-weight:600;\">활용 전략:</span><br>\n            단순한 움직임(걷기, 고개 돌리기 등) → Whisk 사용<br>\n            복잡한 액션(전투, 마법, 추격 등) → Grok 사용\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🔊 STEP 5: 효과음과 내레이션 추가하기\n        </h2>\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            움직임까지 완성됐다면, 이제 <strong style=\"font-weight:700;\">소리를 입힐 차례</strong>예요.<br>\n            영상만 있고 소리가 없으면 몰입감이 크게 떨어지거든요.<br><br>\n            \n            특정 AI 도구를 통해 <span style=\"font-size:17px; font-weight:600;\">무료로 효과음을 자동 추가</span>할 수 있어요.<br>\n            발소리, 바람 소리, 전투 소리 등이 장면에 맞춰 자동으로 삽입됩니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">효과음 추가의 중요성:</strong><br><br>\n            \n            ✅ Before: 조용한 영상 → 지루함, 낮은 시청 유지율<br>\n            ✅ After: 효과음 포함 → 생동감, 높은 몰입도<br><br>\n            \n            실제로 효과음만 추가해도 <strong style=\"font-weight:700;\">시청 시간이 평균 40% 이상 증가</strong>한다는 연구 결과가 있어요.<br>\n            특히 액션 신이나 감정선이 강한 장면에서는 효과음이 필수입니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">내레이션 추가:</strong><br>\n            대본을 넣고 AI 음성으로 내레이션을 생성할 수도 있어요.<br>\n            요즘 AI 음성은 <span style=\"font-size:17px; font-weight:600;\">실제 사람과 거의 구분이 안 될 정도</span>로 자연스러워졌습니다.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        💡 프롬프트 작성 꿀팁\n        </h2>\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            같은 도구를 써도 <strong style=\"font-weight:700;\">프롬프트를 어떻게 쓰느냐</strong>에 따라 결과물의 퀄리티가 천차만별이에요.<br><br>\n            \n            <strong style=\"font-weight:700;\">🔹 효과적인 프롬프트 구조:</strong><br><br>\n            \n            1️⃣ <strong style=\"font-weight:700;\">배경 설정:</strong> \"조선시대 깊은 산속\"<br>\n            2️⃣ <strong style=\"font-weight:700;\">주요 대상:</strong> \"신비로운 백호\"<br>\n            3️⃣ <strong style=\"font-weight:700;\">동작/감정:</strong> \"분노에 찬 표정으로 포효하며\"<br>\n            4️⃣ <strong style=\"font-weight:700;\">분위기/조명:</strong> \"어두운 달빛 아래, 안개 자욱한\"<br>\n            5️⃣ <strong style=\"font-weight:700;\">스타일:</strong> \"3D 픽사 애니메이션 스타일\"<br><br>\n            \n            <strong style=\"font-weight:700;\">🔹 피해야 할 실수:</strong><br><br>\n            \n            ❌ \"호랑이 그려줘\" → 너무 단순함<br>\n            ❌ \"조선시대 산속에 사는 흰색 호랑이가 있는데 그 호랑이가 화가 나서 크게 소리를 지르고 있고...\" → 너무 장황함<br>\n            ✅ \"조선 산속, 신비로운 백호, 분노의 포효, 달빛 아래, 픽사 스타일\" → 간결하고 명확<br><br>\n            \n            <span style=\"font-size:17px; font-weight:600;\">핵심 키워드를 쉼표로 구분</span>해서 입력하면 AI가 더 정확하게 이해해요.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        ⚠️ 흔한 실수와 해결법\n        </h2>\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            실제로 많은 분들이 제작 과정에서 같은 실수를 반복하세요.<br>\n            미리 알고 있으면 시행착오를 크게 줄일 수 있어요.<br><br>\n            \n            <strong style=\"font-weight:700;\">🚨 실수 1: 캐릭터 일관성 무시</strong><br>\n            문제: 장면마다 주인공 얼굴이 달라짐<br>\n            해결: Whisk에서 캐릭터를 먼저 생성하고, 그 캐릭터를 모든 장면에 적용<br><br>\n            \n            <strong style=\"font-weight:700;\">🚨 실수 2: 너무 많은 장면 생성</strong><br>\n            문제: 30~40개 장면을 만들어 작업 시간 폭증<br>\n            해결: 초반에는 <span style=\"font-size:17px; font-weight:600;\">15~20개 장면</span>으로 시작. 핵심 장면만 선별<br><br>\n            \n            <strong style=\"font-weight:700;\">🚨 실수 3: 그림체가 중간에 바뀜</strong><br>\n            문제: 장면별로 다른 스타일 지정해서 통일성 상실<br>\n            해결: 처음부터 끝까지 <strong style=\"font-weight:700;\">동일한 스타일 키워드</strong> 사용 (예: \"3D 픽사 애니메이션 스타일\")<br><br>\n            \n            <strong style=\"font-weight:700;\">🚨 실수 4: 움직임 과욕</strong><br>\n            문제: 복잡한 움직임을 Whisk에 요구해서 표현 실패<br>\n            해결: 단순한 움직임은 Whisk, 복잡한 액션은 Grok 사용<br><br>\n            \n            <strong style=\"font-weight:700;\">🚨 실수 5: 프롬프트 재사용 안 함</strong><br>\n            문제: 매번 새로 작성해서 비효율적<br>\n            해결: 잘 나온 프롬프트는 <strong style=\"font-weight:700;\">템플릿으로 저장</strong>해두고 키워드만 바꿔 재사용\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<hr style=\"border:0; height:1px; background:#e5e7eb; margin:50px 0;\">\n\n<br><br>\n\n<div style=\"padding:0; margin:30px 0;\">\n    <div style=\"margin-bottom:20px;\">\n        <h2 style=\"font-family:'Pretendard', sans-serif; font-size:22px; font-weight:700; color:#1f2937; margin:0;\">\n        🎯 마무리: 30분 만에 완성하는 워크플로우 정리\n        </h2>\n    </div>\n\n    <div style=\"text-align:center; margin: 40px 0;\">\n        <img src=\"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=950&q=80\" \n             style=\"width:100%; max-width:900px; border-radius:6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);\" \n             alt=\"team collaboration on creative project\"\n             title=\"AI 애니메이션 제작 완성\">\n    </div>\n\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:2.0; color:#374151; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n            지금까지 소개한 내용을 <strong style=\"font-weight:700;\">전체 워크플로우</strong>로 정리하면 이렇습니다.<br><br>\n            \n            <strong style=\"font-weight:700;\">⏱️ 5분 - ChatGPT 작업</strong><br>\n            - 스토리 작성 요청<br>\n            - 캐릭터 + 20장면 프롬프트 생성<br><br>\n            \n            <strong style=\"font-weight:700;\">⏱️ 10분 - Whisk 캐릭터 생성</strong><br>\n            - 주인공, 조연, 악당 캐릭터 제작<br>\n            - 스타일 통일<br><br>\n            \n            <strong style=\"font-weight:700;\">⏱️ 10분 - Whisk 장면 제작</strong><br>\n            - 20개 장면 이미지 생성<br>\n            - 필요시 수정 (눈보라, 표정, 배경 등)<br><br>\n            \n            <strong style=\"font-weight:700;\">⏱️ 3분 - 애니메이션 적용</strong><br>\n            - 단순 움직임 → Whisk<br>\n            - 복잡 액션 → Grok<br><br>\n            \n            <strong style=\"font-weight:700;\">⏱️ 2분 - 효과음 추가</strong><br>\n            - AI 효과음 자동 삽입<br>\n            - 내레이션 생성 (선택)<br><br>\n            \n            <span style=\"font-size:17px; font-weight:600;\">총 소요 시간: 약 30분</span><br><br>\n            \n            이 과정에 익숙해지면 <strong style=\"font-weight:700;\">하루에 2~3개 영상</strong>도 충분히 제작 가능해요.<br>\n            월 60~90개 영상, 조회수만 잘 나온다면 상당한 수익을 기대할 수 있습니다.<br><br>\n            \n            중요한 건 <strong style=\"font-weight:700;\">꾸준함</strong>이에요.<br>\n            처음엔 시간이 좀 더 걸리더라도, 반복하다 보면 워크플로우가 몸에 배어 속도가 빨라집니다.\n        </span>\n    </h4>\n</div>\n\n<br><br>\n\n<div style=\"padding:0; margin:20px 0;\">\n    <h4 style=\"font-family:'Pretendard', sans-serif; line-height:1.8; color:#1f2937; font-weight:500;\">\n        <span style=\"font-size:16px;\">\n        <strong style=\"font-weight:700;\">💌 PS.</strong><br><br>\n        오늘 소개한 방법, 어떠셨나요?<br>\n        저도 처음엔 \"이게 진짜 될까?\" 싶었는데, 직접 해보니 생각보다 훨씬 쉽고 재미있더라고요.<br><br>\n        \n        특히 Whisk의 캐릭터 일관성 유지 기능은 정말 혁신적이었어요.<br>\n        기존에 다른 AI 툴들로 시도했을 때 겪었던 가장 큰 문제가 해결됐거든요.<br><br>\n        \n        다음 강의에서는 <strong style=\"font-weight:700;\">효과음과 내레이션을 더 디테일하게 넣는 방법</strong>을 다뤄볼 예정입니다.<br>\n        궁금한 점 있으시면 댓글로 남겨주세요!\n        </span>\n    </h4>\n</div>\n\n<br><br>",
-        "keywords": "AI 애니메이션 제작, ChatGPT 활용법, 구글 Whisk 사용법, Grok 4 튜토리얼, 무료 AI 도구",
-        "date": "2026. 2. 10.",
-        "id": 1770700515908,
-        "filename": "post_1770700515908.html"
-    },
-    {
-        "id": 1770647752669,
+        "id": 1,
         "title": "숨은 정부 지원금 찾기: 직장인도 신청 가능한 환급금 BEST 5",
         "category": "금융, 꿀팁",
         "excerpt": "혹시 나도 모르게 잠자고 있는 돈이 있지 않나요? 건강보험 본인부담금 환급부터 카드 포인트 현금화까지, 신청하지 않으면 소멸되는 아까운 지원금들을 정리해드립니다.",
         "thumbnail": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
-        "content": "...",
-        "date": "2026. 2. 9.",
-        "keywords": "정부지원금, 환급금",
-        "filename": "post_1770645536896.html"
+        "date": "2026-02-09",
+        "filename": "#"
     }
-]</script>
+]
+    </script>
 
-    <!-- 렌더링 스크립트 -->
     <script>
         (function() {
             const dbData = document.getElementById('db-store').textContent;
-            const posts = JSON.parse(dbData || '[]');
+            let posts = [];
+            try { posts = JSON.parse(dbData || '[]'); } catch(e) { console.error(e); }
+
+            const postsPerPage = 10;
+            let currentPage = 1;
+
             const postList = document.getElementById('post-list');
+            const pagination = document.getElementById('pagination');
             const categoryList = document.getElementById('category-list');
             const popularList = document.getElementById('popular-list');
             const recentList = document.getElementById('recent-list');
 
-            if (posts.length === 0) {
-                postList.innerHTML = '<p style="text-align:center; color:#666; padding:40px;">등록된 글이 없습니다.</p>';
-                return;
+            function renderPosts(page) {
+                if (posts.length === 0) {
+                    postList.innerHTML = '<p>글이 없습니다.</p>';
+                    return;
+                }
+                const start = (page - 1) * postsPerPage;
+                const end = start + postsPerPage;
+                const targetPosts = posts.slice(start, end);
+
+                // [수정] post-footer를 footer 태그가 아닌 div로 렌더링하여 CSS 충돌 방지
+                postList.innerHTML = targetPosts.map(post => `
+                    <article class="post-item" onclick="location.href='${post.filename}'">
+                        <div class="post-content">
+                            <span class="post-cat">${post.category}</span>
+                            <h2 class="post-title">${post.title}</h2>
+                            <p class="post-desc">${post.excerpt}</p>
+                            <div class="post-footer">
+                                <time class="post-date" datetime="${post.date}">${post.date}</time>
+                                <span class="post-read-more">더 읽기 →</span>
+                            </div>
+                        </div>
+                        <div class="post-image">
+                            <img src="${post.thumbnail}" alt="${post.title}" loading="lazy">
+                        </div>
+                    </article>
+                `).join('');
+                window.scrollTo(0, 0);
             }
 
-            // 1. 포스트 렌더링 (Medium 스타일)
-            postList.innerHTML = posts.map(post => `
-                <div class="post-item" itemscope itemtype="https://schema.org/BlogPosting">
-                    <div class="post-content">
-                        <a href="${post.filename}" style="text-decoration: none;">
-                            <span class="post-cat" itemprop="articleSection">${post.category}</span>
-                            <h2 class="post-title" itemprop="headline">${post.title}</h2>
-                            <p class="post-desc" itemprop="description">${post.excerpt}</p>
-                            <div class="post-footer">
-                                <time class="post-date" datetime="${post.date}" itemprop="datePublished">${post.date}</time>
-                                <a href="${post.filename}" class="post-read-more">더 읽기 →</a>
-                            </div>
-                        </a>
-                    </div>
-                    <a href="${post.filename}" class="post-image" title="${post.title}">
-                        <img src="${post.thumbnail}" alt="${post.title}" loading="lazy" itemprop="image">
-                    </a>
-                </div>
-            `).join('');
+            function renderPagination() {
+                const totalPages = Math.ceil(posts.length / postsPerPage);
+                if (totalPages <= 1) return;
+                let html = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+                }
+                pagination.innerHTML = html;
+            }
 
-            // 2. 카테고리 집계
+            window.changePage = function(page) {
+                currentPage = page;
+                renderPosts(page);
+                renderPagination();
+            };
+
+            // 사이드바 및 카테고리 렌더링 로직 (유지)
             const categoryCount = {};
-            posts.forEach(post => {
-                categoryCount[post.category] = (categoryCount[post.category] || 0) + 1;
-            });
-
-            categoryList.innerHTML = Object.entries(categoryCount)
-                .sort((a, b) => b[1] - a[1])
-                .map(([category, count]) => `
-                    <li>
-                        <a href="#${category}">
-                            <span>${category}</span>
-                            <span class="count">${count}</span>
-                        </a>
-                    </li>
-                `).join('');
-
-            // 3. 인기글 (조회수 높은 순, 여기서는 최신순으로 대체)
-            popularList.innerHTML = posts.slice(0, 3).map((post, idx) => `
-                <div class="featured-item">
-                    <a href="${post.filename}" class="featured-title">${idx + 1}. ${post.title}</a>
-                    <div class="featured-meta">${post.date}</div>
-                </div>
+            posts.forEach(p => categoryCount[p.category] = (categoryCount[p.category] || 0) + 1);
+            categoryList.innerHTML = Object.entries(categoryCount).map(([cat, count]) => `
+                <li><a href="#"><span>${cat}</span><span class="count">${count}</span></a></li>
             `).join('');
 
-            // 4. 최신글
-            recentList.innerHTML = posts.slice(0, 5).map(post => `
-                <div class="featured-item">
-                    <a href="${post.filename}" class="featured-title">${post.title}</a>
-                    <div class="featured-meta">${post.date}</div>
-                </div>
+            const featuredHtml = posts.slice(0, 5).map(p => `
+                <article class="featured-item">
+                    <a href="${p.filename}" class="featured-title">${p.title}</a>
+                    <time class="featured-meta" datetime="${p.date}">${p.date}</time>
+                </article>
             `).join('');
+
+            popularList.innerHTML = featuredHtml;
+            recentList.innerHTML = featuredHtml;
+
+            renderPosts(1);
+            renderPagination();
         })();
     </script>
-
-
-<textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea></body></html>
+</body>
+</html>
