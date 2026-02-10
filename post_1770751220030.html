@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- [SEO] 메타 태그 최적화 -->
+    <title>Claude Code 완벽 가이드 | AI 코딩 에이전트 마스터하기 | Postree</title>
+    <meta name="description" content="터미널이 무섭다고요? 괜찮습니다. Claude Code로 놀라운 소프트웨어를 만드는 가장 간단한 방법을 알려드립니다. 계획부터 Ralph 자동화까지, 초보자도 따라할 수 있는 완벽 가이드입니다.">
+    <meta name="keywords" content="Claude Code, AI 코딩, Ralph Loop, Ask User Question Tool, 소프트웨어 개발, AI 에이전트, 코드 자동화, 개발자 도구">
+    <meta name="author" content="Postree">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="">
+
+    <!-- [SEO] Open Graph -->
+    <meta property="og:title" content="Claude Code 완벽 가이드 | AI 코딩 에이전트 마스터하기 | Postree">
+    <meta property="og:description" content="터미널이 무섭다고요? 괜찮습니다. Claude Code로 놀라운 소프트웨어를 만드는 가장 간단한 방법을 알려드립니다. 계획부터 Ralph 자동화까지, 초보자도 따라할 수 있는 완벽 가이드입니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <!-- Iconify Script -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Claude Code 완벽 가이드 | AI 코딩 에이전트 마스터하기",
+        "description": "터미널이 무섭다고요? 괜찮습니다. Claude Code로 놀라운 소프트웨어를 만드는 가장 간단한 방법을 알려드립니다. 계획부터 Ralph 자동화까지, 초보자도 따라할 수 있는 완벽 가이드입니다.",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80",
+        "author": { "@type": "Person", "name": "Postree" },
+        "datePublished": "2026-02-10T19:20:20.030Z",
+        "dateModified": "2026-02-10T19:20:20.030Z",
+        "publisher": { "@type": "Organization", "name": "Postree" }
+    }
+    </script>
+
+    <style>
+        :root {
+            /* [Color System] Clean & Modern */
+            --bg-page: #ffffff;
+            --text-main: #191f28;
+            --text-sub: #4e5968;
+            --text-light: #8b95a1;
+            --primary: #3b82f6;
+            --border: #e5e8eb;
+            --bg-gray: #f9fafb;
+            --max-width: 860px;
+            --header-h: 72px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+        }
+
+        a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+        img { display: block; width: 100%; height: auto; }
+
+        /* [Header] 메인과 동일 */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 1140px; margin: 0 auto; padding: 0 24px;
+            height: var(--header-h);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px; font-weight: 800; color: var(--text-main);
+            display: flex; align-items: center; gap: 4px; letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--primary); }
+
+        .nav { display: flex; gap: 24px; }
+        .nav a { font-size: 15px; font-weight: 600; color: var(--text-sub); }
+        .nav a:hover { color: var(--text-main); }
+
+        /* [Breadcrumb] */
+        .breadcrumb {
+            background: var(--bg-gray);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        .breadcrumb-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        .breadcrumb a { color: var(--text-light); }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span { margin: 0 8px; }
+
+        /* [Back Button] */
+        .back-btn-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 32px 24px 0;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-sub);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover {
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        /* [Post Header] */
+        .post-header {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 60px 24px 48px;
+        }
+        .post-cat {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: var(--text-main);
+            word-break: keep-all;
+        }
+        .meta {
+            color: var(--text-light);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* [Post Content] */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .content {
+            font-size: 1.125rem;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        .content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 1px solid var(--border);
+        }
+        .content h2 {
+            font-size: 1.75rem;
+            margin: 60px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--text-main);
+            font-weight: 700;
+        }
+        .content h3 {
+            font-size: 1.375rem;
+            margin: 40px 0 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .content p {
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+        .content ul, .content ol {
+            margin-bottom: 28px;
+            padding-left: 28px;
+        }
+        .content li {
+            margin-bottom: 12px;
+        }
+        .content blockquote {
+            margin: 32px 0;
+            padding: 20px 24px;
+            background: var(--bg-gray);
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+            color: var(--text-sub);
+        }
+        .content code {
+            background: #f4f4f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+        .content pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 32px 0;
+        }
+        .content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* [AI 추천 링크 카드] */
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 48px 0;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        .link-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--primary);
+        }
+        .link-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: white;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            border: 1px solid #f1f5f9;
+        }
+        .link-card-info { flex: 1; }
+        .link-card-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .link-card-arrow {
+            color: var(--primary);
+            font-size: 16px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        .link-card:hover .link-card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .link-card-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* [Footer] */
+        .footer {
+            background: var(--bg-gray);
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .footer-logo {
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+        .footer-copy {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .post-header { padding: 40px 20px 32px; }
+            .nav { display: none; }
+            .content { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="iconify" data-icon="carbon:ibm-cloud-pak-manta" style="font-size: 28px; color: var(--primary);"></span>
+                Postree
+            </a>
+            <nav class="nav">
+                <a href="index.html">인사이트</a>
+                <a href="index.html#tech">테크</a>
+                <a href="index.html#money">머니 & 팁</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="index.html">홈</a><span>›</span>
+            <a href="index.html">IT</a><span>›</span>
+            <span>Claude Code 완벽 가이드 | AI 코딩 에이전트 마스터하기</span>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <div class="back-btn-wrap">
+        <a href="index.html" class="back-btn">
+            <span class="iconify" data-icon="carbon:arrow-left"></span>
+            목록으로 돌아가기
+        </a>
+    </div>
+
+    <!-- Post Header -->
+    <header class="post-header">
+        <span class="post-cat">IT</span>
+        <h1>Claude Code 완벽 가이드 | AI 코딩 에이전트 마스터하기</h1>
+        <div class="meta">
+            <time datetime="2026-02-10T19:20:20.030Z">2026. 2. 10.</time>
+            <span>•</span>
+            <span>Postree Insight</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <article class="content" id="post-content">
+            <blockquote style="padding:15px 0; margin: 25px 0; background:none;"><span style="font-family:Pretendard, sans-serif; font-size:16px; font-weight:400; color:#374151; line-height:1.6;">좋은 입력이 좋은 출력을 만듭니다. 2026년, AI 모델은 이제 충분히 좋습니다. 슬롭이 나온다면, 그건 모델 탓이 아닙니다.</span><br><span style="font-family:Pretendard, sans-serif; font-size:13px; color:#9ca3af; margin-top:6px; display:block;">Professor Ross Mike</span></blockquote><br><br><div style="padding:0; margin:20px 0;" data-has-banner="true"><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.8; color:#374151; font-weight:300; margin:0;">안녕하세요~<br><br>Claude Code를 사용하고 싶은데 어디서부터 시작해야 할지 막막하신가요?<br>터미널이 무섭고, 복잡한 설정이 두렵나요?<br><br>오늘은 가장 간단하고 실용적인 방법으로 Claude Code를 마스터하는 법을 알려드릴게요.<br>이 가이드 하나면 충분합니다.</p></div><div class="ai-official-banner" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button onclick="document.getElementById('modal-1770751174255-0').showModal()" style="width: 100%;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: stretch;
+                   background: #fff;
+                   border: 1px solid #e5e7eb;
+                   border-radius: 14px;
+                   padding: 28px;
+                   cursor: pointer;
+                   transition: all 0.2s;
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.04);" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)';this.style.borderColor='#d2e3fc'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.04)';this.style.borderColor='#e5e7eb'">
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; min-width: 56px; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #e9ecef;">
+                <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=모름&amp;size=128" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='https://ui-avatars.com/api/?name=Claude%20Code&amp;background=4f46e5&amp;color=fff'">
+            </div>
+
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                    <span style="font-size: 20px; font-weight: 600; color: #111827;">Claude Code</span>
+                </div>
+                <div style="font-size: 13px; color: #6b7280; font-weight: 400; line-height: 1.4; text-align: left;">AI 에이전트 기반 애플리케이션 개발 도구</div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+            <div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">자동</div><div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">계획</div><div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">테스트</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <span style="font-size: 13px; color: #6b7280;">클릭해서 자세히 알아보기</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 14px; font-weight: 500; color: #4f46e5;">더 알아보기</span>
+                <div style="width: 32px; height: 32px; background: #4f46e5; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <dialog id="modal-1770751174255-0" style="padding: 0; border: none; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 480px;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=모름&amp;size=128" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800;">Claude Code</h3>
+                        <div style="font-size: 13px; color: #6b7280;">모름</div>
+                    </div>
+                </div>
+                <button onclick="this.closest('dialog').close()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+            </div>
+            <div style="background: #f9fafb; padding: 18px; border-radius: 14px; margin-bottom: 20px; line-height:1.6;">Claude Code는 AI 모델을 활용하여 소프트웨어 개발을 돕는 도구입니다. 효과적인 사용을 위해서는 명확한 계획과 적절한 입력이 중요합니다.</div>
+            <div style="margin-bottom: 28px;">
+                <div style="font-size: 12px; font-weight: 800; color: #9ca3af; margin-bottom: 12px;">핵심 기능</div>
+                <ul style="margin: 0; padding-left: 20px; line-height:1.8;"><li>자동 코드 생성</li><li>계획 기반 개발</li><li>테스트 주도 개발</li></ul>
+            </div>
+            <a href="모름" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: #4f46e5; color: white; padding: 16px; border-radius: 12px; font-weight: 700;">공식 홈페이지 →</a>
+        </div>
+    </dialog>
+</div><br><div style="text-align:center; margin: 35px 0;"><img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="programmer working with AI" title="AI 코딩 작업"></div><br><br><div style="padding:0; margin:30px 0;"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">핵심 원칙: 입력이 출력을 결정한다</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;">AI 에이전트로 애플리케이션을 만들 때 가장 중요한 건 무엇일까요?<br><br><span style="font-weight:400;">좋은 입력 = 좋은 출력</span><br><br>2026년 초, AI 모델은 정말 놀라울 정도로 발전했어요.<br>제가 이제는 코드를 직접 작성하는 것보다 리뷰하는 시간이 더 많아졌을 정도예요.<br><br>만약 AI가 만든 결과물이 별로다 라고 느낀다면?<br>그건 모델의 문제가 아니라 <span style="font-size:16px; font-weight:400;">입력의 문제</span>입니다.<br><br><span style="font-weight:400;">사람과 대화하듯이 생각하세요:</span><br><br>클라이언트 작업을 해보신 분들은 아실 거예요.<br>대부분의 클라이언트는 한 가지만 말하지만, 실제로 원하는 건 그 이면에 숨어 있죠.<br><br>AI 에이전트도 마찬가지예요.<br>정확하고 명확한 입력을 줘야 원하는 결과물을 얻을 수 있습니다.</p></div><br><br><hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;"><br><br><div style="padding:0; margin:30px 0;"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">PRD와 계획의 중요성</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;">PRD(Product Requirements Document), To-Do List, Plan...<br>이름은 다르지만 본질은 같아요.<br><br><span style="font-weight:400;">제품을 기능으로 나눠서 생각하세요:</span><br><br>제품 X가 Y, Z, A, B, C 기능을 가지고 있다면,<br>이 4개의 핵심 기능을 구현하면 제품이 완성됩니다.<br><br>많은 사람들이 실수하는 부분이 바로 여기예요.<br>제품 전체를 막연하게 설명하지 말고, <span style="font-size:16px; font-weight:400;">구체적인 기능 단위</span>로 나눠야 해요.<br><br><span style="font-weight:400;">테스트 주도 개발:</span><br><br>각 기능을 만들 때마다 테스트를 작성하세요.<br><br>1. 기능 1 개발<br>2. 기능 1 테스트 → 통과하면<br>3. 기능 2 개발<br>4. 기능 2 테스트 → 통과하면<br>5. 기능 3 개발...<br><br>이런 식으로 진행하면 각 기능이 제대로 작동하는지 확인하면서 개발할 수 있어요.</p></div><div style="text-align:center; margin: 35px 0;"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="product planning documentation" title="제품 기획 문서"></div><br><br><hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;"><br><br><div style="padding:0; margin:30px 0;" data-has-banner="true"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">1단계: Ask User Question Tool 활용하기</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;" data-has-banner="true">대부분의 사람들은 Claude Code에게 바로 계획을 세우라고 요청해요.<br><br><span style="font-weight:400;">일반적인 방법:</span><br><br>TikTok UGC 생성 앱을 만들고 싶어. PRD.md 파일에 계획을 작성해줘.<br><br>Claude가 몇 가지 질문을 하고 계획을 만들어줍니다.<br>하지만 이건 너무 기본적이에요.<br><br><span style="font-weight:400;">더 나은 방법 - Ask User Question Tool:</span><br><br>이 계획 파일을 읽고, Ask User Question Tool을 사용해서 기술 구현, UI/UX, 트레이드오프에 대해 상세하게 인터뷰해줘.<br><br>이렇게 요청하면 Claude가 훨씬 더 구체적인 질문들을 던집니다.<br><br><span style="font-weight:400;">질문 예시:</span><br><br>Round 1 - 핵심 워크플로우:<br>- UGC 비디오 생성의 이상적인 워크플로우는?<br>- 선형적? 템플릿 기반? 배치 처리?<br><br>Round 2 - 비용 관리:<br>- Hagen API 비용은 어떻게 처리할 것인가?<br>- 하드 예산 제한을 둘 것인가?<br><br>Round 3 - 데이터베이스:<br>- 어떤 데이터베이스와 호스팅을 사용할 것인가?<br>- Firebase? Supabase? PostgreSQL?<br><br>기술적인 질문을 모르겠다면?<br>질문을 복사해서 ChatGPT나 Claude에게 물어보세요.<br>내 상황에서 가장 좋은 선택은 뭘까?</p><div class="ai-official-banner" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button onclick="document.getElementById('modal-1770751174257-4').showModal()" style="width: 100%;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: stretch;
+                   background: #fff;
+                   border: 1px solid #e5e7eb;
+                   border-radius: 14px;
+                   padding: 28px;
+                   cursor: pointer;
+                   transition: all 0.2s;
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.04);" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)';this.style.borderColor='#d2e3fc'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.04)';this.style.borderColor='#e5e7eb'">
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; min-width: 56px; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #e9ecef;">
+                <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://openai.com/blog/chatgpt&amp;size=128" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='https://ui-avatars.com/api/?name=ChatGPT&amp;background=4f46e5&amp;color=fff'">
+            </div>
+
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                    <span style="font-size: 20px; font-weight: 600; color: #111827;">ChatGPT</span>
+                </div>
+                <div style="font-size: 13px; color: #6b7280; font-weight: 400; line-height: 1.4; text-align: left;">OpenAI에서 개발한 대화형 인공지능 모델</div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+            <div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">대화형</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <span style="font-size: 13px; color: #6b7280;">클릭해서 자세히 알아보기</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 14px; font-weight: 500; color: #4f46e5;">더 알아보기</span>
+                <div style="width: 32px; height: 32px; background: #4f46e5; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <dialog id="modal-1770751174257-4" style="padding: 0; border: none; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 480px;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://openai.com/blog/chatgpt&amp;size=128" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800;">ChatGPT</h3>
+                        <div style="font-size: 13px; color: #6b7280;">openai.com</div>
+                    </div>
+                </div>
+                <button onclick="this.closest('dialog').close()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+            </div>
+            <div style="background: #f9fafb; padding: 18px; border-radius: 14px; margin-bottom: 20px; line-height:1.6;">ChatGPT는 OpenAI에서 개발한 대규모 언어 모델로, 텍스트 기반의 대화를 수행하고 질문에 답변하는 데 사용됩니다.</div>
+            <div style="margin-bottom: 28px;">
+                <div style="font-size: 12px; font-weight: 800; color: #9ca3af; margin-bottom: 12px;">핵심 기능</div>
+                <ul style="margin: 0; padding-left: 20px; line-height:1.8;"><li>대화형 AI</li></ul>
+            </div>
+            <a href="https://openai.com/blog/chatgpt" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: #4f46e5; color: white; padding: 16px; border-radius: 12px; font-weight: 700;">공식 홈페이지 →</a>
+        </div>
+    </dialog>
+</div></div><div class="ai-official-banner" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button onclick="document.getElementById('modal-1770751174255-1').showModal()" style="width: 100%;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: stretch;
+                   background: #fff;
+                   border: 1px solid #e5e7eb;
+                   border-radius: 14px;
+                   padding: 28px;
+                   cursor: pointer;
+                   transition: all 0.2s;
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.04);" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)';this.style.borderColor='#d2e3fc'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.04)';this.style.borderColor='#e5e7eb'">
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; min-width: 56px; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #e9ecef;">
+                <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=모름&amp;size=128" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='https://ui-avatars.com/api/?name=Ask%20User%20Question%20Tool&amp;background=4f46e5&amp;color=fff'">
+            </div>
+
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                    <span style="font-size: 20px; font-weight: 600; color: #111827;">Ask User Question Tool</span>
+                </div>
+                <div style="font-size: 13px; color: #6b7280; font-weight: 400; line-height: 1.4; text-align: left;">Claude Code 사용 시 상세한 계획 수립을 돕는 도구</div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+            <div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">상세</div><div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">기술</div><div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">UI/UX</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <span style="font-size: 13px; color: #6b7280;">클릭해서 자세히 알아보기</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 14px; font-weight: 500; color: #4f46e5;">더 알아보기</span>
+                <div style="width: 32px; height: 32px; background: #4f46e5; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <dialog id="modal-1770751174255-1" style="padding: 0; border: none; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 480px;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=모름&amp;size=128" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800;">Ask User Question Tool</h3>
+                        <div style="font-size: 13px; color: #6b7280;">모름</div>
+                    </div>
+                </div>
+                <button onclick="this.closest('dialog').close()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+            </div>
+            <div style="background: #f9fafb; padding: 18px; border-radius: 14px; margin-bottom: 20px; line-height:1.6;">Ask User Question Tool은 Claude Code를 사용할 때 개발자가 제품의 기능, UI/UX, 기술적인 측면에 대해 더 깊이 생각하도록 질문을 던져 상세한 계획을 수립하도록 돕습니다.</div>
+            <div style="margin-bottom: 28px;">
+                <div style="font-size: 12px; font-weight: 800; color: #9ca3af; margin-bottom: 12px;">핵심 기능</div>
+                <ul style="margin: 0; padding-left: 20px; line-height:1.8;"><li>상세 질문</li><li>기술 구현 인터뷰</li><li>UI/UX 인터뷰</li></ul>
+            </div>
+            <a href="모름" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: #4f46e5; color: white; padding: 16px; border-radius: 12px; font-weight: 700;">공식 홈페이지 →</a>
+        </div>
+    </dialog>
+</div><br><br><hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;"><br><br><div style="padding:0; margin:30px 0;" data-has-banner="true"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">왜 이 도구가 중요한가?</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;">기본 계획 모드와 Ask User Question Tool의 차이는 극명합니다.<br><br><span style="font-weight:400;">기본 계획:</span><br>- 2~3개의 간단한 질문<br>- 표면적인 계획<br>- 세부사항 누락<br><br><span style="font-weight:400;">Ask User Question Tool:</span><br>- 10개 이상의 상세한 질문<br>- UI 스타일은? (미니멀/대시보드 중심/채팅 우선)<br>- 저장 방식은? (즉시 다운로드/클라우드/외부 저장소)<br>- 아바타 옵션은? (기본/커스텀/멀티씬)<br><br>처음엔 질문이 귀찮게 느껴질 수 있어요.<br>하지만 이 시간 투자가 나중에 <span style="font-size:16px; font-weight:400;">엄청난 시간과 비용을 절약</span>해줍니다.<br><br><span style="font-weight:400;">왜 토큰을 절약할 수 있을까?</span><br><br>계획이 명확하면 → 결과물이 정확함 → 수정 불필요<br>계획이 애매하면 → 결과물이 애매함 → 계속 수정 → 토큰 낭비<br><br>Ralph 루프를 돌렸는데 결과물이 마음에 안 들어서 다시 돌리는 건<br>Anthropic에 돈을 기부하는 것과 같아요.</p></div><div class="ai-official-banner" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button onclick="document.getElementById('modal-1770751174256-2').showModal()" style="width: 100%;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: stretch;
+                   background: #fff;
+                   border: 1px solid #e5e7eb;
+                   border-radius: 14px;
+                   padding: 28px;
+                   cursor: pointer;
+                   transition: all 0.2s;
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.04);" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)';this.style.borderColor='#d2e3fc'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.04)';this.style.borderColor='#e5e7eb'">
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; min-width: 56px; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #e9ecef;">
+                <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=모름&amp;size=128" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='https://ui-avatars.com/api/?name=Ralph&amp;background=4f46e5&amp;color=fff'">
+            </div>
+
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                    <span style="font-size: 20px; font-weight: 600; color: #111827;">Ralph</span>
+                </div>
+                <div style="font-size: 13px; color: #6b7280; font-weight: 400; line-height: 1.4; text-align: left;">Claude Code 자동화 도구</div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+            <div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">자동화</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <span style="font-size: 13px; color: #6b7280;">클릭해서 자세히 알아보기</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 14px; font-weight: 500; color: #4f46e5;">더 알아보기</span>
+                <div style="width: 32px; height: 32px; background: #4f46e5; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <dialog id="modal-1770751174256-2" style="padding: 0; border: none; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 480px;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=모름&amp;size=128" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800;">Ralph</h3>
+                        <div style="font-size: 13px; color: #6b7280;">모름</div>
+                    </div>
+                </div>
+                <button onclick="this.closest('dialog').close()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+            </div>
+            <div style="background: #f9fafb; padding: 18px; border-radius: 14px; margin-bottom: 20px; line-height:1.6;">Ralph는 Claude Code를 사용하는 개발 프로세스를 자동화하는 도구입니다. 수동 개발 경험을 쌓은 후에 사용하는 것이 좋습니다.</div>
+            <div style="margin-bottom: 28px;">
+                <div style="font-size: 12px; font-weight: 800; color: #9ca3af; margin-bottom: 12px;">핵심 기능</div>
+                <ul style="margin: 0; padding-left: 20px; line-height:1.8;"><li>자동화</li></ul>
+            </div>
+            <a href="모름" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: #4f46e5; color: white; padding: 16px; border-radius: 12px; font-weight: 700;">공식 홈페이지 →</a>
+        </div>
+    </dialog>
+</div><div style="text-align:center; margin: 35px 0;"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="team planning session" title="팀 기획 회의"></div><br><br><hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;"><br><br><div style="padding:0; margin:30px 0;"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">2단계: Ralph 없이 먼저 연습하기</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;">Ralph는 강력한 자동화 도구예요.<br>하지만 초보자가 바로 사용하면 안 됩니다.<br><br><span style="font-weight:400;">테슬라 비유:</span><br><br>운전을 배우지 않은 사람이 자율주행 테슬라를 사는 것과 같아요.<br>이론적으론 멋지지만, 기본을 먼저 배워야 해요.<br><br>- 핸들 조작법<br>- 코너링<br>- 다른 차선 변경<br><br>자동화 이전에 <span style="font-size:16px; font-weight:400;">수동 개발 경험</span>이 필요합니다.<br><br><span style="font-weight:400;">왜 Ralph 없이 먼저 해야 할까?</span><br><br>1. 제품 구축 감각 개발<br>2. Vibe QA 테스팅 능력 습득<br>3. 문제 해결 능력 향상<br><br>처음 몇 달 동안 Claude Code와 씨름한 사람들이<br>지금 가장 잘 사용하는 이유가 바로 이거예요.<br><br><span style="font-weight:400;">수동 개발 프로세스:</span><br><br>1. 계획 수립 (Ask User Question Tool 사용)<br>2. 첫 번째 기능을 만들어줘 요청<br>3. 완료되면 테스트<br>4. 이 기능을 어떻게 테스트할 수 있어? 질문<br>5. 앱 실행 방법 확인<br>6. 다음 기능으로 이동<br><br>이 과정을 충분히 반복한 후에 Ralph를 사용하세요.</p></div><br><br><hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;"><br><br><div style="padding:0; margin:30px 0;" data-has-banner="true"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">필수 팁 5가지</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;"><span style="font-weight:400;">1. Ask User Question Tool 활용</span><br><br>계획 단계에서 반드시 사용하세요.<br>Anthropic 팀이 만든 도구인데 왜 사람들이 모르는지 신기해요.<br>질문이 많아서 귀찮을 수 있지만, 정말 가치 있습니다.<br><br><span style="font-weight:400;">2. MCP, Skills, Plugins에 집착하지 마세요</span><br><br>읽고 사용하는 건 좋지만,<br>이것들이 제품이 안 되는 이유가 아니에요.<br><br>대부분의 경우 <span style="font-size:16px; font-weight:400;">계획이 부실</span>한 게 문제입니다.<br><br>Prompt.md, Agent.md, Skills, Plugins...<br>다 비슷한 개념이에요. 본질은 문서화입니다.<br><br><span style="font-weight:400;">3. 배포 경험 없으면 Ralph 금지</span><br><br>Vercel이나 다른 곳에 배포한 URL이 하나라도 있나요?<br>실제로 작동하는 앱을 만들어본 적이 있나요?<br><br>없다면 Ralph 사용 금지입니다.<br>돈 많아서 Anthropic에 기부하고 싶은 게 아니라면요.<br><br>먼저 수동으로 뭔가를 만들고 배포해보세요.<br>그다음에 Ralph를 쓰세요.<br><br><span style="font-weight:400;">4. 컨텍스트 50% 이하 유지</span><br><br>Opus 4.5는 200,000 토큰 컨텍스트 한계가 있어요.<br>100,000 토큰(50%)을 넘어가면 성능이 저하됩니다.<br><br>처음엔 잘 되다가 나중에 이상해졌어요 라는 말?<br>그건 컨텍스트가 너무 많이 쌓여서 그래요.<br><br>마치 교수가 계속 정보만 쏟아부으면<br>우리도 overwhelmed 되는 것처럼,<br>모델도 그래요.<br><br>40~50%에 도달하면 새 세션을 시작하세요.<br><br><span style="font-weight:400;">5. 대담함(Audacity)을 가지세요</span><br><br>소프트웨어 개발은 쉬워지고 있어요.<br>하지만 소프트웨어 엔지니어링은 여전히 어렵습니다.<br><br>차이가 뭘까요?<br><br>- 아키텍처 설계<br>- 사용성 확보<br>- 훌륭한 UX/UI<br>- 취향(Taste)<br>- 사람들이 실제로 사용하는 것<br><br>이건 시간과 노력이 필요해요.<br>그리고 그 시간을 투자하려면 대담함이 필요합니다.</p></div><div class="ai-official-banner" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button onclick="document.getElementById('modal-1770751174257-3').showModal()" style="width: 100%;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: stretch;
+                   background: #fff;
+                   border: 1px solid #e5e7eb;
+                   border-radius: 14px;
+                   padding: 28px;
+                   cursor: pointer;
+                   transition: all 0.2s;
+                   box-shadow: 0 2px 8px rgba(0,0,0,0.04);" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)';this.style.borderColor='#d2e3fc'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.04)';this.style.borderColor='#e5e7eb'">
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; min-width: 56px; background: #f8f9fa; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #e9ecef;">
+                <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://vercel.com/&amp;size=128" style="width: 28px; height: 28px; object-fit: contain;" onerror="this.src='https://ui-avatars.com/api/?name=Vercel&amp;background=4f46e5&amp;color=fff'">
+            </div>
+
+            <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                    <span style="font-size: 20px; font-weight: 600; color: #111827;">Vercel</span>
+                </div>
+                <div style="font-size: 13px; color: #6b7280; font-weight: 400; line-height: 1.4; text-align: left;">서버리스 함수, 정적 파일 등을 배포할 수 있는 플랫폼</div>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;">
+            <div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">배포</div><div style="background: #f8f9fa; padding: 6px 12px; border-radius: 16px; font-size: 11px; font-weight: 500; color: #4f46e5; border: 1px solid #e8f0fe;">호스팅</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px;">
+            <span style="font-size: 13px; color: #6b7280;">클릭해서 자세히 알아보기</span>
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="font-size: 14px; font-weight: 500; color: #4f46e5;">더 알아보기</span>
+                <div style="width: 32px; height: 32px; background: #4f46e5; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round"></path></svg>
+                </div>
+            </div>
+        </div>
+    </button>
+
+    <dialog id="modal-1770751174257-3" style="padding: 0; border: none; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 480px;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&amp;type=FAVICON&amp;fallback_opts=TYPE,SIZE,URL&amp;url=https://vercel.com/&amp;size=128" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800;">Vercel</h3>
+                        <div style="font-size: 13px; color: #6b7280;">vercel.com</div>
+                    </div>
+                </div>
+                <button onclick="this.closest('dialog').close()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+            </div>
+            <div style="background: #f9fafb; padding: 18px; border-radius: 14px; margin-bottom: 20px; line-height:1.6;">Vercel은 프론트엔드 개발자를 위한 클라우드 플랫폼으로, 웹사이트 및 애플리케이션을 배포하고 호스팅하는 데 사용됩니다.</div>
+            <div style="margin-bottom: 28px;">
+                <div style="font-size: 12px; font-weight: 800; color: #9ca3af; margin-bottom: 12px;">핵심 기능</div>
+                <ul style="margin: 0; padding-left: 20px; line-height:1.8;"><li>배포</li><li>호스팅</li></ul>
+            </div>
+            <a href="https://vercel.com/" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: #4f46e5; color: white; padding: 16px; border-radius: 12px; font-weight: 700;">공식 홈페이지 →</a>
+        </div>
+    </dialog>
+</div><br><br><hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;"><br><br><div style="padding:0; margin:30px 0;"><div style="margin-bottom:15px;"><h2 style="font-family:Pretendard, sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">마무리: 핵심은 계획입니다</h2></div><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.9; color:#374151; font-weight:300; margin:0;">Claude Code를 성공적으로 사용하는 비결은 무엇일까요?<br><br><span style="font-size:16px; font-weight:400;">완벽한 계획입니다.</span><br><br>Skills, MCP, Plugins, Prompt.md, Agent.md...<br>이 모든 것들은 좋지만, 계획만큼 중요하지 않아요.<br><br>계획이 형편없으면 아무리 좋은 도구를 써도 소용없습니다.<br><br><span style="font-weight:400;">기억하세요:</span><br><br>- Ask User Question Tool로 귀찮을 정도로 상세하게<br>- Ralph는 경험을 쌓은 후에<br>- 컨텍스트는 50% 이하로<br>- 대담함을 가지고 독창적으로<br><br>모델은 이제 충분히 좋습니다.<br>완벽한 입력을 주면 완벽한 출력을 줄 정도로요.<br><br>2026년, 소프트웨어 개발의 장벽은 낮아졌어요.<br>하지만 훌륭한 소프트웨어를 만드는 건 여전히 어려워요.<br><br>그 차이를 만드는 건 바로 여러분의 계획과 취향입니다.</p></div><br><br><div style="text-align:center; margin: 35px 0;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="successful coding team" title="성공적인 코딩"></div><br><br><div style="padding:0; margin:20px 0;"><p style="font-family:Pretendard, sans-serif; font-size:15px; line-height:1.8; color:#374151; font-weight:300; margin:0;"><span style="font-weight:400;">💌 PS.</span><br><br>오늘 글 어떠셨나요?<br>Claude Code는 정말 강력한 도구예요.<br>하지만 도구는 도구일 뿐, 사용하는 사람의 역량이 중요하다는 걸 잊지 마세요.<br><br>Ask User Question Tool, 꼭 한번 써보세요.<br>처음엔 귀찮지만, 결과물의 차이를 느끼실 거예요.<br><br>다음에 더 유익한 AI 개발 팁으로 찾아오겠습니다!</p></div><br><br>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">Postree</div>
+            <div class="footer-links">
+                <a href="#">소개</a>
+                <a href="#">운영정책</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">문의하기</a>
+            </div>
+            <p class="footer-copy">© 2026 Postree. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
