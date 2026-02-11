@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- [SEO] 메타 태그 최적화 -->
+    <title>오픈클로(OpenClaw) 완벽 설치 가이드 | 나만의 24시간 자율주행 AI 비서 만들기 | Postree</title>
+    <meta name="description" content="내가 잠든 사이에도 일하는 AI 비서를 상상해보셨나요? 오픈클로(OpenClaw)는 단순한 챗봇이 아닙니다. 서버에 상주하며 먼저 말을 걸고, 업무를 처리하는 진정한 에이전트죠. 설치부터 텔레그램 연동, 구글 워크스페이스 연결까지 완벽하게 정리했습니다.">
+    <meta name="keywords" content="오픈클로, AI비서, 개인서버, 텔레그램봇, 자동화">
+    <meta name="author" content="Postree">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="">
+
+    <!-- [SEO] Open Graph -->
+    <meta property="og:title" content="오픈클로(OpenClaw) 완벽 설치 가이드 | 나만의 24시간 자율주행 AI 비서 만들기 | Postree">
+    <meta property="og:description" content="내가 잠든 사이에도 일하는 AI 비서를 상상해보셨나요? 오픈클로(OpenClaw)는 단순한 챗봇이 아닙니다. 서버에 상주하며 먼저 말을 걸고, 업무를 처리하는 진정한 에이전트죠. 설치부터 텔레그램 연동, 구글 워크스페이스 연결까지 완벽하게 정리했습니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=950&q=80">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <!-- Iconify Script -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "오픈클로(OpenClaw) 완벽 설치 가이드 | 나만의 24시간 자율주행 AI 비서 만들기",
+        "description": "내가 잠든 사이에도 일하는 AI 비서를 상상해보셨나요? 오픈클로(OpenClaw)는 단순한 챗봇이 아닙니다. 서버에 상주하며 먼저 말을 걸고, 업무를 처리하는 진정한 에이전트죠. 설치부터 텔레그램 연동, 구글 워크스페이스 연결까지 완벽하게 정리했습니다.",
+        "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=950&q=80",
+        "author": { "@type": "Person", "name": "Postree" },
+        "datePublished": "2026-02-11T06:20:01.317Z",
+        "dateModified": "2026-02-11T06:20:01.317Z",
+        "publisher": { "@type": "Organization", "name": "Postree" }
+    }
+    </script>
+
+    <style>
+        :root {
+            /* [Color System] Clean & Modern */
+            --bg-page: #ffffff;
+            --text-main: #191f28;
+            --text-sub: #4e5968;
+            --text-light: #8b95a1;
+            --primary: #3b82f6;
+            --border: #e5e8eb;
+            --bg-gray: #f9fafb;
+            --max-width: 860px;
+            --header-h: 72px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+        }
+
+        a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+        img { display: block; width: 100%; height: auto; }
+
+        /* [Header] 메인과 동일 */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 1140px; margin: 0 auto; padding: 0 24px;
+            height: var(--header-h);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px; font-weight: 800; color: var(--text-main);
+            display: flex; align-items: center; gap: 4px; letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--primary); }
+
+        .nav { display: flex; gap: 24px; }
+        .nav a { font-size: 15px; font-weight: 600; color: var(--text-sub); }
+        .nav a:hover { color: var(--text-main); }
+
+        /* [Breadcrumb] */
+        .breadcrumb {
+            background: var(--bg-gray);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        .breadcrumb-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+        .breadcrumb a { color: var(--text-light); }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span { margin: 0 8px; }
+
+        /* [Back Button] */
+        .back-btn-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 32px 24px 0;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-sub);
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover {
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        /* [Post Header] */
+        .post-header {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 60px 24px 48px;
+        }
+        .post-cat {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            color: var(--text-main);
+            word-break: keep-all;
+        }
+        .meta {
+            color: var(--text-light);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* [Post Content] */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+        .content {
+            font-size: 1.125rem;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        .content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 1px solid var(--border);
+        }
+        .content h2 {
+            font-size: 1.75rem;
+            margin: 60px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--text-main);
+            font-weight: 700;
+        }
+        .content h3 {
+            font-size: 1.375rem;
+            margin: 40px 0 20px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .content p {
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+        .content ul, .content ol {
+            margin-bottom: 28px;
+            padding-left: 28px;
+        }
+        .content li {
+            margin-bottom: 12px;
+        }
+        .content blockquote {
+            margin: 32px 0;
+            padding: 20px 24px;
+            background: var(--bg-gray);
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+            color: var(--text-sub);
+        }
+        .content code {
+            background: #f4f4f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+        .content pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 32px 0;
+        }
+        .content pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        /* [AI 추천 링크 카드] */
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 48px 0;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        .link-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--primary);
+        }
+        .link-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: white;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+            border: 1px solid #f1f5f9;
+        }
+        .link-card-info { flex: 1; }
+        .link-card-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .link-card-arrow {
+            color: var(--primary);
+            font-size: 16px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        .link-card:hover .link-card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .link-card-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* [Footer] */
+        .footer {
+            background: var(--bg-gray);
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .footer-logo {
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+        .footer-copy {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .post-header { padding: 40px 20px 32px; }
+            .nav { display: none; }
+            .content { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="iconify" data-icon="carbon:ibm-cloud-pak-manta" style="font-size: 28px; color: var(--primary);"></span>
+                Postree
+            </a>
+            <nav class="nav">
+                <a href="index.html">인사이트</a>
+                <a href="index.html#tech">테크</a>
+                <a href="index.html#money">머니 & 팁</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="index.html">홈</a><span>›</span>
+            <a href="index.html">IT</a><span>›</span>
+            <span>오픈클로(OpenClaw) 완벽 설치 가이드 | 나만의 24시간 자율주행 AI 비서 만들기</span>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <div class="back-btn-wrap">
+        <a href="index.html" class="back-btn">
+            <span class="iconify" data-icon="carbon:arrow-left"></span>
+            목록으로 돌아가기
+        </a>
+    </div>
+
+    <!-- Post Header -->
+    <header class="post-header">
+        <span class="post-cat">IT</span>
+        <h1>오픈클로(OpenClaw) 완벽 설치 가이드 | 나만의 24시간 자율주행 AI 비서 만들기</h1>
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=950&q=80" alt="오픈클로(OpenClaw) 완벽 설치 가이드 | 나만의 24시간 자율주행 AI 비서 만들기" style="width:100%; border-radius:12px; margin-bottom:20px;">
+        <div class="meta">
+            <time datetime="2026-02-11T06:20:01.317Z">2026. 2. 10.</time>
+            <span>•</span>
+            <span>Postree Insight</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <article class="content" id="post-content">
+            <blockquote style="padding: 20px;
+    margin: 25px 0;
+    background: #f5f5f5;
+    border-radius: 10px;">
+    <span style="font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1.6;">
+    "웹사이트에 접속해야만 대화할 수 있는 AI는 잊으세요.<br>
+    이제 당신의 주머니 속에서, 당신보다 먼저 움직이는 AI가 옵니다."
+    </span><br>
+    <span style="font-family:'Pretendard', sans-serif; font-size:13px; color:#9ca3af; margin-top:6px; display:block;">
+    오픈클로(OpenClaw)의 핵심 철학
+    </span>
+</blockquote>
+
+<br><br>
+
+<!-- 도입부 -->
+<div style="padding:0; margin:20px 0;" data-has-banner="true">
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.8; color:#000; font-weight:300; margin:0;" data-has-banner="true">
+        안녕하세요~<br><br>
+        오늘은 제가 최근 본 AI 도구 중 가장 흥미로운 녀석을 소개해드리려고 해요.<br>
+        혹시 챗GPT나 클로드를 쓰면서 이런 아쉬움 느끼신 적 없나요?<br><br>
+        <span style="font-weight:400;">"대화창을 닫으면 거기서 끝."</span><br>
+        <span style="font-weight:400;">"내가 먼저 물어봐야만 대답함."</span><br><br>
+        오늘 소개할 <strong>오픈클로(OpenClaw)</strong>는 이 모든 상식을 뒤집습니다.<br>
+        여러분이 잠든 사이에도 이메일을 확인하고, 중요한 일정이 있으면 먼저 카톡(텔레그램)을 보내주는 진짜 '비서'니까요.
+    </p><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <!-- 심플 배너 (클릭 트리거) -->
+    <button onclick="document.getElementById('modal-1770777329575-2').showModal()" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#007BFF'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';" type="button">
+
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img src="https://logo.clearbit.com/anthropic.com?size=128" style="width: 100%; height: 100%; object-fit: contain; padding: 8px;" onerror="this.onerror=null; this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.anthropic.com&size=128'; this.style.padding='10px';" alt="Anthropic">
+        </div>
+
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Anthropic</span>
+                <span style="font-size: 11px; font-weight: 700; color: #007BFF; background: #007BFF15; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280; font-weight: 400;">안전하고 해석 가능하며 조종 가능한 AI 시스템을 구축하는 AI 안전 및 연구 회사입니다.</div>
+        </div>
+
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: #007BFF;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <!-- 상세 정보 모달 -->
+    <dialog id="modal-1770777329575-2" style="padding: 0; border: none; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 500px; outline: none;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 32px; position: relative;">
+            <button onclick="this.closest('dialog').close()" style="position: absolute; top: 20px; right: 20px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 18px;">✕</button>
+
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                <img src="https://logo.clearbit.com/anthropic.com?size=128" onerror="this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.anthropic.com&size=128'" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Anthropic</h3>
+                    <div style="font-size: 13px; color: #9ca3af;">anthropic.com</div>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #007BFF; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6; font-weight: 400;">Anthropic은 AI가 세상에 미치는 광범위한 영향을 고려하여 AI의 이점을 확보하고 위험을 완화하기 위해 노력하는 공익 법인입니다. Claude라는 LLM(대규모 언어 모델) 제품군을 개발했습니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #007BFF; font-weight: bold;">•</span> AI 안전 연구
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #007BFF; font-weight: bold;">•</span> 대규모 언어 모델
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #007BFF; font-weight: bold;">•</span> Constitutional AI
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #007BFF; font-weight: bold;">•</span> AI 윤리
+        </li>
+                </ul>
+            </div>
+
+            <a href="https://www.anthropic.com" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #007BFF; color: #ffffff; text-decoration: none; padding: 18px; border-radius: 16px; font-size: 16px; font-weight: 700; transition: all 0.2s; box-shadow: 0 10px 15px -3px #007BFF40;">
+               공식 홈페이지 바로가기
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+        </div>
+    </dialog>
+</div>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <!-- 심플 배너 (클릭 트리거) -->
+    <button onclick="document.getElementById('modal-1770777329574-0').showModal()" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#5865F2'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';" type="button">
+
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img src="https://logo.clearbit.com/openclaw.ai?size=128" style="width: 100%; height: 100%; object-fit: contain; padding: 8px;" onerror="this.onerror=null; this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fopenclaw.ai&size=128'; this.style.padding='10px';" alt="OpenClaw">
+        </div>
+
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">OpenClaw</span>
+                <span style="font-size: 11px; font-weight: 700; color: #5865F2; background: #5865F215; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280; font-weight: 400;">개인 AI 비서로, 메시징 플랫폼을 통해 작업을 수행합니다.</div>
+        </div>
+
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: #5865F2;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <!-- 상세 정보 모달 -->
+    <dialog id="modal-1770777329574-0" style="padding: 0; border: none; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 500px; outline: none;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 32px; position: relative;">
+            <button onclick="this.closest('dialog').close()" style="position: absolute; top: 20px; right: 20px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 18px;">✕</button>
+
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                <img src="https://logo.clearbit.com/openclaw.ai?size=128" onerror="this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fopenclaw.ai&size=128'" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">OpenClaw</h3>
+                    <div style="font-size: 13px; color: #9ca3af;">openclaw.ai</div>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #5865F2; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6; font-weight: 400;">OpenClaw는 Peter Steinberger가 개발한 무료 오픈 소스 자율 인공 지능(AI) 에이전트입니다. 다양한 메시징 플랫폼을 통해 AI 코딩 에이전트와 연결됩니다. 텔레그램, 디스코드, WhatsApp 등에서 봇과의 채팅을 통해 기능에 액세스할 수 있습니다. 로컬에서 실행되며, 외부 LLM(Large Language Model)과 통합되도록 설계되었습니다. </div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #5865F2; font-weight: bold;">•</span> 자율 워크플로우
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #5865F2; font-weight: bold;">•</span> 메시징 서비스 통합
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #5865F2; font-weight: bold;">•</span> 로컬 데이터 저장
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #5865F2; font-weight: bold;">•</span> 스킬 확장
+        </li>
+                </ul>
+            </div>
+
+            <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #5865F2; color: #ffffff; text-decoration: none; padding: 18px; border-radius: 16px; font-size: 16px; font-weight: 700; transition: all 0.2s; box-shadow: 0 10px 15px -3px #5865F240;">
+               공식 홈페이지 바로가기
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+        </div>
+    </dialog>
+</div>
+
+<br>
+
+<!-- 메인 이미지 -->
+<div style="text-align:center; margin: 35px 0;">
+    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="coding setup with multiple screens" title="나만의 AI 서버 구축하기">
+</div>
+
+<br><br>
+
+<!-- 본론 1 -->
+<div style="padding:0; margin:30px 0;">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        🤔 오픈클로(OpenClaw)가 대체 뭔가요?
+        </h2>
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        쉽게 말해 <strong>"내 서버에 살고 있는 자율주행 AI"</strong>입니다.<br>
+        이전에는 'Clawdbot'이나 'Moltbot'이라는 이름으로 불리기도 했는데요, 지금은 오픈클로(OpenClaw)로 통합되었습니다.<br><br>
+        
+        기존 AI와의 가장 큰 차이점은 세 가지예요.<br><br>
+        1. <strong>내 소유입니다:</strong> 대화 내용이 빅테크 기업 서버에 남지 않고 내 서버에 저장됩니다.<br>
+        2. <strong>항상 켜져 있습니다:</strong> 웹사이트에 접속할 필요 없이 텔레그램이나 디스코드 같은 메신저로 언제든 대화합니다.<br>
+        3. <strong>먼저 행동합니다:</strong> "아침 7시에 브리핑해줘"라고 하면, 내가 묻지 않아도 날씨와 일정을 정리해서 보내줍니다.<br><br>
+        
+        <span style="font-weight:400;">즉, 도서관(웹사이트)에 가는 것이 아니라, 사서(AI)를 집에 데려오는 것과 같습니다.</span>
+    </p>
+</div>
+
+<br><br>
+
+<!-- 구분선 -->
+<hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;">
+
+<br><br>
+
+<!-- 본론 2 -->
+<div style="padding:0; margin:30px 0;" data-has-banner="true">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        🛠️ 준비물: 왜 VPS(가상 서버)가 필요할까요?
+        </h2>
+    </div>
+
+    <!-- 이미지 추가 -->
+    <div style="text-align:center; margin: 35px 0;">
+        <img src="https://images.unsplash.com/photo-1558494949-efc5e60c9480?auto=format&fit=crop&w=950&q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="server data center" title="24시간 돌아가는 서버">
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        내 컴퓨터에 설치할 수도 있지만, 추천드리지 않아요.<br>
+        노트북을 닫으면 AI도 잠들어버리기 때문이죠.<br><br>
+        <span style="font-weight:400;">24시간 깨어있는 비서를 원한다면 VPS(가상 사설 서버)가 필수입니다.</span><br>
+        보안 면에서도 내 개인 PC와 분리되어 있어 훨씬 안전하답니다.<br><br>
+        보통 <strong>Hostinger(호스팅어)</strong> 같은 서비스를 많이 사용하는데요,<br>
+        오픈클로 전용 '원클릭 템플릿'을 제공해서 코드를 몰라도 설치 버튼 하나면 끝납니다.<br>
+        비용도 한 달에 커피 한 잔 값(몇 천원) 정도라 부담 없으실 거예요.
+    </p>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <!-- 심플 배너 (클릭 트리거) -->
+    <button onclick="document.getElementById('modal-1770777329575-1').showModal()" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#673AB7'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';" type="button">
+
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img src="https://logo.clearbit.com/hostinger.com?size=128" style="width: 100%; height: 100%; object-fit: contain; padding: 8px;" onerror="this.onerror=null; this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.hostinger.com&size=128'; this.style.padding='10px';" alt="Hostinger">
+        </div>
+
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Hostinger</span>
+                <span style="font-size: 11px; font-weight: 700; color: #673AB7; background: #673AB715; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280; font-weight: 400;">웹 호스팅, VPS, 클라우드 호스팅 등 다양한 호스팅 솔루션 제공업체입니다.</div>
+        </div>
+
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: #673AB7;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <!-- 상세 정보 모달 -->
+    <dialog id="modal-1770777329575-1" style="padding: 0; border: none; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 500px; outline: none;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 32px; position: relative;">
+            <button onclick="this.closest('dialog').close()" style="position: absolute; top: 20px; right: 20px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 18px;">✕</button>
+
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                <img src="https://logo.clearbit.com/hostinger.com?size=128" onerror="this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.hostinger.com&size=128'" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Hostinger</h3>
+                    <div style="font-size: 13px; color: #9ca3af;">hostinger.com</div>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #673AB7; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6; font-weight: 400;">Hostinger는 공유 호스팅, 클라우드 호스팅, VPS 호스팅, 관리형 WordPress 호스팅 및 이메일 호스팅을 포함한 다양한 웹 호스팅 서비스를 제공합니다. AI 웹사이트 빌더, 드래그 앤 드롭 인터페이스, 연중무휴 고객 지원을 제공합니다. </div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #673AB7; font-weight: bold;">•</span> 웹 호스팅
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #673AB7; font-weight: bold;">•</span> VPS 호스팅
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #673AB7; font-weight: bold;">•</span> 클라우드 호스팅
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #673AB7; font-weight: bold;">•</span> AI 웹사이트 빌더
+        </li>
+                </ul>
+            </div>
+
+            <a href="https://www.hostinger.com" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #673AB7; color: #ffffff; text-decoration: none; padding: 18px; border-radius: 16px; font-size: 16px; font-weight: 700; transition: all 0.2s; box-shadow: 0 10px 15px -3px #673AB740;">
+               공식 홈페이지 바로가기
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+        </div>
+    </dialog>
+</div>
+
+<br><br>
+
+<!-- 구분선 -->
+<hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;">
+
+<br><br>
+
+<!-- 본론 3 -->
+<div style="padding:0; margin:30px 0;">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        🚀 1단계: 서버 배포 및 API 연결
+        </h2>
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        이제 본격적으로 설치해볼까요? 과정은 정말 간단해요.<br><br>
+        
+        1. 호스팅어 등 VPS 서비스에서 <strong>'OpenClaw' 템플릿</strong>을 선택하고 배포합니다.<br>
+        2. <strong>Anthropic(클로드) API 키</strong>를 준비하세요. (오픈클로의 두뇌 역할을 합니다)<br>
+        3. 설정 화면에서 API 키를 입력하면 설치가 시작됩니다.<br><br>
+        
+        <span style="font-size:16px; font-weight:400;">⚠️ 주의할 점:</span><br>
+        설치 후 제공되는 <strong>'Gateway Token'</strong>은 꼭 따로 저장해두세요.<br>
+        이건 오픈클로 대시보드에 접속하기 위한 비밀번호 같은 거라 잃어버리면 곤란해요!
+    </p>
+</div>
+
+<br><br>
+
+<!-- 구분선 -->
+<hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;">
+
+<br><br>
+
+<!-- 본론 4 -->
+<div style="padding:0; margin:30px 0;" data-has-banner="true">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        💬 2단계: 텔레그램 연동 (내 손안의 비서)
+        </h2>
+    </div>
+
+    <!-- 이미지 추가 -->
+    <div style="text-align:center; margin: 35px 0;">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=950&q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="smartphone telegram app" title="모바일로 제어하는 AI">
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        서버 설치가 끝났다면 이제 스마트폰과 연결할 차례입니다.<br>
+        가장 쉬운 방법은 텔레그램 봇을 이용하는 거예요.<br><br>
+        
+        <strong>1. BotFather 검색:</strong> 텔레그램에서 '@BotFather'를 검색하세요.<br>
+        <strong>2. 봇 생성:</strong> 채팅창에 <code>/newbot</code>을 입력하고 이름과 아이디를 정해줍니다.<br>
+        <strong>3. 토큰 복사:</strong> 생성된 API 토큰을 복사해서 오픈클로 채팅창에 붙여넣으세요.<br><br>
+        
+        이제 오픈클로가 "연동이 완료되었습니다"라고 답할 거예요.<br>
+        여기서 "안녕?"이라고 보내보세요. 내 서버에 있는 AI가 즉시 대답하는 짜릿한 경험을 하실 수 있습니다.
+    </p>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <!-- 심플 배너 (클릭 트리거) -->
+    <button onclick="document.getElementById('modal-1770777329576-3').showModal()" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#2AABEE'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';" type="button">
+
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img src="https://logo.clearbit.com/t.me?size=128" style="width: 100%; height: 100%; object-fit: contain; padding: 8px;" onerror="this.onerror=null; this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ft.me%2FBotFather&size=128'; this.style.padding='10px';" alt="Telegram BotFather">
+        </div>
+
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Telegram BotFather</span>
+                <span style="font-size: 11px; font-weight: 700; color: #2AABEE; background: #2AABEE15; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280; font-weight: 400;">텔레그램 봇을 만들고 관리하는 데 사용되는 공식 텔레그램 봇입니다.</div>
+        </div>
+
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: #2AABEE;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <!-- 상세 정보 모달 -->
+    <dialog id="modal-1770777329576-3" style="padding: 0; border: none; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 500px; outline: none;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 32px; position: relative;">
+            <button onclick="this.closest('dialog').close()" style="position: absolute; top: 20px; right: 20px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 18px;">✕</button>
+
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                <img src="https://logo.clearbit.com/t.me?size=128" onerror="this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Ft.me%2FBotFather&size=128'" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Telegram BotFather</h3>
+                    <div style="font-size: 13px; color: #9ca3af;">t.me</div>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #2AABEE; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6; font-weight: 400;">BotFather는 텔레그램 내에서 새로운 봇 계정을 생성하고 기존 봇을 관리하는 데 사용되는 텔레그램의 공식 봇입니다. /newbot 명령을 통해 봇을 생성하고, 봇의 이름, 설명, 프로필 사진 등을 설정할 수 있습니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> 봇 생성
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> 봇 관리
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> API 토큰 생성
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> 봇 설정
+        </li>
+                </ul>
+            </div>
+
+            <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #2AABEE; color: #ffffff; text-decoration: none; padding: 18px; border-radius: 16px; font-size: 16px; font-weight: 700; transition: all 0.2s; box-shadow: 0 10px 15px -3px #2AABEE40;">
+               공식 홈페이지 바로가기
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+        </div>
+    </dialog>
+</div>
+
+<br><br>
+
+<!-- 구분선 -->
+<hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;">
+
+<br><br>
+
+<!-- 본론 5 -->
+<div style="padding:0; margin:30px 0;" data-has-banner="true">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        🧠 3단계: 스킬 추가하기 (구글 워크스페이스)
+        </h2>
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        오픈클로의 진짜 강력함은 <strong>'스킬(Skill)'</strong>에서 나옵니다.<br>
+        단순 대화를 넘어 실제 도구를 제어할 수 있게 해주죠.<br><br>
+        가장 추천하는 건 <strong>구글 워크스페이스(Google Workspace)</strong> 연동입니다.<br>
+        이걸 하면 캘린더 확인, 이메일 초안 작성, 드라이브 파일 검색을 AI가 대신 해줍니다.<br><br>
+        <span style="font-weight:400;">설정 방법:</span><br>
+        1. 오픈클로에게 "구글 워크스페이스 스킬 설치해줘"라고 말하세요.<br>
+        2. 구글 클라우드 콘솔에서 프로젝트를 만들고 API(Calendar, Gmail 등)를 활성화합니다.<br>
+        3. 인증 파일(JSON)을 다운받아 오픈클로에게 전송하면 끝!<br><br>
+        
+        <span style="font-size:13px; color:#6b7280;">※ 처음엔 조금 복잡해 보일 수 있지만, 오픈클로가 채팅으로 단계를 하나씩 친절하게 알려주니 걱정 마세요.</span>
+    </p>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <!-- 심플 배너 (클릭 트리거) -->
+    <button onclick="document.getElementById('modal-1770777329576-4').showModal()" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#4285F4'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';" type="button">
+
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img src="https://logo.clearbit.com/workspace.google.com?size=128" style="width: 100%; height: 100%; object-fit: contain; padding: 8px;" onerror="this.onerror=null; this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fworkspace.google.com&size=128'; this.style.padding='10px';" alt="Google Workspace">
+        </div>
+
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Google Workspace</span>
+                <span style="font-size: 11px; font-weight: 700; color: #4285F4; background: #4285F415; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280; font-weight: 400;">Gmail, Drive, Docs 등 생산성 및 협업 도구 모음입니다.</div>
+        </div>
+
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: #4285F4;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <!-- 상세 정보 모달 -->
+    <dialog id="modal-1770777329576-4" style="padding: 0; border: none; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 90%; max-width: 500px; outline: none;" onclick="if(event.target === this) this.close()">
+        <div style="padding: 32px; position: relative;">
+            <button onclick="this.closest('dialog').close()" style="position: absolute; top: 20px; right: 20px; background: #f3f4f6; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 18px;">✕</button>
+
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                <img src="https://logo.clearbit.com/workspace.google.com?size=128" onerror="this.src='https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fworkspace.google.com&size=128'" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;">
+                <div>
+                    <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Google Workspace</h3>
+                    <div style="font-size: 13px; color: #9ca3af;">workspace.google.com</div>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #4285F4; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6; font-weight: 400;">Google Workspace(이전의 G Suite)는 모든 규모의 기업, 학교 및 조직을 위한 Google의 클라우드 기반 생산성 및 협업 제품군입니다. Gmail, Google Calendar, Google Drive, Google Docs, Sheets, Slides 등과 같은 친숙한 앱을 결합하여 여러 사람이 실시간으로 함께 작업할 수 있도록 지원합니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.05em;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4285F4; font-weight: bold;">•</span> Gmail
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4285F4; font-weight: bold;">•</span> Google Drive
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4285F4; font-weight: bold;">•</span> Google Docs
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4285F4; font-weight: bold;">•</span> Google Calendar
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4285F4; font-weight: bold;">•</span> Google Meet
+        </li>
+                </ul>
+            </div>
+
+            <a href="https://workspace.google.com" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: #4285F4; color: #ffffff; text-decoration: none; padding: 18px; border-radius: 16px; font-size: 16px; font-weight: 700; transition: all 0.2s; box-shadow: 0 10px 15px -3px #4285F440;">
+               공식 홈페이지 바로가기
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+        </div>
+    </dialog>
+</div>
+
+<br><br>
+
+<!-- 구분선 -->
+<hr style="border:0; height:1px; background:#f3f4f6; margin:45px 0;">
+
+<br><br>
+
+<!-- 본론 6 -->
+<div style="padding:0; margin:30px 0;">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        ✨ 실전 활용: 나만의 모닝 루틴 자동화
+        </h2>
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        이제 모든 준비가 끝났습니다. 제가 가장 좋아하는 활용법을 공유할게요.<br>
+        바로 <strong>'모닝 브리핑'</strong> 자동화입니다.<br><br>
+        오픈클로에게 이렇게 말해보세요.<br>
+        <span style="background:#f3f4f6; padding:4px 8px; border-radius:4px; font-size:15px;">"매일 아침 7시에 내 일정 확인하고, 날씨랑 주요 뉴스 요약해서 텔레그램으로 보내줘."</span><br><br>
+        
+        그럼 다음 날부터는 알람 소리와 함께 나만의 비서가 정리해준 리포트를 받으며 하루를 시작할 수 있습니다.<br>
+        내가 요청하지 않아도 알아서 챙겨주는 것, 이게 바로 우리가 꿈꾸던 미래 아닐까요?
+    </p>
+</div>
+
+<br><br>
+
+<!-- 마무리 섹션 -->
+<div style="padding:0; margin:30px 0;">
+    <div style="margin-bottom:15px;">
+        <h2 style="font-family:'Pretendard', sans-serif; font-size:20px; font-weight:500; color:#1f2937; margin:0;">
+        🎯 마무리: AI와 함께 사는 삶
+        </h2>
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.9; color:#000; font-weight:300; margin:0;">
+        오픈클로는 아직 발전하고 있는 오픈소스 프로젝트입니다.<br>
+        하지만 지금 당장 써봐도 놀라울 만큼 강력하죠.<br><br>
+        <span style="font-weight:400;">내 데이터를 내가 소유하고, 내 업무 스타일에 맞춰 성장하는 AI.</span><br>
+        단순한 도구를 넘어 '파트너'를 만들고 싶다면, 이번 주말에 나만의 서버를 하나 띄워보는 건 어떨까요?
+    </p>
+</div>
+
+<br><br>
+
+<!-- 마무리 이미지 -->
+<div style="text-align:center; margin: 35px 0;">
+    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=950&q=80" style="width:100%; max-width:900px; border-radius:4px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);" alt="working together with technology" title="새로운 AI 파트너">
+</div>
+
+<br><br>
+
+<!-- PS 섹션 -->
+<div style="padding:0; margin:20px 0;">
+    <p style="font-family:'Pretendard', sans-serif; font-size:16px; line-height:1.8; color:#000; font-weight:300; margin:0;">
+        <span style="font-weight:400;">💌 PS.</span><br><br>
+        저도 처음 설치할 때 구글 API 인증 과정에서 꽤 애를 먹었답니다.<br>
+        'Localhost' 오류가 나면 주소창 전체 URL을 복사해서 오픈클로 채팅창에 붙여넣는 것, 잊지 마세요!<br>
+        이 꿀팁 하나면 10분은 아끼실 수 있을 거예요 :)
+    </p>
+</div>
+
+<br><br>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">Postree</div>
+            <div class="footer-links">
+                <a href="#">소개</a>
+                <a href="#">운영정책</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">문의하기</a>
+            </div>
+            <p class="footer-copy">© 2026 Postree. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
