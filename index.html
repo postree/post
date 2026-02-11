@@ -254,7 +254,11 @@
             .post-thumb { width: 100%; height: 200px; border-radius: 12px; }
         }
     </style>
-<style></style><style></style><style></style><style></style></head>
+<style></style><style></style><style></style><style></style><style></style><style>
+        #vm-preview-container img { cursor: pointer; transition: all 0.3s ease; }
+        #vm-preview-container img:hover { filter: brightness(0.8); outline: 4px solid #3b82f6; outline-offset: -4px; }
+        [contenteditable]:focus { outline: none; background: #fdfdfd; }
+    </style></head>
 <body>
 
     <!-- 헤더 -->
@@ -320,6 +324,22 @@
             </div>
             
             <div class="post-list" id="post-list">
+                <article class="post-item" onclick="location.href='post_1770777265317.html'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">2026. 2. 11.</span>
+                        </div>
+                        <h2 class="post-title">Claude Code 완전 초보자 가이드 | 설치부터 첫 프로젝트까지</h2>
+                        <p class="post-desc">터미널이 낯선 분도 할 수 있다는 걸 아세요? Claude Code를 설치하고 첫 번째 자동화 프로젝트를 만드는 방법을 단계별로 알려드릴게요. 2026년 필수 기술이라고 불리는 이유를 직접 경험해보세요.</p>
+                        <div class="post-tags">
+                            <span class="tag-pill">Claude Code</span><span class="tag-pill">AI 자동화</span><span class="tag-pill">초보자 가이드</span><span class="tag-pill">생산성 도구</span><span class="tag-pill">AI 코딩</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&amp;fit=crop&amp;w=950&amp;q=80" alt="Claude Code 완전 초보자 가이드 | 설치부터 첫 프로젝트까지">
+                    </div>
+                </article>
+            
                 <article class="post-item" onclick="location.href='post_1770751220030.html'">
                     <div class="post-text">
                         <div class="post-author-meta">
@@ -410,24 +430,24 @@
             <div class="side-widget">
                 <div class="widget-title">많이 읽은 글</div>
                 <div class="rank-list" id="popular-posts">
-                <a href="post_1770751220030.html" class="rank-item">
+                <a href="post_1770777265317.html" class="rank-item">
                     <span class="rank-num">1</span>
+                    <span class="rank-text">Claude Code 완전 초보자 가이드 | 설치부터 첫 프로젝트까지</span>
+                </a>
+            
+                <a href="post_1770751220030.html" class="rank-item">
+                    <span class="rank-num">2</span>
                     <span class="rank-text">Claude Code 완벽 가이드 | AI 코딩 에이전트 마스터하기</span>
                 </a>
             
                 <a href="post_1770749154393.html" class="rank-item">
-                    <span class="rank-num">2</span>
+                    <span class="rank-num">3</span>
                     <span class="rank-text">Claude Code 완전 초보자 가이드 | 설치부터 첫 프로젝트까지</span>
                 </a>
             
                 <a href="post_1770730664197.html" class="rank-item">
-                    <span class="rank-num">3</span>
-                    <span class="rank-text">🤖 AI 영상 자동화 에이전트 완벽 가이드 | 원클릭으로 고품질 롱폼 영상 만들기</span>
-                </a>
-            
-                <a href="post_1770728588404.html" class="rank-item">
                     <span class="rank-num">4</span>
-                    <span class="rank-text">💰 경제 유튜브 채널 만들기 | AI로 고수익 콘텐츠 자동 제작하는 법</span>
+                    <span class="rank-text">🤖 AI 영상 자동화 에이전트 완벽 가이드 | 원클릭으로 고품질 롱폼 영상 만들기</span>
                 </a>
             </div>
             </div>
@@ -453,7 +473,7 @@
                     <div class="topic-name">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 32 32" data-icon="carbon:hashtag" class="iconify iconify--carbon"><path fill="currentColor" d="M28 12v-2h-6V4h-2v6h-8V4h-2v6H4v2h6v8H4v2h6v6h2v-6h8v6h2v-6h6v-2h-6v-8Zm-8 8h-8v-8h8Z"></path></svg> IT
                     </div>
-                    <span class="topic-count">5</span>
+                    <span class="topic-count">6</span>
                 </div>
             </div>
             </div>
@@ -477,6 +497,25 @@
 
     <!-- 데이터 -->
     <script id="db-store" type="application/json">[
+    {
+        "title": "오픈클로(OpenClaw) 설치 가이드 | 24시간 깨어있는 나만의 AI 에이전트 만들기",
+        "category": "IT",
+        "excerpt": "내가 잠든 사이에도 일하는 AI 비서를 상상해보셨나요? 오픈클로(OpenClaw)는 단순한 챗봇이 아닙니다. 서버에 상주하며 먼저 말을 걸고, 업무를 처리하는 진정한 에이전트죠. 설치부터 텔레그램 연동, 구글 워크스페이스 연결까지 완벽하게 정리했습니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "artificial intelligence digital brain concept",
+        "keywords": "오픈클로, AI비서, 개인서버, 텔레그램봇, 자동화",
+        "date": "2026. 2. 11.",
+        "tags": [
+            "오픈클로",
+            "AI비서",
+            "개인서버",
+            "텔레그램봇",
+            "자동화"
+        ],
+        "id": 1770790639154,
+        "filename": "post_1770790639154.html"
+    },
     {
         "title": "Claude Code 완전 초보자 가이드 | 설치부터 첫 프로젝트까지",
         "category": "IT",
@@ -629,4 +668,4 @@
 
 
 
-<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea></body></html>
+<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea></body></html>
