@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://postree.github.io/post/sitemap.xml
