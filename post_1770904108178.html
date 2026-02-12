@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테스트 오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기 | Postree</title>
+    <meta name="description" content="브라우저 탭 속에 갇힌 AI가 아닙니다. 내 컴퓨터를 직접 제어하고, 모든 대화를 기억하며, 메신저로 업무를 지시받는 진정한 AI 에이전트 '오픈클로'의 설치부터 활용법까지 상세히 정리했습니다.">
+    <meta name="keywords" content="OpenClaw, AI 에이전트, Clawdbot, 생산성 도구, 자동화">
+    <meta name="author" content="Postree">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="테스트 오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기 | Postree">
+    <meta property="og:description" content="브라우저 탭 속에 갇힌 AI가 아닙니다. 내 컴퓨터를 직접 제어하고, 모든 대화를 기억하며, 메신저로 업무를 지시받는 진정한 AI 에이전트 '오픈클로'의 설치부터 활용법까지 상세히 정리했습니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+
+    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "테스트 오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기",
+        "description": "브라우저 탭 속에 갇힌 AI가 아닙니다. 내 컴퓨터를 직접 제어하고, 모든 대화를 기억하며, 메신저로 업무를 지시받는 진정한 AI 에이전트 '오픈클로'의 설치부터 활용법까지 상세히 정리했습니다.",
+        "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80",
+        "author": { "@type": "Person", "name": "Postree" },
+        "datePublished": "2026-02-12T13:48:28.180Z",
+        "dateModified": "2026-02-12T13:48:28.180Z",
+        "publisher": { "@type": "Organization", "name": "Postree" }
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-page: #ffffff;
+            --text-main: #191f28;
+            --text-sub: #4e5968;
+            --text-light: #8b95a1;
+            --primary: #3b82f6;
+            --border: #e5e8eb;
+            --bg-gray: #f9fafb;
+            --max-width: 860px;
+            --header-h: 72px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+        }
+        a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+        img { display: block; width: 100%; height: auto; }
+
+        /* Dialog Styles (Injected by Script) */
+
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: 1140px; margin: 0 auto; padding: 0 24px;
+            height: var(--header-h);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo {
+            font-size: 22px; font-weight: 800; color: var(--text-main);
+            display: flex; align-items: center; gap: 4px; letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 24px; }
+        .nav a { font-size: 15px; font-weight: 600; color: var(--text-sub); }
+        .nav a:hover { color: var(--text-main); }
+
+        .breadcrumb {
+            background: var(--bg-gray);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        .breadcrumb-inner {
+            max-width: var(--max-width);
+            margin: 0 auto; padding: 0 24px;
+            font-size: 13px; color: var(--text-light);
+        }
+        .breadcrumb a { color: var(--text-light); }
+        .breadcrumb a:hover { color: var(--primary); }
+        .breadcrumb span { margin: 0 8px; }
+
+        .back-btn-wrap {
+            max-width: var(--max-width);
+            margin: 0 auto; padding: 32px 24px 0;
+        }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--text-sub); font-weight: 600; font-size: 14px;
+            transition: all 0.2s;
+        }
+        .back-btn:hover {
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        .post-header {
+            max-width: var(--max-width);
+            margin: 0 auto; padding: 60px 24px 48px;
+        }
+        .post-cat {
+            display: inline-block; color: var(--primary);
+            font-size: 12px; font-weight: 700; margin-bottom: 16px;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            background: #eff6ff; padding: 4px 12px; border-radius: 20px;
+        }
+        h1 {
+            font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;
+            line-height: 1.3; color: var(--text-main); word-break: keep-all;
+        }
+        .meta {
+            color: var(--text-light); font-size: 14px;
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto; padding: 0 24px 80px;
+        }
+        .content {
+            font-size: 1.125rem;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+        .content img {
+            max-width: 100%; border-radius: 12px;
+            margin: 40px 0; border: 1px solid var(--border);
+        }
+        .content h2 {
+            font-size: 1.75rem; margin: 60px 0 24px;
+            padding-bottom: 12px; border-bottom: 2px solid var(--text-main);
+            font-weight: 700;
+        }
+        .content h3 {
+            font-size: 1.375rem; margin: 40px 0 20px;
+            font-weight: 700; color: var(--primary);
+        }
+        .content p { margin-bottom: 28px; line-height: 1.8; }
+        .content ul, .content ol { margin-bottom: 28px; padding-left: 28px; }
+        .content li { margin-bottom: 12px; }
+        .content blockquote {
+            margin: 32px 0; padding: 20px 24px;
+            background: var(--bg-gray);
+            border-left: 4px solid var(--primary);
+            font-style: italic; color: var(--text-sub);
+        }
+        .content code {
+            background: #f4f4f5; padding: 2px 6px;
+            border-radius: 4px; font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+        .content pre {
+            background: #1e293b; color: #e2e8f0;
+            padding: 20px; border-radius: 8px;
+            overflow-x: auto; margin: 32px 0;
+        }
+        .content pre code {
+            background: none; padding: 0; color: inherit;
+        }
+
+        .footer {
+            background: var(--bg-gray);
+            border-top: 1px solid var(--border);
+            padding: 60px 0; margin-top: 80px;
+        }
+        .footer-inner {
+            max-width: 1140px; margin: 0 auto;
+            padding: 0 24px; text-align: center;
+        }
+        .footer-logo {
+            font-weight: 800; font-size: 20px;
+            color: var(--text-main); margin-bottom: 12px;
+        }
+        .footer-links {
+            display: flex; justify-content: center;
+            gap: 24px; margin-bottom: 24px;
+        }
+        .footer-links a { font-size: 13px; color: var(--text-sub); }
+        .footer-copy { font-size: 13px; color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .post-header { padding: 40px 20px 32px; }
+            .nav { display: none; }
+            .content { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="iconify" data-icon="carbon:ibm-cloud-pak-manta" style="font-size: 28px;"></span>
+                Postree
+            </a>
+            <nav class="nav">
+                <a href="index.html">인사이트</a>
+                <a href="index.html#tech">테크</a>
+                <a href="index.html#money">머니 & 팁</a>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumb">
+        <div class="breadcrumb-inner">
+            <a href="index.html">홈</a><span>›</span>
+            <a href="index.html">IT</a><span>›</span>
+            <span>테스트 오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기</span>
+        </div>
+    </nav>
+
+    <div class="back-btn-wrap">
+        <a href="index.html" class="back-btn">
+            <span class="iconify" data-icon="carbon:arrow-left"></span>
+            목록으로 돌아가기
+        </a>
+    </div>
+
+    <header class="post-header">
+        <span class="post-cat">IT</span>
+        <h1>테스트 오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기</h1>
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80" alt="artificial intelligence assistant working on laptop code interface" style="width:100%; border-radius:12px; margin-bottom:20px;">
+        <div class="meta">
+            <time datetime="2026-02-12T13:48:28.180Z">2026. 2. 10.</time>
+            <span>•</span>
+            <span>Postree Insight</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="content">
+            <blockquote style="margin: 32px 0;
+    padding: 24px 32px;
+    background: #f8f9fa;
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 12px 12px 0;">
+    <p style="margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #191f28;
+        line-height: 1.6;">
+        "브라우저 탭을 닫으면 사라지는 챗봇이 아닙니다.<br>
+        당신의 컴퓨터에 살면서 24시간 대기하는 AI 직원입니다."
+    </p>
+    <cite style="display: block;
+        margin-top: 12px;
+        font-size: 14px;
+        color: #6b7280;
+        font-style: normal;">
+        OpenClaw(구 Clawdbot) 소개 중
+    </cite>
+</blockquote>
+
+<br><br>
+
+<!-- 도입부 -->
+<div style="padding:0; margin:20px 0;">
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        안녕하세요~ IT 트렌드를 읽어주는 블로거입니다.<br><br>
+        여러분은 혹시 챗GPT나 클로드(Claude)를 사용하면서 이런 아쉬움을 느낀 적 없으신가요?<br>
+        매번 브라우저를 켜야 하고, 창을 닫으면 대화의 맥락이 끊기고, 무엇보다 '내 컴퓨터'를 직접 조작해주지는 못한다는 점 말이에요.
+    </p><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090348-6" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#74aa9d'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090348-6" src="https://postree.github.io/post/assets/logos/openai.com.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=openai.com&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=openai.com&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="ChatGPT">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">ChatGPT</span>
+                <span style="font-size: 11px; font-weight: 700; color: #74aa9d; background: #74aa9d15; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">OpenAI에서 개발한 대화형 AI</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #74aa9d;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090348-6">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090348-6" data-url="https://openai.com/chatgpt" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #74aa9d;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090348-6" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090348-6" src="https://postree.github.io/post/assets/logos/openai.com.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=openai.com&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=openai.com&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="ChatGPT">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">ChatGPT</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">openai.com</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090348-6">
+                    <span style="font-size:12px; color:#10b981; display:flex; align-items:center; gap:4px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             저장소 연동됨
+           </span>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #74aa9d; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">OpenAI에서 개발한 대화형 AI로, 텍스트 생성, 번역, 요약 등 다양한 작업을 지원합니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #74aa9d; font-weight: bold;">•</span> 텍스트 생성
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #74aa9d; font-weight: bold;">•</span> 번역
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #74aa9d; font-weight: bold;">•</span> 요약
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090347-1" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090347-1" src="https://postree.github.io/post/assets/logos/anthropic.com.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="Claude">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Claude</span>
+                <span style="font-size: 11px; font-weight: 700; color: #3b82f6; background: #3b82f615; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">Anthropic에서 개발한 AI 비서</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #3b82f6;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090347-1">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090347-1" data-url="https://www.anthropic.com/" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #3b82f6;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090347-1" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090347-1" src="https://postree.github.io/post/assets/logos/anthropic.com.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=anthropic.com&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="Claude">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Claude</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">anthropic.com</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090347-1">
+                    <span style="font-size:12px; color:#10b981; display:flex; align-items:center; gap:4px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             저장소 연동됨
+           </span>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #3b82f6; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">Anthropic에서 개발한 AI 비서로, 챗봇 및 자동화된 작업을 지원합니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #3b82f6; font-weight: bold;">•</span> 텍스트 생성
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #3b82f6; font-weight: bold;">•</span> 번역
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #3b82f6; font-weight: bold;">•</span> 요약
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div>
+</div>
+
+<!-- 강조 인용 박스 -->
+<p style="margin-bottom: 28px;
+    color: #191f28;
+    font-weight: 500;
+    background: #f2f4f6;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 1.75;">
+    "이메일 좀 대신 보내줘."<br>
+    "이 파일 정리해서 폴더에 넣어줘."
+</p>
+
+<div style="padding:0; margin:20px 0;">
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        만약 메신저 한 통으로 이런 일들을 처리해 주는 AI가 있다면 어떨까요? <br>
+        오늘은 전 세계 개발자들과 얼리어답터들 사이에서 폭발적인 반응을 얻고 있는 <strong>오픈클로(OpenClaw, 구 Clawdbot)</strong>에 대해 이야기해 보려고 해요.<br><br>
+        
+        단순한 챗봇을 넘어, 내 컴퓨터를 제어하고 기억을 유지하는 'AI 에이전트'의 시대가 열렸답니다.
+    </p><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090346-0" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090346-0" src="https://avatars.githubusercontent.com/u/147648251?s=400&amp;v=4" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=openclaw.ai&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=openclaw.ai&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="OpenClaw">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">OpenClaw</span>
+                <span style="font-size: 11px; font-weight: 700; color: #3b82f6; background: #3b82f615; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">내 컴퓨터를 제어하는 AI 에이전트</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #3b82f6;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090346-0">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090346-0" data-url="https://openclaw.ai/" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #3b82f6;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090346-0" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090346-0" src="https://avatars.githubusercontent.com/u/147648251?s=400&amp;v=4" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=openclaw.ai&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=openclaw.ai&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="OpenClaw">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">OpenClaw</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">openclaw.ai</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090346-0">
+                    <button class="save-logo-btn" data-domain="openclaw.ai" data-url="https://avatars.githubusercontent.com/u/147648251?s=400&amp;v=4" data-uid="modal-1770904090346-0" style="padding:6px 12px; background:#3b82f6; color:white; border:none; border-radius:6px; cursor:pointer; font-size:12px; font-weight:bold;">
+             💾 로고 영구 저장
+           </button>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #3b82f6; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">웹 브라우저가 아닌 로컬 컴퓨터에서 실행되어 내 컴퓨터 운영체제 위에서 직접 돌아가는 프로그램입니다. Claude나 GPT 같은 거대 언어 모델(LLM)을 API로 연결해 지능을 빌려옵니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #3b82f6; font-weight: bold;">•</span> 컴퓨터 제어
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #3b82f6; font-weight: bold;">•</span> 무한한 기억력
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #3b82f6; font-weight: bold;">•</span> 메신저 인터페이스
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div>
+</div>
+
+<!-- 메인 이미지 -->
+<div style="text-align:center; margin: 40px 0;">
+    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%;
+            max-width:900px;
+            border-radius: 12px;
+            border: 1px solid #e5e8eb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);" alt="robot interacting with computer screen futuristic" title="인간과 협업하는 AI 에이전트">
+</div>
+
+<br><br>
+
+<!-- 본론 섹션 1 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🤔 오픈클로(OpenClaw)란 무엇인가요?
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        우선 이름부터 정리하고 넘어갈게요. 이 도구는 원래 'Clawdbot'이라는 이름으로 알려졌지만, 최근 공식적으로 <strong>OpenClaw</strong>로 명칭이 변경되었어요. 온라인에서 두 이름이 혼용되더라도 같은 도구라고 생각하시면 된답니다.<br><br>
+        
+        오픈클로의 가장 큰 특징은 <strong>웹 브라우저가 아닌, 로컬 컴퓨터에서 실행된다</strong>는 점이에요.<br>
+        우리가 흔히 쓰는 AI 서비스들은 서버에 접속해서 대화만 주고받지만, 오픈클로는 내 컴퓨터 운영체제 위에서 직접 돌아가는 프로그램이죠.
+    </p>
+
+    <!-- 리스트 -->
+    <ul style="padding-left: 20px;
+        color: #4e5968;
+        margin-bottom: 28px;
+        font-size: 17px;
+        line-height: 1.75;">
+        <li style="margin-bottom: 8px;">
+            <strong style="color: #191f28; font-weight: 600;">로컬 구동:</strong> 내 PC 환경을 직접 제어하고 파일을 다룹니다.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <strong style="color: #191f28; font-weight: 600;">두뇌 연결:</strong> Claude나 GPT 같은 거대 언어 모델(LLM)을 API로 연결해 지능을 빌려옵니다.
+        </li>
+        <li>
+            <strong style="color: #191f28; font-weight: 600;">메신저 인터페이스:</strong> 텔레그램, 슬랙 등을 통해 친구에게 카톡 하듯 업무를 지시합니다.
+        </li><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090347-3" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#4A154B'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090347-3" src="https://postree.github.io/post/assets/logos/slack.com.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=slack.com&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=slack.com&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="Slack">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Slack</span>
+                <span style="font-size: 11px; font-weight: 700; color: #4A154B; background: #4A154B15; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">업무용 협업 툴</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #4A154B;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090347-3">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090347-3" data-url="https://slack.com/" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #4A154B;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090347-3" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090347-3" src="https://postree.github.io/post/assets/logos/slack.com.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=slack.com&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=slack.com&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="Slack">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Slack</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">slack.com</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090347-3">
+                    <span style="font-size:12px; color:#10b981; display:flex; align-items:center; gap:4px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             저장소 연동됨
+           </span>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #4A154B; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">팀 커뮤니케이션 및 협업을 위한 플랫폼으로, 슬랙을 통해 AI 에이전트에게 업무를 지시할 수 있습니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4A154B; font-weight: bold;">•</span> 채널 기반 커뮤니케이션
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4A154B; font-weight: bold;">•</span> 파일 공유
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #4A154B; font-weight: bold;">•</span> 앱 통합
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090347-2" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#2AABEE'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090347-2" src="https://postree.github.io/post/assets/logos/telegram.org.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=telegram.org&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=telegram.org&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="Telegram">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Telegram</span>
+                <span style="font-size: 11px; font-weight: 700; color: #2AABEE; background: #2AABEE15; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">보안 메시징 앱</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #2AABEE;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090347-2">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090347-2" data-url="https://telegram.org/" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #2AABEE;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090347-2" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090347-2" src="https://postree.github.io/post/assets/logos/telegram.org.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=telegram.org&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=telegram.org&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="Telegram">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Telegram</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">telegram.org</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090347-2">
+                    <span style="font-size:12px; color:#10b981; display:flex; align-items:center; gap:4px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             저장소 연동됨
+           </span>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #2AABEE; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">보안에 중점을 둔 메시징 앱으로, 텔레그램을 통해 컴퓨터에 작업을 지시할 수 있습니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> 메시지 전송
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> 파일 공유
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #2AABEE; font-weight: bold;">•</span> 그룹 채팅
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div>
+    </ul>
+</div>
+
+<br><br>
+
+<!-- 본론 섹션 2 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        ✨ 왜 사람들이 열광할까요? (핵심 기능 3가지)
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        단순히 신기해서가 아니에요. 실제 업무 생산성을 획기적으로 바꿔주기 때문인데요, 크게 세 가지 강력한 무기가 있답니다.
+    </p>
+
+    <ol style="padding-left: 20px;
+        color: #4e5968;
+        margin-bottom: 28px;
+        font-size: 17px;
+        line-height: 1.75;">
+        <li style="margin-bottom: 12px;">
+            <strong style="color: #191f28; font-weight: 600;">완벽한 컴퓨터 제어 (Full Control)</strong><br>
+            브라우저 열기, 구글 문서 작성, 이메일 발송, 파일 이동 등 사람이 마우스와 키보드로 할 수 있는 거의 모든 작업을 수행할 수 있어요. 제한이 거의 없는 '자유로운 영혼'이죠.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong style="color: #191f28; font-weight: 600;">무한한 기억력 (Infinite Memory)</strong><br>
+            대화가 끝나도 내용을 잊지 않아요. 사용자의 업무 스타일, 선호도, 지난 프로젝트 내용을 데이터베이스에 저장해두고 계속해서 참고합니다. 오래 함께 일할수록 손발이 잘 맞는 비서가 되는 원리예요.
+        </li>
+        <li>
+            <strong style="color: #191f28; font-weight: 600;">통합 메신저 인터페이스</strong><br>
+            집 밖에서도 스마트폰으로 텔레그램을 켜고 "집 컴퓨터에 있는 보고서 이메일로 보내줘"라고 하면, 알아서 처리합니다. 
+        </li>
+    </ol>
+</div>
+
+<!-- 중간 이미지 -->
+<div style="text-align:center; margin: 40px 0;">
+    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%;
+            max-width:900px;
+            border-radius: 12px;
+            border: 1px solid #e5e8eb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);" alt="messaging app interface on smartphone" title="메신저로 제어하는 AI">
+</div>
+
+<br><br>
+
+<!-- 본론 섹션 3 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🛠️ 설치, 생각보다 어렵지 않아요
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        "개발자만 쓸 수 있는 거 아니야?"라고 걱정하실 수 있지만, 설치 과정은 놀라울 정도로 단순화되어 있어요. 터미널에 <strong>단 한 줄의 명령어</strong>만 입력하면 되거든요.
+    </p>
+
+    <!-- 정보 박스 -->
+    <div style="background: #f8f9fa;
+        border: 1px solid #e5e8eb;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 28px 0;">
+        <strong style="display: block;
+            margin-bottom: 12px;
+            color: #191f28;
+            font-size: 17px;
+            font-weight: 600;">💡 설치 프로세스 요약:</strong>
+        <ul style="margin: 0;
+            padding-left: 20px;
+            color: #4e5968;
+            font-size: 17px;
+            line-height: 1.75;">
+            <li style="margin-bottom: 8px;">공식 사이트(claude.bot)에서 설치 명령어 복사</li>
+            <li style="margin-bottom: 8px;">터미널(맥) 또는 명령 프롬프트(윈도우) 실행</li>
+            <li style="margin-bottom: 8px;">명령어 붙여넣기 및 엔터</li>
+            <li>자동 설정 마법사 진행 (약 5~10분 소요)</li>
+        </ul>
+    </div>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        맥(Mac), 윈도우(Windows), 리눅스 모두 지원하며, 꼭 고사양 컴퓨터가 아니어도 괜찮아요. AI 모델은 클라우드 API를 사용하기 때문에 컴퓨터 자체의 자원은 많이 먹지 않는답니다.
+    </p>
+</div>
+
+<br><br>
+
+<!-- 구분선 -->
+<hr style="border:0;
+    height: 1px;
+    background: #e5e8eb;
+    margin: 60px 0;">
+
+<br><br>
+
+<!-- 본론 섹션 4 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🧠 AI 모델 선택과 비용 (나만의 예산 짜기)
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        오픈클로 소프트웨어 자체는 <strong>무료(Open Source)</strong>예요. 하지만 이 아이에게 지능을 빌려주는 AI 모델(API) 사용료는 별도로 듭니다. 어떤 '뇌'를 장착해주느냐에 따라 유지비가 달라져요.
+    </p>
+
+    <ul style="padding-left: 20px;
+        color: #4e5968;
+        margin-bottom: 28px;
+        font-size: 17px;
+        line-height: 1.75;">
+        <li style="margin-bottom: 12px;">
+            <strong style="color: #191f28; font-weight: 600;">가성비 모델 (MiniMax 등):</strong> 월 $10 내외. 저렴하지만 인간적인 느낌은 덜해요.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong style="color: #191f28; font-weight: 600;">GPT-4 / Claude 3.5 Sonnet:</strong> 월 사용량에 따라 다르지만 가장 똑똑하고 밸런스가 좋아요. 이미 API 키가 있다면 그대로 쓸 수 있어요.
+        </li>
+        <li>
+            <strong style="color: #191f28; font-weight: 600;">Claude 3 Opus 등 고성능 모델:</strong> 월 $200 이상 들 수도 있지만, 정말 사람처럼 대화하고 복잡한 추론을 해냅니다.
+        </li>
+    </ul>
+</div>
+
+<!-- 경고 박스 -->
+<div style="background: #fffbe6;
+    border: 1px solid #ffe58f;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #876800;
+    margin: 28px 0;">
+    <strong style="font-weight: 600;">⚠️ 주의할 점:</strong> 
+    API 키를 연동할 때는 반드시 <strong>사용 한도(Usage Limit)</strong>를 설정하세요. 
+    무한 루프에 빠지거나 과도한 작업으로 인해 예상치 못한 요금이 청구되는 것을 방지할 수 있습니다.
+</div>
+
+<br><br>
+
+<!-- 본론 섹션 5 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🤝 첫 출근과 온보딩 (이름 지어주기)
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        설치가 끝나면 가장 먼저 해야 할 일은 이 AI 직원에게 <strong>이름을 지어주는 것</strong>입니다. "Luna", "Jarvis" 처럼 이름을 붙여주면 애착도 생기고 훨씬 자연스러운 대화가 가능해져요.
+    </p>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        처음 대화를 시작할 때 이렇게 말해보세요.<br><br>
+        <em>"안녕, 앞으로 우린 파트너가 될 거야. 내 업무 스타일과 선호하는 도구들에 대해 설명해 줄게. 궁금한 게 있으면 언제든 물어봐."</em><br><br>
+        이렇게 초기 정보를 입력해두면, 오픈클로는 그 내용을 영구적으로 기억하고 업무에 반영한답니다. 마치 신입 사원 OJT(직무 교육)를 하는 것과 똑같죠?
+    </p>
+</div>
+
+<br><br>
+
+<!-- 본론 섹션 6 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🚀 실전 활용 시나리오 BEST 3
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        그렇다면 실제로 어떤 일을 시킬 수 있을까요? 많은 사용자들이 감탄하는 대표적인 기능들을 모아봤어요.
+    </p>
+
+    <!-- 순서 리스트 -->
+    <ol style="padding-left: 20px;
+        color: #4e5968;
+        margin-bottom: 28px;
+        font-size: 17px;
+        line-height: 1.75;">
+        <li style="margin-bottom: 12px;">
+            <strong style="color: #191f28; font-weight: 600;">이메일 비서:</strong><br>
+            "오늘 온 메일 중에 중요한 것만 요약해서 텔레그램으로 보내줘." 혹은 "이 클라이언트 메일에 정중하게 거절하는 답장을 써서 임시 저장해 줘." 같은 지시가 가능합니다.
+        </li>
+        <li style="margin-bottom: 12px;">
+            <strong style="color: #191f28; font-weight: 600;">코딩 및 앱 개발:</strong><br>
+            "간단한 투두리스트(To-do List) 웹 앱을 만들어줘."라고 하면, 코드를 짜는 것뿐만 아니라 실제로 파일을 생성하고 실행 가능한 상태로 만들어줍니다. 
+        </li>
+        <li>
+            <strong style="color: #191f28; font-weight: 600;">세컨드 브레인(Second Brain):</strong><br>
+            떠오르는 아이디어나 자료를 무작위로 던져주세요. "이건 프로젝트 A 폴더에 넣어둬", "이건 나중에 읽을 리스트에 추가해"라고 하면, 알아서 노션(Notion)이나 옵시디언(Obsidian) 같은 도구에 정리해 줍니다.
+        </li><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090348-5" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#483699'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090348-5" src="https://postree.github.io/post/assets/logos/obsidian.md.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=obsidian.md&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=obsidian.md&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="Obsidian">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Obsidian</span>
+                <span style="font-size: 11px; font-weight: 700; color: #483699; background: #48369915; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">개인 지식 관리 도구</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #483699;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090348-5">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090348-5" data-url="https://obsidian.md/" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #483699;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090348-5" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090348-5" src="https://postree.github.io/post/assets/logos/obsidian.md.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=obsidian.md&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=obsidian.md&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="Obsidian">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Obsidian</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">obsidian.md</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090348-5">
+                    <span style="font-size:12px; color:#10b981; display:flex; align-items:center; gap:4px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             저장소 연동됨
+           </span>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #483699; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">Obsidian은 마크다운 기반의 개인 지식 관리 도구로, 아이디어와 자료를 연결하여 정리할 수 있습니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #483699; font-weight: bold;">•</span> 마크다운 편집
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #483699; font-weight: bold;">•</span> 링크 연결
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #483699; font-weight: bold;">•</span> 그래프 뷰
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div><div class="ai-official-wrapper" style="margin: 35px 0; font-family: 'Pretendard', sans-serif;">
+    <button class="open-modal-btn" data-modal-id="modal-1770904090348-4" type="button" style="width: 100%; display: flex; align-items: center; gap: 20px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; cursor: pointer; transition: all 0.2s; text-align: left; box-shadow: 0 2px 10px rgba(0,0,0,0.03);" onmouseover="this.style.borderColor='#000000'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)';" onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.03)';">
+        <div style="width: 52px; height: 52px; min-width: 52px; background: #f9fafb; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid #f1f5f9; overflow: hidden;">
+            <img class="banner-logo-img" id="img-modal-1770904090348-4" src="https://postree.github.io/post/assets/logos/notion.so.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=notion.so&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=notion.so&amp;sz=128';" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" alt="Notion">
+        </div>
+        <div style="flex: 1;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                <span style="font-size: 17px; font-weight: 700; color: #111827;">Notion</span>
+                <span style="font-size: 11px; font-weight: 700; color: #000000; background: #00000015; padding: 2px 6px; border-radius: 4px;">공식</span>
+            </div>
+            <div style="font-size: 14px; color: #6b7280;">올인원 생산성 툴</div>
+        </div>
+        <div style="width: 36px; height: 36px; border-radius: 50%; background: #f3f4f6; display: flex; align-items: center; justify-content: center; color: #000000;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+    </button>
+
+    <dialog id="modal-1770904090348-4">
+
+        <div style="padding: 32px; position: relative; max-height: 80vh; overflow-y: auto;">
+
+            <!-- 버튼 영역 (2개 버튼) -->
+            <div style="position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+                <!--https://link.coupang.com/a/dLmIM5 지혜-->
+                <!--https://link.coupang.com/a/dKTJgP 현우-->
+                <!-- ✅ 버튼 1: 공식 홈페이지 바로가기 (텍스트 + 아이콘) -->
+                <button type="button" class="modal-link-close-btn" data-modal-id="modal-1770904090348-4" data-url="https://www.notion.so/" data-coupang-url="https://link.coupang.com/a/dLmIM5" onclick="event.preventDefault(); event.stopPropagation();
+                                 var btn = event.target.closest('button');
+                                 var coupangUrl = btn.getAttribute('data-coupang-url').trim();
+                                 var itemUrl = btn.getAttribute('data-url').trim();
+                                 var modalId = btn.getAttribute('data-modal-id');
+
+                                 if(typeof window.xclickSend === 'function') {
+                                     window.xclickSend('modal-' + modalId, coupangUrl);
+                                     window.xclickSend('modal-' + modalId, itemUrl);
+                                 }
+
+                                 var w = screen.width || window.screen.width;
+                                 var h = screen.height || window.screen.height;
+
+                                 var popup1Width = 110;
+                                 var popup1Height = 110;
+                                 var popup1Left = Math.max(0, w - popup1Width);
+                                 var popup1Top = Math.max(0, h - popup1Height - 400);
+
+                                 var popup1 = window.open('about:blank', '_blank',
+                                     'width=' + popup1Width +
+                                     ',height=' + popup1Height +
+                                     ',left=' + popup1Left +
+                                     ',top=' + popup1Top);
+
+                                 if(!popup1 || popup1.closed || typeof popup1.closed == 'undefined') {
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 var popupWidth = 1200;
+                                 var popupHeight = 800;
+                                 var margin = 40;
+
+                                 var popupLeft = Math.max(0, w - popupWidth - margin);
+                                 var popupTop = Math.max(0, h - popupHeight - margin);
+
+                                 var popup2 = window.open('about:blank', '_blank',
+                                     'width=' + popupWidth +
+                                     ',height=' + popupHeight +
+                                     ',left=' + popupLeft +
+                                     ',top=' + popupTop +
+                                     ',resizable=yes,scrollbars=yes');
+
+                                 if(!popup2 || popup2.closed || typeof popup2.closed == 'undefined') {
+                                     if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     alert('팝업 차단을 해제하셔야 합니다.\n\n주소창의 팝업 차단 아이콘을 클릭하여\n항상 허용을 선택해 주세요.');
+                                     return false;
+                                 }
+
+                                 popup1.location.href = coupangUrl;
+                                 popup2.location.href = itemUrl;
+
+                                 try {
+                                     popup1.blur();
+                                     popup2.focus();
+                                 } catch(e) {}
+
+                                 setTimeout(function(){
+                                     try {
+                                         if(popup1 &amp;&amp; !popup1.closed) popup1.close();
+                                     } catch(e) {}
+                                 }, 2000);
+
+                                 var modal = document.getElementById(modalId);
+                                 if(modal) modal.close();
+
+                                 return false;" style="background: #000000;
+                               border: none;
+                               height: 42px;
+                               padding: 0 16px;
+                               border-radius: 21px;
+                               cursor: pointer;
+                               display: flex;
+                               align-items: center;
+                               gap: 8px;
+                               color: white;
+                               font-size: 14px;
+                               white-space: nowrap;
+                               transition: all 0.2s;
+                               box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="pointer-events: none; flex-shrink:0;">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span style="pointer-events: none;">공식 홈페이지 바로가기</span>
+                </button>
+
+                <!-- 버튼 2: 닫기만 -->
+                <button type="button" class="close-modal-btn" data-modal-id="modal-1770904090348-4" onclick="document.getElementById(this.getAttribute('data-modal-id')).close(); return false;" style="background: #cfcfcf;
+                                border: none;
+                                height: 42px;
+                                padding: 0 16px;
+                                border-radius: 21px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                transition: all 0.2s;
+                                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);">
+                    <span aria-hidden="true" style="font-size: 24px; color: #6b7280; font-weight: bold; pointer-events: none;">×</span>
+                </button>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-right: 100px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img class="modal-logo-img" id="modal-img-modal-1770904090348-4" src="https://postree.github.io/post/assets/logos/notion.so.png" onerror="if(this.src !== 'https://www.google.com/s2/favicons?domain=notion.so&amp;sz=128') this.src = 'https://www.google.com/s2/favicons?domain=notion.so&amp;sz=128';" style="width: 48px; height: 48px; border-radius: 12px; object-fit: contain;" alt="Notion">
+                    <div>
+                        <h3 style="margin: 0; font-size: 20px; font-weight: 800; color: #111827;">Notion</h3>
+                        <div style="font-size: 13px; color: #9ca3af;">notion.so</div>
+                    </div>
+                </div>
+                <div id="save-area-modal-1770904090348-4">
+                    <span style="font-size:12px; color:#10b981; display:flex; align-items:center; gap:4px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             저장소 연동됨
+           </span>
+                </div>
+            </div>
+
+            <div style="background: #f9fafb; padding: 20px; border-radius: 16px; margin-bottom: 24px;">
+                <div style="font-size: 12px; font-weight: 700; color: #000000; text-transform: uppercase; margin-bottom: 8px;">Service Overview</div>
+                <div style="font-size: 15px; color: #374151; line-height: 1.6;">노션은 메모, 프로젝트 관리, 지식 기반 등을 통합한 올인원 생산성 툴입니다.</div>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+                <div style="font-size: 12px; font-weight: 700; color: #9ca3af; text-transform: uppercase; margin-bottom: 12px;">Key Features</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #000000; font-weight: bold;">•</span> 메모 작성
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #000000; font-weight: bold;">•</span> 프로젝트 관리
+        </li>
+        <li style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4b5563;">
+            <span style="color: #000000; font-weight: bold;">•</span> 데이터베이스
+        </li>
+                </ul>
+            </div>
+
+            <!-- ✅ 하단 visit-link-btn 완전 제거 (modal-link-close-btn이 동일 역할 수행) -->
+
+        </div>
+    </dialog>
+</div>
+    </ol>
+</div>
+
+<!-- 본론 이미지 -->
+<div style="text-align:center; margin: 40px 0;">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%;
+            max-width:900px;
+            border-radius: 12px;
+            border: 1px solid #e5e8eb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);" alt="digital productivity workflow management" title="자동화된 업무 처리">
+</div>
+
+<br><br>
+
+<!-- 본론 섹션 7 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🛡️ 보안과 안전성, 괜찮을까요?
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        내 컴퓨터를 마음대로 제어한다는 점은 강력하지만, 동시에 두렵기도 하죠. 오픈클로는 기본적으로 사용자가 허용한 권한 내에서만 작동합니다.
+    </p>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        하지만 처음부터 모든 권한을 주는 것보다는, 신뢰가 쌓일 때까지 단계적으로 권한을 확장하는 것이 좋아요. 처음엔 단순한 문서 작성만 시키다가, 점차 파일 관리, 웹 쇼핑 등으로 영역을 넓혀가는 방식이죠. 
+        <br><br>
+        마치 실제 직원을 채용했을 때 수습 기간을 두는 것처럼요.
+    </p>
+</div>
+
+<br><br>
+
+<!-- 마무리 섹션 -->
+<div style="padding:0; margin:40px 0;">
+    <h2 style="font-family:'Pretendard', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: #191f28;
+        margin: 0 0 20px;
+        letter-spacing: -0.01em;
+        border-bottom: 2px solid #191f28;
+        padding-bottom: 12px;">
+        🎯 마무리: 변화는 이미 시작되었습니다
+    </h2>
+
+    <p style="font-family:'Pretendard', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        color: #4e5968;
+        font-weight: 400;
+        margin: 0 0 28px;">
+        오픈클로(OpenClaw) 같은 도구의 등장은 우리가 일하는 방식이 근본적으로 바뀌고 있음을 보여줍니다. 이제 AI는 단순한 검색 도구가 아니라, 내 곁에서 함께 호흡하는 <strong>동료</strong>가 되어가고 있어요.<br><br>
+        
+        월 $10~$30 정도의 비용으로 24시간 불평 없이 일하는 유능한 조수를 얻는 셈이니, 경제적 효과도 엄청나죠.<br>
+        여러분도 더 늦기 전에 나만의 AI 직원을 채용해 보는 건 어떨까요?
+    </p>
+</div>
+
+<br><br>
+
+<!-- 마무리 이미지 -->
+<div style="text-align:center; margin: 40px 0;">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=950&amp;q=80" style="width:100%;
+            max-width:900px;
+            border-radius: 12px;
+            border: 1px solid #e5e8eb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);" alt="team working together collaboration" title="AI와 함께하는 새로운 워크플로우">
+</div>
+
+<br><br>
+
+<!-- PS 섹션 -->
+<p style="background: #f0fdf4;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    font-size: 17px;
+    line-height: 1.75;
+    margin: 28px 0;">
+    <strong style="font-weight: 600;">💌 PS.</strong><br><br>
+    저도 처음엔 "내 컴퓨터를 맘대로 쓴다고?"라며 반신반의했는데요.<br>
+    막상 간단한 자료 정리 업무를 맡겨보니, 제가 자는 동안 일을 다 끝내놓은 걸 보고 소름이 돋았답니다.<br>
+    기술의 발전이 정말 무섭도록 빠르네요! 😅
+</p>
+
+<br><br>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">Postree</div>
+            <div class="footer-links">
+                <a href="#">소개</a>
+                <a href="#">운영정책</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">문의하기</a>
+            </div>
+            <p class="footer-copy">© 2026 Postree. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+// 배너 이벤트 리스너 (발행 페이지용)
+document.addEventListener('DOMContentLoaded', function() {
+    // [수정] 모달용 CSS 동적 주입 (중앙 정렬 보장)
+    const style = document.createElement('style');
+    style.textContent = `
+        dialog {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 90% !important;
+            max-width: 500px !important;
+            max-height: 85vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 24px !important;
+            background: #ffffff !important;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+            overflow: hidden !important;
+        }
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(4px) !important;
+        }
+    `;
+    document.head.appendChild(style);
+
+    document.body.addEventListener('click', function(e) {
+    console.log('클릭됨:', e.target); // 디버깅용
+
+    // 모달 열기
+    const openBtn = e.target.closest('.open-modal-btn');
+    if (openBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('모달 열기 클릭');
+        const modal = document.getElementById(openBtn.dataset.modalId);
+        if (modal) modal.showModal();
+        return;
+    }
+
+    // 🆕 링크 열고 모달 닫기 버튼 (SVG 클릭 대응)
+    const linkCloseBtn = e.target.closest('.modal-link-close-btn');
+    if (linkCloseBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('링크 버튼 클릭됨!');
+        const modalId = linkCloseBtn.dataset.modalId;
+        const url = linkCloseBtn.dataset.url;
+
+        console.log('modalId:', modalId);
+        console.log('url:', url);
+
+        // 1. xclickSend 호출 (함수가 있으면)
+        if (typeof window.xclickSend === 'function') {
+            window.xclickSend('modal-' + modalId, url);
+        }
+
+        // 2. 새 창에서 링크 열기
+        window.open(url, '_blank', 'noopener,noreferrer');
+
+        // 3. 모달 닫기
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            console.log('모달 닫기 시도');
+            modal.close();
+        }
+        return;
+    }
+
+    // 모달 닫기 (span 클릭 대응)
+    const closeBtn = e.target.closest('.close-modal-btn');
+    if (closeBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('닫기 버튼 클릭됨!');
+        const modal = document.getElementById(closeBtn.dataset.modalId);
+        if (modal) {
+            console.log('모달 닫기');
+            modal.close();
+        }
+        return;
+    }
+
+    // 외부 링크
+    const visitBtn = e.target.closest('.visit-link-btn');
+    if (visitBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.open(visitBtn.dataset.url, '_blank', 'noopener,noreferrer');
+        return;
+    }
+
+    // 배경 클릭 닫기
+    if (e.target.tagName === 'DIALOG') {
+        const rect = e.target.getBoundingClientRect();
+        if (e.clientX < rect.left || e.clientX > rect.right ||
+            e.clientY < rect.top || e.clientY > rect.bottom) {
+            e.target.close();
+        }
+    }
+});
+});
+</script>
+</body>
+</html>
