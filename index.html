@@ -883,6 +883,33 @@
         dialog::-webkit-scrollbar { width: 6px; }
         dialog::-webkit-scrollbar-track { background: transparent; }
         dialog::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+    </style><style></style><style>
+        dialog {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 90% !important;
+            max-width: 500px !important;
+            height: auto !important;
+            max-height: 85vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 24px !important;
+            background: #ffffff !important;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+            overflow: hidden !important;
+            z-index: 99999 !important;
+        }
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(4px) !important;
+        }
+        /* 스크롤바 숨김 (깔끔하게) */
+        dialog::-webkit-scrollbar { width: 6px; }
+        dialog::-webkit-scrollbar-track { background: transparent; }
+        dialog::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
     </style></head>
 <body>
 
@@ -949,6 +976,22 @@
             </div>
             
             <div class="post-list" id="post-list">
+                <article class="post-item" onclick="location.href='post_1770953888746.html'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">2026. 2. 13.</span>
+                        </div>
+                        <h2 class="post-title">클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot</h2>
+                        <p class="post-desc">WhatsApp에서 명령 하나로 코드를 수정하고, 버그를 고치고, 심지어 Twitter에 답변까지? Clawbot 창시자 Peter가 말하는 AI 에이전트의 미래와 실전 활용법을 공개합니다.</p>
+                        <div class="post-tags">
+                            <span class="tag-pill">클로드 코드</span><span class="tag-pill">AI 코딩</span><span class="tag-pill">Clawbot</span><span class="tag-pill">메시징 AI</span><span class="tag-pill">개발자 도구</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&amp;fit=crop&amp;w=950&amp;q=80" alt="클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot">
+                    </div>
+                </article>
+            
                 <article class="post-item" onclick="location.href='post_1770952118033.html'">
                     <div class="post-text">
                         <div class="post-author-meta">
@@ -991,13 +1034,18 @@
             <div class="side-widget">
                 <div class="widget-title">많이 읽은 글</div>
                 <div class="rank-list" id="popular-posts">
-                <a href="post_1770952118033.html" class="rank-item">
+                <a href="post_1770953888746.html" class="rank-item">
                     <span class="rank-num">1</span>
+                    <span class="rank-text">클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot</span>
+                </a>
+            
+                <a href="post_1770952118033.html" class="rank-item">
+                    <span class="rank-num">2</span>
                     <span class="rank-text">오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기</span>
                 </a>
             
                 <a href="post_1770951988263.html" class="rank-item">
-                    <span class="rank-num">2</span>
+                    <span class="rank-num">3</span>
                     <span class="rank-text">오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기</span>
                 </a>
             </div>
@@ -1024,7 +1072,7 @@
                     <div class="topic-name">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 32 32" data-icon="carbon:hashtag" class="iconify iconify--carbon"><path fill="currentColor" d="M28 12v-2h-6V4h-2v6h-8V4h-2v6H4v2h6v8H4v2h6v6h2v-6h8v6h2v-6h6v-2h-6v-8Zm-8 8h-8v-8h8Z"></path></svg> IT
                     </div>
-                    <span class="topic-count">2</span>
+                    <span class="topic-count">3</span>
                 </div>
             </div>
             </div>
@@ -1078,25 +1126,6 @@
         "date": "2026. 2. 10.",
         "id": 1770952118033,
         "filename": "post_1770952118033.html",
-        "tags": [
-            "OpenClaw",
-            "AI 에이전트",
-            "Clawdbot",
-            "생산성 도구",
-            "자동화"
-        ]
-    },
-    {
-        "title": "오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기",
-        "category": "IT",
-        "excerpt": "브라우저 탭 속에 갇힌 AI가 아닙니다. 내 컴퓨터를 직접 제어하고, 모든 대화를 기억하며, 메신저로 업무를 지시받는 진정한 AI 에이전트 '오픈클로'의 설치부터 활용법까지 상세히 정리했습니다.",
-        "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=950&q=80",
-        "featuredImage": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=950&q=80",
-        "featuredImageAlt": "artificial intelligence assistant working on laptop code interface",
-        "keywords": "OpenClaw, AI 에이전트, Clawdbot, 생산성 도구, 자동화",
-        "date": "2026. 2. 10.",
-        "id": 1770951988263,
-        "filename": "post_1770951988263.html",
         "tags": [
             "OpenClaw",
             "AI 에이전트",
@@ -1161,4 +1190,50 @@
 
 
 
-<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea></body></html>
+<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" style="display: none;" placeholder="/* Enter your styles here. */"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><div id="vm-draft-manager" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(3px); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+                <div style="background:white; width:90%; max-width:550px; height:85vh; border-radius:20px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);">
+                    <div style="display:flex; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+                        <div id="tab-draft" style="flex:1; padding:12px; text-align:center; cursor:pointer; font-weight:700; font-size:14px; transition:all 0.2s; border-bottom:2px solid transparent; color:#64748b; border-bottom-color:#e2e8f0; background:#f8fafc;">임시 보관함 (1)</div>
+                        <div id="tab-published" style="flex:1; padding:12px; text-align:center; cursor:pointer; font-weight:700; font-size:14px; transition:all 0.2s; border-bottom:2px solid transparent; color:#3b82f6; border-bottom-color:#3b82f6; background:#eff6ff;">발행 완료 (2)</div>
+                    </div>
+
+                    <div style="flex:1; overflow-y:auto; background:#ffffff;">
+                        
+                    <div class="dm-item" data-id="1770953888746" style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border-bottom: 1px solid rgb(241, 245, 249); background: white; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'">
+                        <div style="flex:1;">
+                            <div style="font-weight:600; font-size:15px; margin-bottom:6px; color:#1e293b; display:flex; align-items:center; gap:8px;">
+                                클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot
+                                <span style="background:#dcfce7; color:#166534; padding:2px 8px; border-radius:10px; font-weight:600; font-size:11px;">IT</span>
+                            </div>
+                            <div style="font-size:12px; color:#64748b;">🕒 2026. 2. 13.</div>
+                        </div>
+                        <div onclick="event.stopPropagation()" style="display:flex; align-items:center;">
+                            
+                            <a href="post_1770953888746.html" target="_blank" onclick="event.stopPropagation()" style="padding:6px 12px; background:#10b981; color:white; border:none; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; margin-right:6px;">보기</a>
+                            <button class="dm-btn-delete-published" data-id="1770953888746" style="padding:6px 12px; background:#fee2e2; color:#ef4444; border:none; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer;">삭제</button>
+                        
+                        </div>
+                    </div>
+                    <div class="dm-item" data-id="1770952118033" style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border-bottom: 1px solid rgb(241, 245, 249); background: white; cursor: pointer; transition: 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'">
+                        <div style="flex:1;">
+                            <div style="font-weight:600; font-size:15px; margin-bottom:6px; color:#1e293b; display:flex; align-items:center; gap:8px;">
+                                오픈클로(OpenClaw) 완벽 가이드 | 나만의 24/7 AI 직원 채용하기
+                                <span style="background:#dcfce7; color:#166534; padding:2px 8px; border-radius:10px; font-weight:600; font-size:11px;">IT</span>
+                            </div>
+                            <div style="font-size:12px; color:#64748b;">🕒 2026. 2. 10.</div>
+                        </div>
+                        <div onclick="event.stopPropagation()" style="display:flex; align-items:center;">
+                            
+                            <a href="post_1770952118033.html" target="_blank" onclick="event.stopPropagation()" style="padding:6px 12px; background:#10b981; color:white; border:none; border-radius:6px; font-size:12px; font-weight:600; text-decoration:none; margin-right:6px;">보기</a>
+                            <button class="dm-btn-delete-published" data-id="1770952118033" style="padding:6px 12px; background:#fee2e2; color:#ef4444; border:none; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer;">삭제</button>
+                        
+                        </div>
+                    </div>
+                    </div>
+
+                    <div style="padding:20px 24px; border-top:1px solid #f1f5f9; background:#ffffff; display:flex; flex-direction:column; gap:10px;">
+                        <button id="dm-sync-github" style="width:100%; padding:14px; background:#059669; color:white; border:none; border-radius:12px; font-weight:700; font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 4px 12px rgba(5, 150, 105, 0.2);" disabled="">GitHub 동기화 중...</button>
+                        <button id="dm-close" style="padding:10px; background:none; border:none; color:#64748b; font-size:13px; cursor:pointer; text-decoration:underline;">닫기</button>
+                    </div>
+                </div>
+            </div></body></html>
