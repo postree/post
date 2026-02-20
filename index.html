@@ -3,389 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Postree | 깊이 있는 시선</title>
+    <title>Postree | Insight Platform</title>
     
-    <!-- 폰트: 본문용(Pretendard), 제목용(나눔명조) -->
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Iconify Icons -->
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <!-- Iconify Script -->
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     
     <style>
         :root {
             --bg-page: #ffffff;
-            --text-main: #191f28;   
-            --text-body: #333333;   
-            --text-gray: #8b95a1;
-            
-            --primary: #00c6be;     /* 브런치 감성의 민트 포인트 */
-            --border: #e6e6e6;      
-            --bg-gray: #f9f9f9;     
-            
-            --max-width: 1080px;
-            --header-h: 70px;
+            --text-main: #191f28;
+            --text-sub: #4e5968;
+            --text-light: #8b95a1;
+            --primary: #3b82f6;
+            --border: #e5e8eb;
+            --bg-gray: #f9fafb;
+            --max-width: 1140px;
+            --header-h: 72px;
         }
 
-        /* Reset */
+        .rank-list { display: flex; flex-direction: column; gap: 16px; }
+        .rank-item { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+        .rank-num { font-size: 18px; font-weight: 700; color: var(--primary); line-height: 1; margin-top: 2px; }
+        .rank-text { font-size: 14px; color: #444; line-height: 1.4; transition: 0.2s; }
+        .rank-item:hover .rank-text { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
+
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag-btn { font-size: 12px; color: #666; padding: 6px 14px; border: 1px solid #ddd; border-radius: 20px; background: #fff; transition: all 0.2s; }
+        .tag-btn:hover { border-color: var(--primary); color: var(--primary); }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body { 
-            font-family: 'Pretendard', sans-serif;
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
             background-color: var(--bg-page);
             color: var(--text-main);
-            line-height: 1.65;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.01em;
         }
-
-        /* 제목은 명조체로 감성 더하기 */
-        h1, h2, h3, .serif { font-family: 'Nanum Myeongjo', serif; word-break: keep-all; }
-
         a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
         a:hover { opacity: 0.7; }
         ul { list-style: none; }
         img { display: block; width: 100%; height: 100%; object-fit: cover; }
         button { background: none; border: none; cursor: pointer; padding: 0; }
 
-        /* [Header] 미니멀 & 감성 */
         .site-header {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
         }
         .header-inner {
             max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
-            height: var(--header-h); 
+            height: var(--header-h);
             display: flex; align-items: center; justify-content: space-between;
         }
-        
-        .logo { 
-            font-family: 'Nanum Myeongjo', serif; font-size: 24px; font-weight: 700; 
-            color: var(--text-main); letter-spacing: -0.5px;
+        .logo-area { display: flex; align-items: center; gap: 32px; }
+        .logo { font-size: 22px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 4px; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 24px; }
+        .nav a { font-size: 15px; font-weight: 600; color: var(--text-sub); }
+        .nav a:hover { color: var(--text-main); }
+        .header-utils { display: flex; align-items: center; gap: 20px; }
+        .search-box { position: relative; width: 240px; }
+        .search-input {
+            width: 100%; padding: 8px 16px 8px 36px;
+            font-size: 14px; background-color: #f2f4f6;
+            border: 1px solid transparent; border-radius: 20px;
+            color: var(--text-main); transition: all 0.2s;
         }
-        
-        .nav { display: flex; gap: 32px; }
-        .nav a { font-size: 15px; color: #555; font-weight: 500; }
-        .nav a:hover { color: var(--primary); }
+        .search-input:focus { background-color: #fff; border-color: var(--primary); outline: none; }
+        .search-icon-pos { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-light); pointer-events: none; }
+        .icon-btn { color: var(--text-sub); display: flex; align-items: center; justify-content: center; font-size: 24px; transition: color 0.2s; }
+        .icon-btn:hover { color: var(--text-main); }
 
-        .header-icons { display: flex; gap: 20px; align-items: center; }
-        .icon-btn { color: #333; font-size: 22px; display: flex; }
-
-
-        /* [Layout] */
         .container {
-            max-width: var(--max-width); margin: 0 auto; padding: 60px 24px;
-            display: grid; grid-template-columns: 1fr 300px; gap: 70px;
+            max-width: var(--max-width); margin: 0 auto; padding: 50px 24px;
+            display: grid; grid-template-columns: 1fr 300px; gap: 60px;
         }
 
-        /* [Hero Section] 큰 이미지 + 텍스트 오버레이 느낌 */
-        .hero-section { grid-column: 1 / -1; margin-bottom: 70px; }
-        .hero-banner {
-            position: relative; width: 100%; height: 420px; border-radius: 2px; overflow: hidden;
-            display: flex; align-items: flex-end; /* 텍스트 하단 배치 */
+        .hero-section { grid-column: 1 / -1; margin-bottom: 60px; }
+        .hero-card {
+            display: grid; grid-template-columns: 1.2fr 1fr;
+            background: var(--bg-gray); border-radius: 16px; overflow: hidden;
+            border: 1px solid var(--border); cursor: pointer;
         }
-        .hero-bg {
-            position: absolute; inset: 0; 
-            background: url('https://images.unsplash.com/photo-1499750310159-5b5f0969755b?auto=format&fit=crop&w=1600&q=80') center/cover;
-            transition: transform 1s ease;
-        }
-        .hero-banner:hover .hero-bg { transform: scale(1.03); }
-        
-        /* 그라데이션 오버레이 */
-        .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
-        }
+        .hero-card:hover .hero-img img { transform: scale(1.03); }
+        .hero-content { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+        .hero-label { font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+        .hero-title { font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 16px; color: var(--text-main); word-break: keep-all; }
+        .hero-desc { font-size: 17px; color: var(--text-sub); line-height: 1.6; margin-bottom: 24px; }
+        .hero-img { height: 100%; min-height: 380px; overflow: hidden; }
+        .hero-img img { transition: transform 0.5s ease; }
 
-        .hero-content { 
-            position: relative; z-index: 10; padding: 50px; color: white; width: 100%;
-        }
-        .hero-tag { 
-            font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--primary); 
-            text-transform: uppercase; margin-bottom: 12px; display: inline-block;
-            background: rgba(255,255,255,0.1); padding: 4px 10px; backdrop-filter: blur(5px);
-        }
-        .hero-title { font-size: 34px; font-weight: 700; line-height: 1.3; margin-bottom: 10px; }
-        .hero-desc { font-size: 16px; opacity: 0.9; font-weight: 300; max-width: 600px; }
+        .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+        .section-title { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
 
-
-        /* [Post List] 브런치 스타일 리스트 */
-        .section-label { 
-            font-size: 14px; color: var(--text-gray); font-weight: 700; 
-            margin-bottom: 30px; letter-spacing: 1px; text-transform: uppercase;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .section-label::after { content: ''; height: 1px; flex: 1; background: #eee; }
-
-        .post-list { display: flex; flex-direction: column; gap: 50px; }
-        
-        .post-item {
-            display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;
-            cursor: pointer; padding-bottom: 50px; border-bottom: 1px solid #f0f0f0;
-        }
+        .post-list { display: flex; flex-direction: column; gap: 40px; }
+        .post-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; cursor: pointer; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
         .post-item:last-child { border-bottom: none; }
-
         .post-text { flex: 1; display: flex; flex-direction: column; }
-        
-        .post-title {
-            font-size: 24px; font-weight: 700; line-height: 1.35; margin-bottom: 12px;
-            color: var(--text-main); transition: color 0.2s;
-        }
+        .post-author-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 13px; color: var(--text-main); font-weight: 500; }
+        .date { color: var(--text-light); font-weight: 400; }
+        .post-title { font-size: 22px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; color: var(--text-main); word-break: keep-all; transition: color 0.2s; }
         .post-item:hover .post-title { color: var(--primary); }
+        .post-desc { font-size: 15px; color: var(--text-sub); line-height: 1.6; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .post-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag-pill { font-size: 12px; color: var(--text-light); background: #f2f4f6; padding: 4px 10px; border-radius: 12px; font-weight: 500; }
+        .post-thumb { width: 160px; height: 120px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background: #f2f4f6; border: 1px solid rgba(0,0,0,0.03); }
+        .post-thumb img { transition: transform 0.3s; }
+        .post-item:hover .post-thumb img { transform: scale(1.05); }
 
-        .post-desc {
-            font-size: 15px; color: var(--text-body); line-height: 1.7; margin-bottom: 20px;
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-            font-weight: 300; /* 얇은 폰트로 감성적인 느낌 */
-        }
-        
-        .post-meta { 
-            font-size: 12px; color: #999; display: flex; gap: 8px; align-items: center; 
-        }
-        .meta-sep { width: 1px; height: 10px; background: #ddd; }
-
-        .post-thumb {
-            width: 150px; height: 150px; flex-shrink: 0; background: #f8f8f8;
-            border: 1px solid rgba(0,0,0,0.05); /* 썸네일 테두리 */
-        }
-        .post-thumb img { transition: opacity 0.3s; }
-        .post-item:hover .post-thumb img { opacity: 0.85; }
-
-
-        /* [Sidebar] */
         .sidebar { position: sticky; top: 100px; height: fit-content; }
-        
-        /* 운영자 소개 (구독 버튼 없이 담백하게) */
-        .about-box {
-            padding: 30px; background: #fbfbfb; border: 1px solid #eee; 
-            text-align: center; margin-bottom: 50px;
+        .side-widget { margin-bottom: 40px; }
+        .widget-title { font-size: 14px; font-weight: 700; color: var(--text-light); margin-bottom: 16px; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.03em; }
+        .topic-list { display: flex; flex-direction: column; gap: 10px; }
+        .topic-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--border); cursor: pointer; }
+        .topic-name { font-size: 14px; font-weight: 500; color: var(--text-sub); display: flex; align-items: center; gap: 8px; }
+        .topic-count { font-size: 12px; color: var(--text-light); background: #f2f4f6; padding: 2px 8px; border-radius: 10px; }
+        .topic-item:hover .topic-name { color: var(--primary); }
+
+        .footer { background: var(--bg-gray); border-top: 1px solid var(--border); padding: 60px 0; margin-top: 80px; }
+        .footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; text-align: center; }
+        .footer-logo { font-weight: 800; font-size: 20px; color: var(--text-main); margin-bottom: 12px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; }
+        .footer-links a { font-size: 13px; color: var(--text-sub); }
+        .footer-copy { font-size: 13px; color: var(--text-light); }
+
+        /* dialog & tab - Tampermonkey CMS용 (단일 정의) */
+        dialog {
+            position: fixed !important; top: 50% !important; left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 90% !important; max-width: 500px !important;
+            height: auto !important; max-height: 85vh !important;
+            margin: 0 !important; padding: 0 !important;
+            border: none !important; border-radius: 24px !important;
+            background: #ffffff !important;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+            overflow: hidden !important; z-index: 99999 !important;
         }
-        .about-logo { 
-            font-family: 'Nanum Myeongjo', serif; font-size: 20px; font-weight: 700; margin-bottom: 12px; 
-            color: var(--text-main);
-        }
-        .about-text { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 0; }
-        .about-links { margin-top: 16px; display: flex; justify-content: center; gap: 12px; }
-        .about-icon { font-size: 18px; color: #aaa; transition: 0.2s; }
-        .about-icon:hover { color: var(--primary); }
+        dialog::backdrop { background: rgba(0,0,0,0.5) !important; backdrop-filter: blur(4px) !important; }
+        dialog::-webkit-scrollbar { width: 6px; }
+        dialog::-webkit-scrollbar-track { background: transparent; }
+        dialog::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+        .tab-container { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; border-bottom: 1px solid #e2e8f0; }
+        .tab-btn { padding: 8px 16px; border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; font-weight: 600; color: #64748b; transition: all 0.2s; position: relative; top: 1px; }
+        .tab-btn:hover { background: #eff6ff; color: #3b82f6; }
+        .tab-btn.active { background: #ffffff; border-bottom: 1px solid #ffffff; color: #3b82f6; font-weight: 700; z-index: 2; }
+        .tab-container::-webkit-scrollbar { height: 4px; }
+        .tab-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
 
-
-        .widget-title { 
-            font-size: 13px; font-weight: 700; color: #333; border-bottom: 2px solid #333;
-            padding-bottom: 8px; margin-bottom: 20px; display: inline-block;
-        }
-
-        /* 랭킹 리스트 (심플) */
-        .rank-list { display: flex; flex-direction: column; gap: 16px; }
-        .rank-item { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
-        .rank-num { 
-            font-family: 'Nanum Myeongjo', serif; font-size: 18px; font-weight: 700; 
-            color: var(--primary); line-height: 1; margin-top: 2px;
-        }
-        .rank-text { font-size: 14px; color: #444; line-height: 1.4; transition: 0.2s; }
-        .rank-item:hover .rank-text { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
-
-        /* 키워드 태그 (감성적인 둥근 라인) */
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag-btn {
-            font-size: 12px; color: #666; padding: 6px 14px; 
-            border: 1px solid #ddd; border-radius: 20px; background: #fff;
-            transition: all 0.2s;
-        }
-        .tag-btn:hover { border-color: var(--primary); color: var(--primary); }
-
-
-        /* [Footer] */
-        .footer { 
-            border-top: 1px solid #eee; padding: 60px 0; margin-top: 100px; 
-            text-align: center; background: #fff;
-        }
-        .footer-logo { font-family: 'Nanum Myeongjo'; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
-        .footer-copy { font-size: 12px; color: #aaa; }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; gap: 50px; }
+        @media (max-width: 1024px) {
+            .container { grid-template-columns: 1fr; gap: 40px; }
             .sidebar { display: none; }
-            .hero-banner { height: 320px; }
-            .hero-title { font-size: 26px; }
-            .hero-content { padding: 30px; }
+            .hero-card { grid-template-columns: 1fr; }
+            .hero-img { height: 280px; order: -1; }
         }
-        @media (max-width: 600px) {
-            .post-item { flex-direction: column-reverse; gap: 16px; align-items: flex-start; }
-            .post-thumb { width: 100%; height: 200px; }
+        @media (max-width: 768px) {
             .nav { display: none; }
+            .search-box { width: 140px; }
+            .post-item { flex-direction: column-reverse; gap: 16px; align-items: flex-start; }
+            .post-thumb { width: 100%; height: 200px; border-radius: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 헤더: 심플하고 깨끗하게 -->
     <header class="site-header">
         <div class="header-inner">
-            <a href="index.html" class="logo">Postree</a>
-            
-            <nav class="nav">
-                <a href="#">인사이트</a>
-                <a href="#">테크노트</a>
-                <a href="#">머니로그</a>
-            </nav>
-
-            <div class="header-icons">
-                <button class="icon-btn" title="검색">
-                    <span class="iconify" data-icon="carbon:search"></span>
+            <div class="logo-area">
+                <a href="index.html" class="logo">
+                    <span class="iconify" data-icon="carbon:ibm-cloud-pak-manta" style="font-size: 28px;"></span>
+                    Postree
+                </a>
+                <nav class="nav">
+                    <a href="#">인사이트</a>
+                    <a href="#">테크</a>
+                    <a href="#">머니 &amp; 팁</a>
+                </nav>
+            </div>
+            <div class="header-utils">
+                <div class="search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" class="search-icon-pos"><path fill="currentColor" d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9"></path></svg>
+                    <input type="text" class="search-input" placeholder="검색">
+                </div>
+                <button class="icon-btn" aria-label="메뉴">
+                    <span class="iconify" data-icon="carbon:menu" style="font-size: 24px;"></span>
                 </button>
             </div>
         </div>
     </header>
 
     <div class="container">
-        
-        <!-- [Hero] 감성적인 배너 -->
+
         <section class="hero-section">
-            <article class="hero-banner" onclick="location.href='#'">
-                <div class="hero-bg"></div>
-                <div class="hero-overlay"></div>
+            <article class="hero-card" id="hero-card" onclick="location.href='#'">
                 <div class="hero-content">
-                    <span class="hero-tag">Weekly Best</span>
-                    <h1 class="hero-title">기록하지 않으면 사라지는 것들에 대하여</h1>
-                    <p class="hero-desc">개발자로 살아가며 마주하는 기술적 고민과 성장의 순간들. 휘발되지 않도록 이곳에 정성껏 기록합니다.</p>
+                    <div class="hero-label">
+                        <span class="iconify" data-icon="carbon:star-filled"></span> Editor's Pick
+                    </div>
+                    <h1 class="hero-title" id="hero-title">최신 아티클을 확인해보세요</h1>
+                    <p class="hero-desc" id="hero-desc">Postree에서 인사이트 가득한 콘텐츠를 만나보세요.</p>
+                </div>
+                <div class="hero-img">
+                    <img id="hero-img" src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=90" alt="Hero">
                 </div>
             </article>
         </section>
 
-        <!-- [Main Content] -->
         <main class="main-content">
-            <div class="section-label">Latest Stories</div>
-            
-            <div class="post-list">
-                <!-- Post 1 -->
-                <article class="post-item" onclick="location.href='#'">
-                    <div class="post-text">
-                        <h2 class="post-title">경제 유튜브 채널, 얼굴 없이 월 1,000만 원 수익 만들기</h2>
-                        <p class="post-desc">회사 밖에서 나만의 머니 파이프라인을 만드는 일은 생각보다 어렵지 않습니다. AI 도구를 활용해 콘텐츠를 자동화하고 수익을 창출했던 지난 6개월간의 현실적인 기록을 공유합니다.</p>
-                        <div class="post-meta">
-                            <span>머니로그</span>
-                            <span class="meta-sep"></span>
-                            <span>2시간 전</span>
-                        </div>
-                    </div>
-                    <div class="post-thumb">
-                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=400&q=80" alt="Thumb">
-                    </div>
-                </article>
-
-                <!-- Post 2 -->
-                <article class="post-item" onclick="location.href='#'">
-                    <div class="post-text">
-                        <h2 class="post-title">개발자 없이 AI 에이전트를 내 컴퓨터에 심는 법</h2>
-                        <p class="post-desc">구글 오팔(Opal)과 오픈소스 도구들을 활용하면 누구나 자신만의 AI 비서를 가질 수 있습니다. 코딩을 몰라도 가능한 노코드 자동화의 세계로 여러분을 초대합니다.</p>
-                        <div class="post-meta">
-                            <span>테크노트</span>
-                            <span class="meta-sep"></span>
-                            <span>1일 전</span>
-                        </div>
-                    </div>
-                    <div class="post-thumb">
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=400&q=80" alt="Thumb">
-                    </div>
-                </article>
-
-                <!-- Post 3 -->
-                <article class="post-item" onclick="location.href='#'">
-                    <div class="post-text">
-                        <h2 class="post-title">ChatGPT + Whisk: 30분 만에 애니메이션 스토리보드 짜기</h2>
-                        <p class="post-desc">단순히 기술력이 좋아서가 아닙니다. AI 도구 3가지만 조합하면 누구나 픽사급 스토리텔러가 될 수 있습니다. 창작의 장벽이 무너지는 순간을 경험해보세요.</p>
-                        <div class="post-meta">
-                            <span>인사이트</span>
-                            <span class="meta-sep"></span>
-                            <span>2일 전</span>
-                        </div>
-                    </div>
-                    <div class="post-thumb">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Thumb">
-                    </div>
-                </article>
-                
-                <!-- Post 4 -->
-                <article class="post-item" onclick="location.href='#'">
-                    <div class="post-text">
-                        <h2 class="post-title">직장인이 놓치고 있는 숨은 환급금 5가지</h2>
-                        <p class="post-desc">연말정산 시즌이 지났다고 안심하지 마세요. 건강보험료부터 카드 포인트까지, 신청하지 않으면 국고로 환수되는 당신의 소중한 돈을 찾아드립니다.</p>
-                        <div class="post-meta">
-                            <span>생활정보</span>
-                            <span class="meta-sep"></span>
-                            <span>3일 전</span>
-                        </div>
-                    </div>
-                    <div class="post-thumb">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=400&q=80" alt="Thumb">
-                    </div>
-                </article>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="iconify" data-icon="carbon:flash" style="color: var(--primary);"></span> 최신 아티클
+                </h2>
+                <div style="font-size: 13px; color: var(--text-light); font-weight: 500;">
+                    <span style="color: var(--text-main); cursor: pointer;">최신순</span> · <span style="cursor: pointer;">인기순</span>
+                </div>
             </div>
+            <div class="post-list" id="post-list"></div>
         </main>
 
-        <!-- [Sidebar] -->
         <aside class="sidebar">
-            
-            <!-- [운영자 소개] 구독 버튼 대신 담백한 소개 -->
-            <div class="about-box">
-                <div class="about-logo">Postree</div>
-                <p class="about-text">
-                    기술과 일상, 그리고 성장에 대한 이야기를 기록합니다. 
-                    복잡한 세상을 조금 더 명쾌하게 바라보고 싶습니다.
-                </p>
-                <div class="about-links">
-                    <a href="#" class="about-icon"><span class="iconify" data-icon="carbon:email"></span></a>
-                    <a href="#" class="about-icon"><span class="iconify" data-icon="carbon:logo-github"></span></a>
-                    <a href="#" class="about-icon"><span class="iconify" data-icon="carbon:logo-instagram"></span></a>
-                </div>
-            </div>
-
-            <!-- [인기 글] -->
             <div class="side-widget">
                 <div class="widget-title">많이 읽은 글</div>
-                <div class="rank-list">
-                    <a href="#" class="rank-item">
-                        <span class="rank-num">1</span>
-                        <span class="rank-text">AI 영상 자동화 에이전트 완벽 가이드</span>
-                    </a>
-                    <a href="#" class="rank-item">
-                        <span class="rank-num">2</span>
-                        <span class="rank-text">경제 유튜브 채널 수익 공개</span>
-                    </a>
-                    <a href="#" class="rank-item">
-                        <span class="rank-num">3</span>
-                        <span class="rank-text">개발자 없이 AI 에이전트 만들기</span>
-                    </a>
-                    <a href="#" class="rank-item">
-                        <span class="rank-num">4</span>
-                        <span class="rank-text">2026년 프론트엔드 기술 트렌드</span>
-                    </a>
-                </div>
+                <div class="rank-list" id="popular-posts"></div>
             </div>
-
-            <!-- [키워드] -->
             <div class="side-widget">
                 <div class="widget-title">주요 키워드</div>
-                <div class="tag-cloud">
-                    <a href="#" class="tag-btn">#개발자성장</a>
-                    <a href="#" class="tag-btn">#사이드프로젝트</a>
-                    <a href="#" class="tag-btn">#머니파이프라인</a>
-                    <a href="#" class="tag-btn">#AI도구</a>
-                    <a href="#" class="tag-btn">#생산성</a>
-                </div>
+                <div class="tag-cloud" id="tag-cloud"></div>
             </div>
-
+            <div class="side-widget">
+                <div class="widget-title">
+                    <span class="iconify" data-icon="carbon:trending-up"></span> Trending Topics
+                </div>
+                <div class="topic-list" id="category-list"></div>
+            </div>
         </aside>
 
     </div>
 
     <footer class="footer">
-        <div class="footer-logo">Postree</div>
-        <p class="footer-copy">© 2026 Postree. All rights reserved.</p>
+        <div class="footer-inner">
+            <div class="footer-logo">Postree</div>
+            <div class="footer-links">
+                <a href="#">소개</a>
+                <a href="#">운영정책</a>
+                <a href="#">개인정보처리방침</a>
+                <a href="#">문의하기</a>
+            </div>
+            <p class="footer-copy">© 2026 Postree. All rights reserved.</p>
+        </div>
     </footer>
+
+    <!-- 데이터 -->
+    <script id="db-store" type="application/json">[
+    {
+        "title": "연말정산 카드 소득공제 25% 황금비율 총정리 (신용카드 vs 체크카드 전략)",
+        "category": "경제/재테크",
+        "excerpt": "카드 많이 썼는데 환급이 적었던 이유, 바로 25% 기준을 몰랐기 때문이에요. 신용카드와 체크카드를 언제 어떻게 나눠 써야 환급액이 최대가 되는지 황금비율 전략을 정리했습니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "연말정산 카드 소득공제",
+        "keywords": "연말정산, 소득공제, 신용카드, 체크카드, 절세전략",
+        "date": "2026. 2. 20.",
+        "id": 1001,
+        "filename": "post/연말정산-카드-소득공제-25-황금비율-총정리-신용카드-vs-체크카드-전략.html",
+        "tags": ["연말정산", "소득공제", "신용카드", "체크카드", "절세전략"]
+    },
+    {
+        "title": "세액공제 vs 소득공제 차이 완벽 정리 (2026 연말정산 절세 전략)",
+        "category": "경제/재테크",
+        "excerpt": "세액공제와 소득공제, 이름은 비슷하지만 세금을 줄이는 방식이 완전히 달라요. 두 개념의 차이부터 실제 계산 예시, 연금저축·IRP를 활용한 최적 절세 전략까지 한 번에 정리했습니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "세액공제 소득공제 차이",
+        "keywords": "세액공제, 소득공제, 연말정산, IRP, 연금저축",
+        "date": "2026. 2. 20.",
+        "id": 1002,
+        "filename": "post/세액공제-vs-소득공제-차이-완벽-정리-2026-연말정산-절세-전략.html",
+        "tags": ["세액공제", "소득공제", "연말정산", "IRP", "연금저축"]
+    },
+    {
+        "title": "문화비 소득공제 신청 방법 총정리 (헬스장·도서·공연 2026 최신판)",
+        "category": "경제/재테크",
+        "excerpt": "2025년 하반기부터 헬스장·필라테스까지 문화비 소득공제 대상이 확대됐어요! 신청 방법, 인정 항목, 결제 수단 조건, 가맹점 확인법까지 2026년 최신 기준으로 한 번에 정리했습니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "문화비 소득공제",
+        "keywords": "문화비소득공제, 헬스장공제, 연말정산, 도서공연, 소득공제",
+        "date": "2026. 2. 20.",
+        "id": 1003,
+        "filename": "post/문화비-소득공제-신청-방법-총정리-헬스장도서공연-2026-최신판.html",
+        "tags": ["문화비소득공제", "헬스장공제", "연말정산", "도서공연", "소득공제"]
+    },
+    {
+        "title": "주택담보대출 이자 소득공제 완벽 가이드 (개인사업자도 받을 수 있을까?)",
+        "category": "경제/재테크",
+        "excerpt": "유주택자가 누릴 수 있는 장기주택저당차입금 이자상환액 소득공제, 직장인은 물론 근로소득이 있는 개인사업자에게도 종합소득세 절세 효과가 있어요.",
+        "thumbnail": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "주택담보대출 소득공제",
+        "keywords": "주택담보대출, 이자소득공제, 연말정산, 개인사업자, 절세",
+        "date": "2026. 2. 20.",
+        "id": 1004,
+        "filename": "post/주택담보대출-이자-소득공제-완벽-가이드-개인사업자도-받을-수-있을까.html",
+        "tags": ["주택담보대출", "이자소득공제", "연말정산", "개인사업자", "절세"]
+    },
+    {
+        "title": "1클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot",
+        "category": "IT",
+        "excerpt": "WhatsApp에서 명령 하나로 코드를 수정하고, 버그를 고치고, 심지어 Twitter에 답변까지? Clawbot 창시자 Peter가 말하는 AI 에이전트의 미래와 실전 활용법을 공개합니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "AI collaboration and coding workspace",
+        "keywords": "클로드 코드, AI 코딩, Clawbot, 메시징 AI, 개발자 도구",
+        "date": "2026. 2. 13.",
+        "id": 1770966473171,
+        "filename": "post/post_1770966473171.html",
+        "tags": ["클로드 코드", "AI 코딩", "Clawbot", "메시징 AI", "개발자 도구"]
+    },
+    {
+        "title": "클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot",
+        "category": "IT",
+        "excerpt": "WhatsApp에서 명령 하나로 코드를 수정하고, 버그를 고치고, 심지어 Twitter에 답변까지? Clawbot 창시자 Peter가 말하는 AI 에이전트의 미래와 실전 활용법을 공개합니다.",
+        "thumbnail": "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=950&q=80",
+        "featuredImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=950&q=80",
+        "featuredImageAlt": "AI collaboration and coding workspace",
+        "keywords": "클로드 코드, AI 코딩, Clawbot, 메시징 AI, 개발자 도구",
+        "date": "2026. 2. 13.",
+        "id": 1770965513081,
+        "filename": "post/post_1770965513081.html",
+        "tags": ["클로드 코드", "AI 코딩", "Clawbot", "메시징 AI", "개발자 도구"]
+    }
+]</script>
+
+    <script>
+        (function() {
+            let posts = [];
+            try { posts = JSON.parse(document.getElementById('db-store').textContent || '[]'); } catch(e) { console.error(e); }
+
+            const postList = document.getElementById('post-list');
+            const popularPosts = document.getElementById('popular-posts');
+            const categoryList = document.getElementById('category-list');
+            const tagCloud = document.getElementById('tag-cloud');
+
+            // 히어로 카드 (첫 번째 포스트로 자동 설정)
+            if (posts.length > 0) {
+                const hero = posts[0];
+                document.getElementById('hero-card').onclick = function() { location.href = hero.filename; };
+                document.getElementById('hero-title').textContent = hero.title;
+                document.getElementById('hero-desc').textContent = hero.excerpt;
+                if (hero.thumbnail) document.getElementById('hero-img').src = hero.thumbnail;
+            }
+
+            // 포스트 리스트
+            postList.innerHTML = posts.map(post => `
+                <article class="post-item" onclick="location.href='${post.filename}'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">${post.date}</span>
+                        </div>
+                        <h2 class="post-title">${post.title}</h2>
+                        <p class="post-desc">${post.excerpt}</p>
+                        <div class="post-tags">
+                            ${(post.tags || []).map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="${post.thumbnail}" alt="${post.title}" loading="lazy">
+                    </div>
+                </article>
+            `).join('');
+
+            // 인기 글 (최대 5개)
+            popularPosts.innerHTML = posts.slice(0, 5).map((post, idx) => `
+                <a href="${post.filename}" class="rank-item">
+                    <span class="rank-num">${idx + 1}</span>
+                    <span class="rank-text">${post.title}</span>
+                </a>
+            `).join('');
+
+            // 카테고리 카운트
+            const categoryCount = {};
+            posts.forEach(p => { categoryCount[p.category] = (categoryCount[p.category] || 0) + 1; });
+            categoryList.innerHTML = Object.entries(categoryCount).map(([cat, count]) => `
+                <div class="topic-item">
+                    <div class="topic-name">
+                        <span class="iconify" data-icon="carbon:hashtag"></span> ${cat}
+                    </div>
+                    <span class="topic-count">${count}</span>
+                </div>
+            `).join('');
+
+            // 태그 클라우드 (중복 제거, 최대 10개)
+            const allTags = [...new Set(posts.flatMap(p => p.tags || []))].slice(0, 10);
+            tagCloud.innerHTML = allTags.map(tag => `<a href="#" class="tag-btn">#${tag}</a>`).join('');
+        })();
+    </script>
 
 </body>
 </html>
