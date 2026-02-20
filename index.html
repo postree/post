@@ -1046,6 +1046,47 @@
         }
         .tab-container::-webkit-scrollbar { height: 4px; }
         .tab-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    </style><style></style><style>
+        dialog {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            width: 90% !important;
+            max-width: 500px !important;
+            height: auto !important;
+            max-height: 85vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 24px !important;
+            background: #ffffff !important;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
+            overflow: hidden !important;
+            z-index: 99999 !important;
+        }
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(4px) !important;
+        }
+        dialog::-webkit-scrollbar { width: 6px; }
+        dialog::-webkit-scrollbar-track { background: transparent; }
+        dialog::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+
+        /* [추가된 탭 디자인 & 에디터 스타일] */
+        .tab-container {
+            display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; border-bottom: 1px solid #e2e8f0;
+        }
+        .tab-btn {
+            padding: 8px 16px; border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 8px 8px 0 0;
+            cursor: pointer; font-size: 13px; font-weight: 600; color: #64748b; transition: all 0.2s; position: relative; top: 1px;
+        }
+        .tab-btn:hover { background: #eff6ff; color: #3b82f6; }
+        .tab-btn.active {
+            background: #ffffff; border-bottom: 1px solid #ffffff; color: #3b82f6; font-weight: 700; z-index: 2; box-shadow: 0 -2px 5px rgba(0,0,0,0.02);
+        }
+        .tab-container::-webkit-scrollbar { height: 4px; }
+        .tab-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
     </style></head>
 <body>
 
@@ -1113,6 +1154,70 @@
             </div>
             
             <div class="post-list" id="post-list">
+                <article class="post-item" onclick="location.href='post/연말정산-카드-소득공제-25-황금비율-총정리-신용카드-vs-체크카드-전략.html'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">2026. 2. 20.</span>
+                        </div>
+                        <h2 class="post-title">연말정산 카드 소득공제 25% 황금비율 총정리 (신용카드 vs 체크카드 전략)</h2>
+                        <p class="post-desc">카드 많이 썼는데 환급이 적었던 이유, 바로 25% 기준을 몰랐기 때문이에요. 신용카드와 체크카드를 언제 어떻게 나눠 써야 환급액이 최대가 되는지 황금비율 전략을 정리했습니다.</p>
+                        <div class="post-tags">
+                            <span class="tag-pill">연말정산</span><span class="tag-pill">소득공제</span><span class="tag-pill">신용카드</span><span class="tag-pill">체크카드</span><span class="tag-pill">절세전략</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&amp;fit=crop&amp;w=950&amp;q=80" alt="연말정산 카드 소득공제 25% 황금비율 총정리 (신용카드 vs 체크카드 전략)">
+                    </div>
+                </article>
+            
+                <article class="post-item" onclick="location.href='post/세액공제-vs-소득공제-차이-완벽-정리-2026-연말정산-절세-전략.html'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">2026. 2. 20.</span>
+                        </div>
+                        <h2 class="post-title">세액공제 vs 소득공제 차이 완벽 정리 (2026 연말정산 절세 전략)</h2>
+                        <p class="post-desc">세액공제와 소득공제, 이름은 비슷하지만 세금을 줄이는 방식이 완전히 달라요. 두 개념의 차이부터 실제 계산 예시, 연금저축·IRP를 활용한 최적 절세 전략까지 한 번에 정리했습니다.</p>
+                        <div class="post-tags">
+                            <span class="tag-pill">세액공제</span><span class="tag-pill">소득공제</span><span class="tag-pill">연말정산</span><span class="tag-pill">IRP</span><span class="tag-pill">연금저축</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&amp;fit=crop&amp;w=950&amp;q=80" alt="세액공제 vs 소득공제 차이 완벽 정리 (2026 연말정산 절세 전략)">
+                    </div>
+                </article>
+            
+                <article class="post-item" onclick="location.href='post/문화비-소득공제-신청-방법-총정리-헬스장도서공연-2026-최신판.html'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">2026. 2. 20.</span>
+                        </div>
+                        <h2 class="post-title">문화비 소득공제 신청 방법 총정리 (헬스장·도서·공연 2026 최신판)</h2>
+                        <p class="post-desc">2025년 하반기부터 헬스장·필라테스까지 문화비 소득공제 대상이 확대됐어요! 신청 방법, 인정 항목, 결제 수단 조건, 가맹점 확인법까지 2026년 최신 기준으로 한 번에 정리했습니다.</p>
+                        <div class="post-tags">
+                            <span class="tag-pill">문화비소득공제</span><span class="tag-pill">헬스장공제</span><span class="tag-pill">연말정산</span><span class="tag-pill">도서공연</span><span class="tag-pill">소득공제</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&amp;fit=crop&amp;w=950&amp;q=80" alt="문화비 소득공제 신청 방법 총정리 (헬스장·도서·공연 2026 최신판)">
+                    </div>
+                </article>
+            
+                <article class="post-item" onclick="location.href='post/주택담보대출-이자-소득공제-완벽-가이드-개인사업자도-받을-수-있을까.html'">
+                    <div class="post-text">
+                        <div class="post-author-meta">
+                            <span class="date">2026. 2. 20.</span>
+                        </div>
+                        <h2 class="post-title">주택담보대출 이자 소득공제 완벽 가이드 (개인사업자도 받을 수 있을까?)</h2>
+                        <p class="post-desc">유주택자가 누릴 수 있는 장기주택저당차입금 이자상환액 소득공제, 직장인은 물론 근로소득이 있는 개인사업자에게도 종합소득세 절세 효과가 있어요. 체증식 대출과의 조합까지 정리했습니다.</p>
+                        <div class="post-tags">
+                            <span class="tag-pill">주택담보대출</span><span class="tag-pill">이자소득공제</span><span class="tag-pill">연말정산</span><span class="tag-pill">개인사업자</span><span class="tag-pill">절세</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=950&amp;q=80" alt="주택담보대출 이자 소득공제 완벽 가이드 (개인사업자도 받을 수 있을까?)">
+                    </div>
+                </article>
+            
                 <article class="post-item" onclick="location.href='post_1770966473171.html'">
                     <div class="post-text">
                         <div class="post-author-meta">
@@ -1155,14 +1260,24 @@
             <div class="side-widget">
                 <div class="widget-title">많이 읽은 글</div>
                 <div class="rank-list" id="popular-posts">
-                <a href="post_1770966473171.html" class="rank-item">
+                <a href="post/연말정산-카드-소득공제-25-황금비율-총정리-신용카드-vs-체크카드-전략.html" class="rank-item">
                     <span class="rank-num">1</span>
-                    <span class="rank-text">1클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot</span>
+                    <span class="rank-text">연말정산 카드 소득공제 25% 황금비율 총정리 (신용카드 vs 체크카드 전략)</span>
                 </a>
             
-                <a href="post_1770965513081.html" class="rank-item">
+                <a href="post/세액공제-vs-소득공제-차이-완벽-정리-2026-연말정산-절세-전략.html" class="rank-item">
                     <span class="rank-num">2</span>
-                    <span class="rank-text">클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot</span>
+                    <span class="rank-text">세액공제 vs 소득공제 차이 완벽 정리 (2026 연말정산 절세 전략)</span>
+                </a>
+            
+                <a href="post/문화비-소득공제-신청-방법-총정리-헬스장도서공연-2026-최신판.html" class="rank-item">
+                    <span class="rank-num">3</span>
+                    <span class="rank-text">문화비 소득공제 신청 방법 총정리 (헬스장·도서·공연 2026 최신판)</span>
+                </a>
+            
+                <a href="post/주택담보대출-이자-소득공제-완벽-가이드-개인사업자도-받을-수-있을까.html" class="rank-item">
+                    <span class="rank-num">4</span>
+                    <span class="rank-text">주택담보대출 이자 소득공제 완벽 가이드 (개인사업자도 받을 수 있을까?)</span>
                 </a>
             </div>
             </div>
@@ -1184,6 +1299,13 @@
                     <span class="iconify" data-icon="carbon:trending-up"></span> Trending Topics
                 </div>
                 <div class="topic-list" id="category-list">
+                <div class="topic-item">
+                    <div class="topic-name">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 32 32" data-icon="carbon:hashtag" class="iconify iconify--carbon"><path fill="currentColor" d="M28 12v-2h-6V4h-2v6h-8V4h-2v6H4v2h6v8H4v2h6v6h2v-6h8v6h2v-6h6v-2h-6v-8Zm-8 8h-8v-8h8Z"></path></svg> 경제/재테크
+                    </div>
+                    <span class="topic-count">4</span>
+                </div>
+            
                 <div class="topic-item">
                     <div class="topic-name">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" viewBox="0 0 32 32" data-icon="carbon:hashtag" class="iconify iconify--carbon"><path fill="currentColor" d="M28 12v-2h-6V4h-2v6h-8V4h-2v6H4v2h6v8H4v2h6v6h2v-6h8v6h2v-6h6v-2h-6v-8Zm-8 8h-8v-8h8Z"></path></svg> IT
@@ -1212,82 +1334,6 @@
 
     <!-- 데이터 -->
     <script id="db-store" type="application/json">[
-    {
-        "title": "연말정산 카드 소득공제 25% 황금비율 총정리 (신용카드 vs 체크카드 전략)",
-        "category": "경제/재테크",
-        "excerpt": "카드 많이 썼는데 환급이 적었던 이유, 바로 25% 기준을 몰랐기 때문이에요. 신용카드와 체크카드를 언제 어떻게 나눠 써야 환급액이 최대가 되는지 황금비율 전략을 정리했습니다.",
-        "thumbnail": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=950&q=80",
-        "featuredImage": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=950&q=80",
-        "featuredImageAlt": "credit card wallet payment lifestyle",
-        "keywords": "연말정산, 소득공제, 신용카드, 체크카드, 절세전략",
-        "date": "2026. 2. 20.",
-        "tags": [
-            "연말정산",
-            "소득공제",
-            "신용카드",
-            "체크카드",
-            "절세전략"
-        ],
-        "id": 1771600016472,
-        "filename": "post/연말정산-카드-소득공제-25-황금비율-총정리-신용카드-vs-체크카드-전략.html"
-    },
-    {
-        "title": "세액공제 vs 소득공제 차이 완벽 정리 (2026 연말정산 절세 전략)",
-        "category": "경제/재테크",
-        "excerpt": "세액공제와 소득공제, 이름은 비슷하지만 세금을 줄이는 방식이 완전히 달라요. 두 개념의 차이부터 실제 계산 예시, 연금저축·IRP를 활용한 최적 절세 전략까지 한 번에 정리했습니다.",
-        "thumbnail": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=950&q=80",
-        "featuredImage": "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?auto=format&fit=crop&w=950&q=80",
-        "featuredImageAlt": "financial planning tax calculation notebook",
-        "keywords": "세액공제, 소득공제, 연말정산, IRP, 연금저축",
-        "date": "2026. 2. 20.",
-        "tags": [
-            "세액공제",
-            "소득공제",
-            "연말정산",
-            "IRP",
-            "연금저축"
-        ],
-        "id": 1771600015998,
-        "filename": "post/세액공제-vs-소득공제-차이-완벽-정리-2026-연말정산-절세-전략.html"
-    },
-    {
-        "title": "문화비 소득공제 신청 방법 총정리 (헬스장·도서·공연 2026 최신판)",
-        "category": "경제/재테크",
-        "excerpt": "2025년 하반기부터 헬스장·필라테스까지 문화비 소득공제 대상이 확대됐어요! 신청 방법, 인정 항목, 결제 수단 조건, 가맹점 확인법까지 2026년 최신 기준으로 한 번에 정리했습니다.",
-        "thumbnail": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=950&q=80",
-        "featuredImage": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=950&q=80",
-        "featuredImageAlt": "gym fitness equipment workout health",
-        "keywords": "문화비소득공제, 헬스장공제, 연말정산, 도서공연, 소득공제",
-        "date": "2026. 2. 20.",
-        "tags": [
-            "문화비소득공제",
-            "헬스장공제",
-            "연말정산",
-            "도서공연",
-            "소득공제"
-        ],
-        "id": 1771600016607,
-        "filename": "post/문화비-소득공제-신청-방법-총정리-헬스장도서공연-2026-최신판.html"
-    },
-    {
-        "title": "주택담보대출 이자 소득공제 완벽 가이드 (개인사업자도 받을 수 있을까?)",
-        "category": "경제/재테크",
-        "excerpt": "유주택자가 누릴 수 있는 장기주택저당차입금 이자상환액 소득공제, 직장인은 물론 근로소득이 있는 개인사업자에게도 종합소득세 절세 효과가 있어요. 체증식 대출과의 조합까지 정리했습니다.",
-        "thumbnail": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=950&q=80",
-        "featuredImage": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=950&q=80",
-        "featuredImageAlt": "house key real estate mortgage loan",
-        "keywords": "주택담보대출, 이자소득공제, 연말정산, 개인사업자, 절세",
-        "date": "2026. 2. 20.",
-        "tags": [
-            "주택담보대출",
-            "이자소득공제",
-            "연말정산",
-            "개인사업자",
-            "절세"
-        ],
-        "id": 1771600016559,
-        "filename": "post/주택담보대출-이자-소득공제-완벽-가이드-개인사업자도-받을-수-있을까.html"
-    },
     {
         "title": "1클로드 코드 메시징 연동 완벽 가이드 | AI 코딩 생산성 혁신 Clawbot",
         "category": "IT",
@@ -1382,4 +1428,4 @@
 
 
 
-<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea></body></html>
+<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea><textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea></body></html>
