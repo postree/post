@@ -1,120 +1,391 @@
 <!DOCTYPE html>
-<html><head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'">
-    <title>5_6_Site not found · GitHub Pages</title>
-    <style type="text/css" media="screen">
-      body {
-        background-color: #f1f1f1;
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postree | 깊이 있는 시선</title>
+    
+    <!-- 폰트: 본문용(Pretendard), 제목용(나눔명조) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Iconify Icons -->
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    
+    <style>
+        :root {
+            --bg-page: #ffffff;
+            --text-main: #191f28;   
+            --text-body: #333333;   
+            --text-gray: #8b95a1;
+            
+            --primary: #00c6be;     /* 브런치 감성의 민트 포인트 */
+            --border: #e6e6e6;      
+            --bg-gray: #f9f9f9;     
+            
+            --max-width: 1080px;
+            --header-h: 70px;
+        }
 
-      .container { margin: 50px auto 40px auto; width: 600px; text-align: center; }
+        /* Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+        }
 
-      a { color: #4183c4; text-decoration: none; }
-      a:hover { text-decoration: underline; }
+        /* 제목은 명조체로 감성 더하기 */
+        h1, h2, h3, .serif { font-family: 'Nanum Myeongjo', serif; word-break: keep-all; }
 
-      h1 { width: 800px; position:relative; left: -100px; letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px 0 50px 0; text-shadow: 0 1px 0 #fff; }
-      p { color: rgba(0, 0, 0, 0.5); margin: 20px 0; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+        ul { list-style: none; }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        button { background: none; border: none; cursor: pointer; padding: 0; }
 
-      ul { list-style: none; margin: 25px 0; padding: 0; }
-      li { display: table-cell; font-weight: bold; width: 1%; }
+        /* [Header] 미니멀 & 감성 */
+        .site-header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+            height: var(--header-h); 
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        
+        .logo { 
+            font-family: 'Nanum Myeongjo', serif; font-size: 24px; font-weight: 700; 
+            color: var(--text-main); letter-spacing: -0.5px;
+        }
+        
+        .nav { display: flex; gap: 32px; }
+        .nav a { font-size: 15px; color: #555; font-weight: 500; }
+        .nav a:hover { color: var(--primary); }
 
-      .logo { display: inline-block; margin-top: 35px; }
-      .logo-img-2x { display: none; }
-      @media
-      only screen and (-webkit-min-device-pixel-ratio: 2),
-      only screen and (   min--moz-device-pixel-ratio: 2),
-      only screen and (     -o-min-device-pixel-ratio: 2/1),
-      only screen and (        min-device-pixel-ratio: 2),
-      only screen and (                min-resolution: 192dpi),
-      only screen and (                min-resolution: 2dppx) {
-        .logo-img-1x { display: none; }
-        .logo-img-2x { display: inline-block; }
-      }
+        .header-icons { display: flex; gap: 20px; align-items: center; }
+        .icon-btn { color: #333; font-size: 22px; display: flex; }
 
-      #suggestions {
-        margin-top: 35px;
-        color: #ccc;
-      }
-      #suggestions a {
-        color: #666666;
-        font-weight: 200;
-        font-size: 14px;
-        margin: 0 10px;
-      }
 
+        /* [Layout] */
+        .container {
+            max-width: var(--max-width); margin: 0 auto; padding: 60px 24px;
+            display: grid; grid-template-columns: 1fr 300px; gap: 70px;
+        }
+
+        /* [Hero Section] 큰 이미지 + 텍스트 오버레이 느낌 */
+        .hero-section { grid-column: 1 / -1; margin-bottom: 70px; }
+        .hero-banner {
+            position: relative; width: 100%; height: 420px; border-radius: 2px; overflow: hidden;
+            display: flex; align-items: flex-end; /* 텍스트 하단 배치 */
+        }
+        .hero-bg {
+            position: absolute; inset: 0; 
+            background: url('https://images.unsplash.com/photo-1499750310159-5b5f0969755b?auto=format&fit=crop&w=1600&q=80') center/cover;
+            transition: transform 1s ease;
+        }
+        .hero-banner:hover .hero-bg { transform: scale(1.03); }
+        
+        /* 그라데이션 오버레이 */
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+        }
+
+        .hero-content { 
+            position: relative; z-index: 10; padding: 50px; color: white; width: 100%;
+        }
+        .hero-tag { 
+            font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--primary); 
+            text-transform: uppercase; margin-bottom: 12px; display: inline-block;
+            background: rgba(255,255,255,0.1); padding: 4px 10px; backdrop-filter: blur(5px);
+        }
+        .hero-title { font-size: 34px; font-weight: 700; line-height: 1.3; margin-bottom: 10px; }
+        .hero-desc { font-size: 16px; opacity: 0.9; font-weight: 300; max-width: 600px; }
+
+
+        /* [Post List] 브런치 스타일 리스트 */
+        .section-label { 
+            font-size: 14px; color: var(--text-gray); font-weight: 700; 
+            margin-bottom: 30px; letter-spacing: 1px; text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-label::after { content: ''; height: 1px; flex: 1; background: #eee; }
+
+        .post-list { display: flex; flex-direction: column; gap: 50px; }
+        
+        .post-item {
+            display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;
+            cursor: pointer; padding-bottom: 50px; border-bottom: 1px solid #f0f0f0;
+        }
+        .post-item:last-child { border-bottom: none; }
+
+        .post-text { flex: 1; display: flex; flex-direction: column; }
+        
+        .post-title {
+            font-size: 24px; font-weight: 700; line-height: 1.35; margin-bottom: 12px;
+            color: var(--text-main); transition: color 0.2s;
+        }
+        .post-item:hover .post-title { color: var(--primary); }
+
+        .post-desc {
+            font-size: 15px; color: var(--text-body); line-height: 1.7; margin-bottom: 20px;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+            font-weight: 300; /* 얇은 폰트로 감성적인 느낌 */
+        }
+        
+        .post-meta { 
+            font-size: 12px; color: #999; display: flex; gap: 8px; align-items: center; 
+        }
+        .meta-sep { width: 1px; height: 10px; background: #ddd; }
+
+        .post-thumb {
+            width: 150px; height: 150px; flex-shrink: 0; background: #f8f8f8;
+            border: 1px solid rgba(0,0,0,0.05); /* 썸네일 테두리 */
+        }
+        .post-thumb img { transition: opacity 0.3s; }
+        .post-item:hover .post-thumb img { opacity: 0.85; }
+
+
+        /* [Sidebar] */
+        .sidebar { position: sticky; top: 100px; height: fit-content; }
+        
+        /* 운영자 소개 (구독 버튼 없이 담백하게) */
+        .about-box {
+            padding: 30px; background: #fbfbfb; border: 1px solid #eee; 
+            text-align: center; margin-bottom: 50px;
+        }
+        .about-logo { 
+            font-family: 'Nanum Myeongjo', serif; font-size: 20px; font-weight: 700; margin-bottom: 12px; 
+            color: var(--text-main);
+        }
+        .about-text { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 0; }
+        .about-links { margin-top: 16px; display: flex; justify-content: center; gap: 12px; }
+        .about-icon { font-size: 18px; color: #aaa; transition: 0.2s; }
+        .about-icon:hover { color: var(--primary); }
+
+
+        .widget-title { 
+            font-size: 13px; font-weight: 700; color: #333; border-bottom: 2px solid #333;
+            padding-bottom: 8px; margin-bottom: 20px; display: inline-block;
+        }
+
+        /* 랭킹 리스트 (심플) */
+        .rank-list { display: flex; flex-direction: column; gap: 16px; }
+        .rank-item { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+        .rank-num { 
+            font-family: 'Nanum Myeongjo', serif; font-size: 18px; font-weight: 700; 
+            color: var(--primary); line-height: 1; margin-top: 2px;
+        }
+        .rank-text { font-size: 14px; color: #444; line-height: 1.4; transition: 0.2s; }
+        .rank-item:hover .rank-text { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
+
+        /* 키워드 태그 (감성적인 둥근 라인) */
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag-btn {
+            font-size: 12px; color: #666; padding: 6px 14px; 
+            border: 1px solid #ddd; border-radius: 20px; background: #fff;
+            transition: all 0.2s;
+        }
+        .tag-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+
+        /* [Footer] */
+        .footer { 
+            border-top: 1px solid #eee; padding: 60px 0; margin-top: 100px; 
+            text-align: center; background: #fff;
+        }
+        .footer-logo { font-family: 'Nanum Myeongjo'; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+        .footer-copy { font-size: 12px; color: #aaa; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; gap: 50px; }
+            .sidebar { display: none; }
+            .hero-banner { height: 320px; }
+            .hero-title { font-size: 26px; }
+            .hero-content { padding: 30px; }
+        }
+        @media (max-width: 600px) {
+            .post-item { flex-direction: column-reverse; gap: 16px; align-items: flex-start; }
+            .post-thumb { width: 100%; height: 200px; }
+            .nav { display: none; }
+        }
     </style>
-  <style></style><style>
-        dialog {
-            position: fixed !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) !important;
-            width: 90% !important;
-            max-width: 500px !important;
-            height: auto !important;
-            max-height: 85vh !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            border: none !important;
-            border-radius: 24px !important;
-            background: #ffffff !important;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important;
-            overflow: hidden !important;
-            z-index: 99999 !important;
-        }
-        dialog::backdrop {
-            background: rgba(0, 0, 0, 0.5) !important;
-            backdrop-filter: blur(4px) !important;
-        }
-        dialog::-webkit-scrollbar { width: 6px; }
-        dialog::-webkit-scrollbar-track { background: transparent; }
-        dialog::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+</head>
+<body>
 
-        /* [추가된 탭 디자인 & 에디터 스타일] */
-        .tab-container {
-            display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; border-bottom: 1px solid #e2e8f0;
-        }
-        .tab-btn {
-            padding: 8px 16px; border: 1px solid #e2e8f0; background: #f8fafc; border-radius: 8px 8px 0 0;
-            cursor: pointer; font-size: 13px; font-weight: 600; color: #64748b; transition: all 0.2s; position: relative; top: 1px;
-        }
-        .tab-btn:hover { background: #eff6ff; color: #3b82f6; }
-        .tab-btn.active {
-            background: #ffffff; border-bottom: 1px solid #ffffff; color: #3b82f6; font-weight: 700; z-index: 2; box-shadow: 0 -2px 5px rgba(0,0,0,0.02);
-        }
-        .tab-container::-webkit-scrollbar { height: 4px; }
-        .tab-container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
-    </style></head>
-  <body>
+    <!-- 헤더: 심플하고 깨끗하게 -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">Postree</a>
+            
+            <nav class="nav">
+                <a href="#">인사이트</a>
+                <a href="#">테크노트</a>
+                <a href="#">머니로그</a>
+            </nav>
+
+            <div class="header-icons">
+                <button class="icon-btn" title="검색">
+                    <span class="iconify" data-icon="carbon:search"></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
     <div class="container">
+        
+        <!-- [Hero] 감성적인 배너 -->
+        <section class="hero-section">
+            <article class="hero-banner" onclick="location.href='#'">
+                <div class="hero-bg"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="hero-tag">Weekly Best</span>
+                    <h1 class="hero-title">기록하지 않으면 사라지는 것들에 대하여</h1>
+                    <p class="hero-desc">개발자로 살아가며 마주하는 기술적 고민과 성장의 순간들. 휘발되지 않도록 이곳에 정성껏 기록합니다.</p>
+                </div>
+            </article>
+        </section>
 
-      <h1>404</h1>
-      <p><strong>There isn't a GitHub Pages site here.</strong></p>
+        <!-- [Main Content] -->
+        <main class="main-content">
+            <div class="section-label">Latest Stories</div>
+            
+            <div class="post-list">
+                <!-- Post 1 -->
+                <article class="post-item" onclick="location.href='#'">
+                    <div class="post-text">
+                        <h2 class="post-title">경제 유튜브 채널, 얼굴 없이 월 1,000만 원 수익 만들기</h2>
+                        <p class="post-desc">회사 밖에서 나만의 머니 파이프라인을 만드는 일은 생각보다 어렵지 않습니다. AI 도구를 활용해 콘텐츠를 자동화하고 수익을 창출했던 지난 6개월간의 현실적인 기록을 공유합니다.</p>
+                        <div class="post-meta">
+                            <span>머니로그</span>
+                            <span class="meta-sep"></span>
+                            <span>2시간 전</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=400&q=80" alt="Thumb">
+                    </div>
+                </article>
 
-      <p>
-        If you're trying to publish one,
-        <a href="https://help.github.com/pages/">read the full documentation</a>
-        to learn how to set up <strong>GitHub Pages</strong>
-        for your repository, organization, or user account.
-      </p>
+                <!-- Post 2 -->
+                <article class="post-item" onclick="location.href='#'">
+                    <div class="post-text">
+                        <h2 class="post-title">개발자 없이 AI 에이전트를 내 컴퓨터에 심는 법</h2>
+                        <p class="post-desc">구글 오팔(Opal)과 오픈소스 도구들을 활용하면 누구나 자신만의 AI 비서를 가질 수 있습니다. 코딩을 몰라도 가능한 노코드 자동화의 세계로 여러분을 초대합니다.</p>
+                        <div class="post-meta">
+                            <span>테크노트</span>
+                            <span class="meta-sep"></span>
+                            <span>1일 전</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=400&q=80" alt="Thumb">
+                    </div>
+                </article>
 
-      <div id="suggestions">
-        <a href="https://githubstatus.com">GitHub Status</a> —
-        <a href="https://twitter.com/githubstatus">@githubstatus</a>
-      </div>
+                <!-- Post 3 -->
+                <article class="post-item" onclick="location.href='#'">
+                    <div class="post-text">
+                        <h2 class="post-title">ChatGPT + Whisk: 30분 만에 애니메이션 스토리보드 짜기</h2>
+                        <p class="post-desc">단순히 기술력이 좋아서가 아닙니다. AI 도구 3가지만 조합하면 누구나 픽사급 스토리텔러가 될 수 있습니다. 창작의 장벽이 무너지는 순간을 경험해보세요.</p>
+                        <div class="post-meta">
+                            <span>인사이트</span>
+                            <span class="meta-sep"></span>
+                            <span>2일 전</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80" alt="Thumb">
+                    </div>
+                </article>
+                
+                <!-- Post 4 -->
+                <article class="post-item" onclick="location.href='#'">
+                    <div class="post-text">
+                        <h2 class="post-title">직장인이 놓치고 있는 숨은 환급금 5가지</h2>
+                        <p class="post-desc">연말정산 시즌이 지났다고 안심하지 마세요. 건강보험료부터 카드 포인트까지, 신청하지 않으면 국고로 환수되는 당신의 소중한 돈을 찾아드립니다.</p>
+                        <div class="post-meta">
+                            <span>생활정보</span>
+                            <span class="meta-sep"></span>
+                            <span>3일 전</span>
+                        </div>
+                    </div>
+                    <div class="post-thumb">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=400&q=80" alt="Thumb">
+                    </div>
+                </article>
+            </div>
+        </main>
 
-      <a href="/" class="logo logo-img-1x">
-        <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTZCRDY3REIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTZCRDY3RUIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdCQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjdDQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SM9MCAAAA+5JREFUeNrEV11Ik1EY3s4+ddOp29Q5b0opCgKFsoKoi5Kg6CIhuwi6zLJLoYLopq4qsKKgi4i6CYIoU/q5iDAKs6syoS76IRWtyJ+p7cdt7sf1PGOD+e0c3dygAx/67ZzzPM95/877GYdHRg3ZjMXFxepQKNS6sLCwJxqNNuFpiMfjVs4ZjUa/pmmjeD6VlJS8NpvNT4QQ7mxwjSsJiEQim/1+/9lgMHgIr5ohuxG1WCw9Vqv1clFR0dCqBODElV6v90ogEDjGdYbVjXhpaendioqK07CIR7ZAqE49PT09BPL2PMgTByQGsYiZlQD4uMXtdr+JxWINhgINYhGT2MsKgMrm2dnZXgRXhaHAg5jEJodUAHxux4LudHJE9RdEdA+i3Juz7bGHe4mhE9FNrgwBCLirMFV9Okh5eflFh8PR5nK5nDabrR2BNJlKO0T35+Li4n4+/J+/JQCxhmu5h3uJoXNHPbmWZAHMshWB8l5/ipqammaAf0zPDDx1ONV3vurdidqwAQL+pEc8sLcAe1CCvQ3YHxIW8Pl85xSWNC1hADDIv0rIE/o4J0k3kww4xSlwIhcq3EFFOm7KN/hUGOQkt0CFa5WpNJlMvxBEz/IVQAxg/ZRZl9wiHA63yDYieM7DnLP5CiAGsC7I5sgtYKJGWe2A8seFqgFJrJjEPY1Cn3pJ8/9W1e5VWsFDTEmFrBcoDhZJEQkXuhICMyKpjhahqN21hRYATKfUOlDmkygrR4o4C0VOLGJKrOITKB4jijzdXygBKixyC5TDQdnk/Pz8qRw6oOWGlsTKGOQW6OH6FBWsyePxdOXLTgxiyebILZCjz+GLgMIKnXNzc49YMlcRdHXcSwxFVgTInQhC9G33UhNoJLuqq6t345p9y3eUy8OTk5PjAHuI9uo4b07FBaOhsu0A4Unc+T1TU1Nj3KsSSE5yJ65jqF2DDd8QqWYmAZrIM2VlZTdnZmb6AbpdV9V6ec9znf5Q7HjYumdRE0JOp3MjitO4SFa+cZz8Umqe3TCbSLvdfkR/kWDdNQl5InuTcysOcpFT35ZrbBxx4p3JAHlZVVW1D/634VRt+FvLBgK/v5LV9WS+10xMTEwtRw7XvqOL+e2Q8V3AYIOIAXQ26/heWVnZCVfcyKHg2CBgTpmPmjYM8l24GyaUHyaIh7XwfR9ErE8qHoDfn2LTNAVC0HX6MFcBIP8Bi+6F6cdW/DICkANRfx99fEYFQ7Nph5i/uQiA214gno7K+guhaiKg9gC62+M8eR7XsBsYJ4ilam60Fb7r7uAj8wFyuwM1oIOWgfmDy6RXEEQzJMPe23DXrVS7rtyD3Df8z/FPgAEAzWU5Ku59ZAUAAAAASUVORK5CYII=">
-      </a>
+        <!-- [Sidebar] -->
+        <aside class="sidebar">
+            
+            <!-- [운영자 소개] 구독 버튼 대신 담백한 소개 -->
+            <div class="about-box">
+                <div class="about-logo">Postree</div>
+                <p class="about-text">
+                    기술과 일상, 그리고 성장에 대한 이야기를 기록합니다. 
+                    복잡한 세상을 조금 더 명쾌하게 바라보고 싶습니다.
+                </p>
+                <div class="about-links">
+                    <a href="#" class="about-icon"><span class="iconify" data-icon="carbon:email"></span></a>
+                    <a href="#" class="about-icon"><span class="iconify" data-icon="carbon:logo-github"></span></a>
+                    <a href="#" class="about-icon"><span class="iconify" data-icon="carbon:logo-instagram"></span></a>
+                </div>
+            </div>
 
-      <a href="/" class="logo logo-img-2x">
-        <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQUM1QkUxRUI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQUM1QkUxRkI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdGQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjgwQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hfPRaQAAB6lJREFUeNrsW2mM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">
-      </a>
+            <!-- [인기 글] -->
+            <div class="side-widget">
+                <div class="widget-title">많이 읽은 글</div>
+                <div class="rank-list">
+                    <a href="#" class="rank-item">
+                        <span class="rank-num">1</span>
+                        <span class="rank-text">AI 영상 자동화 에이전트 완벽 가이드</span>
+                    </a>
+                    <a href="#" class="rank-item">
+                        <span class="rank-num">2</span>
+                        <span class="rank-text">경제 유튜브 채널 수익 공개</span>
+                    </a>
+                    <a href="#" class="rank-item">
+                        <span class="rank-num">3</span>
+                        <span class="rank-text">개발자 없이 AI 에이전트 만들기</span>
+                    </a>
+                    <a href="#" class="rank-item">
+                        <span class="rank-num">4</span>
+                        <span class="rank-text">2026년 프론트엔드 기술 트렌드</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- [키워드] -->
+            <div class="side-widget">
+                <div class="widget-title">주요 키워드</div>
+                <div class="tag-cloud">
+                    <a href="#" class="tag-btn">#개발자성장</a>
+                    <a href="#" class="tag-btn">#사이드프로젝트</a>
+                    <a href="#" class="tag-btn">#머니파이프라인</a>
+                    <a href="#" class="tag-btn">#AI도구</a>
+                    <a href="#" class="tag-btn">#생산성</a>
+                </div>
+            </div>
+
+        </aside>
+
     </div>
-  
 
-<textarea id="my-style-input" spellcheck="false" placeholder="/* Enter your styles here. */" style="display: none;"></textarea></body></html>
+    <footer class="footer">
+        <div class="footer-logo">Postree</div>
+        <p class="footer-copy">© 2026 Postree. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
